@@ -24,7 +24,7 @@ import gc  # Garbage collector
 from datetime import datetime
 import pandas as pd
 import numpy as np
-from sklearn.decomposition import PCA, TruncatedSVD
+from sklearn.decomposition import TruncatedSVD
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 import gc
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
