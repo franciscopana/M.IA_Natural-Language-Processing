@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 from sklearn.decomposition import TruncatedSVD
@@ -135,8 +135,8 @@ def test_model(model, X_train, y_train, X_test, y_test):
 
 def main():
     # Best configuration parameters
-    include_digits = False
-    feature_extractor = TfidfVectorizer(max_features=50000, min_df=5)
+    include_digits = True
+    feature_extractor = CountVectorizer(ngram_range=(1,1), max_features=50000, min_df=5)
     include_sw = False
     pca_dim = 200
     
@@ -208,8 +208,8 @@ def main():
     }
     
     results_df = pd.DataFrame([results])
-    results_df.to_csv('test_results_1.csv', index=False)
-    print(f"Results saved to test_results_1.csv")
+    results_df.to_csv('test_results_3.csv', index=False)
+    print(f"Results saved to test_results_3.csv")
 
 if __name__ == '__main__':
     main()
