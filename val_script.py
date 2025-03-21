@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 from collections import Counter
 from wordcloud import WordCloud
 import nltk
@@ -20,18 +19,18 @@ from nltk import word_tokenize, pos_tag
 from nltk.corpus import stopwords, wordnet
 from nltk.stem import WordNetLemmatizer
 import re
-import gc  # Garbage collector
+import gc  
 from datetime import datetime
 import pandas as pd
 import numpy as np
-from sklearn.decomposition import PCA, TruncatedSVD
+from sklearn.decomposition import TruncatedSVD
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 import gc
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 import os
 import time
 
-# Download NLTK resources once
+
 try:
     nltk.data.find('tokenizers/punkt')
 except LookupError:
@@ -49,23 +48,19 @@ try:
 except LookupError:
     nltk.download('wordnet', quiet=True)
 
+
 file_paths = {
     'train_cot': 'data/train/train_cot.csv',
     'train_few_shot': 'data/train/train_few_shot.csv',
     'val_cot': 'data/validation/val_cot.csv',
     'val_few_shot': 'data/validation/val_few_shot.csv',
-    'test_cot': 'data/test/test_cot.csv',
-    'test_few_shot': 'data/test/test_few_shot.csv',
-    'test_LMs': 'data/test/test_lms.csv'
 }
 
-sns.set_palette("crest")
 
-# Initialize lemmatizer
 lemmatizer = WordNetLemmatizer()
 sw = set(stopwords.words('english'))
 
-# Function to convert NLTK POS tags to WordNet POS tags
+
 def get_wordnet_pos(nltk_tag):
     """
     Convert NLTK POS tags to WordNet POS tags.
@@ -76,8 +71,8 @@ def get_wordnet_pos(nltk_tag):
         'N': wordnet.NOUN,
         'R': wordnet.ADV
     }
-    # Default is noun
     return tag_to_wordnet.get(nltk_tag[0], wordnet.NOUN)
+
 
 def preprocess_text(review, include_sw, include_digits):
     """
@@ -93,11 +88,12 @@ def preprocess_text(review, include_sw, include_digits):
     # POS (Part-of-speech) tagging
     tagged_words = pos_tag(words)
 
-    # Lemmatize with POS tags
+    # Lemmatize with POS tags and handle stopwords based on the include_sw flag
     lemmatized_words = [lemmatizer.lemmatize(word, get_wordnet_pos(pos_tag)) 
                         for word, pos_tag in tagged_words 
                         if word not in sw or include_sw]
     return ' '.join(lemmatized_words)
+
 
 def process_in_batches(file_paths, feature, target, include_sw, include_digits, batch_size=1000):
     """
@@ -121,6 +117,7 @@ def process_in_batches(file_paths, feature, target, include_sw, include_digits, 
     
     return processed_texts, labels
 
+
 def extract_features_sparse(texts, labels, vectorizer, train=False):
     """
     Extract features while keeping matrices sparse
@@ -132,6 +129,7 @@ def extract_features_sparse(texts, labels, vectorizer, train=False):
     
     # Keep the data in sparse format
     return X, labels
+
 
 def train_model_sparse(model, X_train, y_train, X_val, y_val):
     """
@@ -149,13 +147,14 @@ def train_model_sparse(model, X_train, y_train, X_val, y_val):
     
     return accuracy, training_time
 
+
 def tune_hyperparameters_sparse(model, X_train, y_train, X_val, y_val, hyperparam_grid):
     """
     Tune hyperparameters using sparse matrices and measure training time
     """
     best_score = 0
     best_params = None
-    best_time = 0
+    best_training_time = 0
     
     for params in ParameterGrid(hyperparam_grid):
         model.set_params(**params)
@@ -173,65 +172,12 @@ def tune_hyperparameters_sparse(model, X_train, y_train, X_val, y_val, hyperpara
         if score > best_score:
             best_score = score
             best_params = params
-            best_time = training_time
+            best_training_time = training_time
     
-    return best_params, best_score, best_time
+    return best_params, best_score, best_training_time
 
-def main():
-    # Define experiment parameters
-    include_digits = (True, False)
-    embedding_dim = 200
-    feature_extractions = (
-        {
-            "extractor": CountVectorizer(ngram_range=(1,1), max_features=50000, min_df=5),
-            "name": "BoW_1",
-            "include_sw": False
-        },
-        {
-            "extractor": CountVectorizer(ngram_range=(2,2), max_features=50000, min_df=5),
-            "name": "BoW_2",
-            "include_sw": True
-        },
-        {
-            "extractor": TfidfVectorizer(max_features=50000, min_df=5),
-            "name": "TF-IDF",
-            "include_sw": False
-        }
-    )
-    pcas = (0, embedding_dim)
-    
-    # Define models - now including all three models
-    models = (
-        {
-            "model": SVC,
-            "name": "SVM",
-            "hyperparameters": {}, # No hyperparameter tuning for SVM as requested
-            "scale": True,
-            "requires_non_negative": False,
-            "tune": False  # Flag to indicate no tuning
-        },
-        {
-            "model": MultinomialNB,
-            "name": "NB",
-            "hyperparameters": {'alpha': [0.1, 0.5, 1.0, 1.5, 2.0]},
-            "scale": False,
-            "requires_non_negative": True,
-            "tune": True  # Flag to indicate tuning
-        },
-        {
-            "model": LogisticRegression,
-            "name": "LR",
-            "hyperparameters": {'C': [0.1, 1.0, 10.0], 'max_iter': [100, 200, 300], 
-                               'penalty':['l1', 'l2'], 'solver':['liblinear']},
-            "scale": True,
-            "requires_non_negative": False,
-            "tune": True  # Flag to indicate tuning
-        },
-    )
-    
-    # Fixed filename
-    filename = 'validation_results.csv'
-    
+
+def run_experiment(include_digits, feature_extractions, dims, models, filename):
     # Check if results file exists and load existing results
     existing_results = []
     completed_configs = set()
@@ -245,7 +191,7 @@ def main():
                 config_key = (
                     result['include_digits'],
                     result['feature_extraction'],
-                    result['pca'],
+                    result['dim'],
                     result['model']
                 )
                 completed_configs.add(config_key)
@@ -276,19 +222,19 @@ def main():
             print(f"\n{'-'*50}")
             print(f"Feature extraction: {feature_extraction['name']}")
             
-            # Handle BOW_2 special case
+            # Get include_sw flag from feature_extraction
             include_sw = feature_extraction['include_sw']
             
-            for pca_dim in pcas:
-                # Determine PCA name
-                pca_name = "No_PCA" if pca_dim == 0 else f"SVD_{pca_dim}"
+            for dim in dims:
+                # Determine dim name
+                dim_name = "full" if dim == -1 else f"SVD_{dim}"
                 
                 for model_config in models:
                     # Check if this configuration has already been completed
                     config_key = (
                         include_digit,
                         feature_extraction['name'],
-                        pca_name,
+                        dim_name,
                         model_config['name']
                     )
                     
@@ -303,12 +249,12 @@ def main():
                     if 'train_texts' not in processed_data:
                         print(">> Processing training data")
                         train_texts, train_labels = process_in_batches(
-                            train_files, feature, target, include_sw=True, include_digits=include_digit
+                            train_files, feature, target, include_sw=include_sw, include_digits=include_digit
                         )
                         
                         print(">> Processing validation data")
                         val_texts, val_labels = process_in_batches(
-                            val_files, feature, target, include_sw=True, include_digits=include_digit
+                            val_files, feature, target, include_sw=include_sw, include_digits=include_digit
                         )
                         
                         processed_data['train_texts'] = train_texts
@@ -338,17 +284,16 @@ def main():
                     )
                     print(f"Validation data shape: {X_val.shape}")
                     
-                    # Skip PCA if dimension is 0
-                    if pca_dim == 0:
-                        X_train_pca = X_train
-                        X_val_pca = X_val
+                    # Skip dim reduction if dimension is -1
+                    if dim == -1:
+                        X_train_red = X_train
+                        X_val_red = X_val
                     else:
-                        print(f">> Applying dimensionality reduction with {pca_dim} components")
+                        print(f">> Applying dimensionality reduction with {dim} components")
                         
                         try:
-                            # Use TruncatedSVD for sparse matrices instead of PCA
-                            # This is more appropriate for text data
-                            svd = TruncatedSVD(n_components=pca_dim, random_state=42)
+                            # Use TruncatedSVD for sparse matrices 
+                            svd = TruncatedSVD(n_components=dim, random_state=42)
                             
                             # Process training data
                             X_train_reduced = svd.fit_transform(X_train)
@@ -356,8 +301,8 @@ def main():
                             # Process validation data
                             X_val_reduced = svd.transform(X_val)
                             
-                            X_train_pca = X_train_reduced
-                            X_val_pca = X_val_reduced
+                            X_train_red = X_train_reduced
+                            X_val_red = X_val_reduced
                             
                             # Free memory
                             gc.collect()
@@ -365,62 +310,59 @@ def main():
                             print("WARNING: Memory error during dimensionality reduction. Skipping this configuration.")
                             continue
                     
-                    # Skip incompatible combinations (MultinomialNB with negative values from PCA)
-                    if model_config['requires_non_negative'] and pca_dim > 0:
+                    # Apply scaling based on model requirements
+                    if model_config['requires_non_negative'] and dim > 0:
                         # For MultinomialNB after dimensionality reduction, ensure non-negative values
-                        # Apply MinMaxScaler to make all values non-negative
                         print(">> Ensuring non-negative values for MultinomialNB")
                         scaler = MinMaxScaler()
-                        X_train_scaled = scaler.fit_transform(X_train_pca)
-                        X_val_scaled = scaler.transform(X_val_pca)
+                        X_train_scaled = scaler.fit_transform(X_train_red)
+                        X_val_scaled = scaler.transform(X_val_red)
                     elif model_config['scale']:
                         print(">> Scaling features")
                         
                         # Use appropriate scaler based on data type
-                        if isinstance(X_train_pca, np.ndarray):
+                        if isinstance(X_train_red, np.ndarray):
                             # Dense matrix (after dimensionality reduction)
-                            # For SVM, StandardScaler is the recommended choice as it centers and scales the data
                             scaler = StandardScaler()
-                            X_train_scaled = scaler.fit_transform(X_train_pca)
-                            X_val_scaled = scaler.transform(X_val_pca)
+                            X_train_scaled = scaler.fit_transform(X_train_red)
+                            X_val_scaled = scaler.transform(X_val_red)
                         else:
                             # Sparse matrix (before dimensionality reduction)
-                            # For sparse matrices, we use StandardScaler with_mean=False to preserve sparsity
                             scaler = StandardScaler(with_mean=False)
-                            X_train_scaled = scaler.fit_transform(X_train_pca)
-                            X_val_scaled = scaler.transform(X_val_pca)
+                            X_train_scaled = scaler.fit_transform(X_train_red)
+                            X_val_scaled = scaler.transform(X_val_red)
                     else:
-                        X_train_scaled = X_train_pca
-                        X_val_scaled = X_val_pca
+                        X_train_scaled = X_train_red
+                        X_val_scaled = X_val_red
                     
-                    # Initialize model class
+                    # Initialize model with appropriate parameters
                     model_class = model_config['model']
+                    if model_config['name'] == 'LR':
+                        model = model_class(random_state=42)
+                    else:
+                        model = model_class()
                     
-                    # Handle models differently based on whether they need tuning
-                    if model_config['tune']:
-                        # For NB and LR - tune hyperparameters
+                    # For SVM, use default parameters and only measure training time
+                    if model_config['name'] == 'SVM':
+                        val_score, training_time = train_model_sparse(
+                            model, X_train_scaled, y_train, X_val_scaled, y_val
+                        )
+                        best_params = 'NaN'  # As requested for SVM
+                        print(f"SVM default parameters - Validation score: {val_score:.4f}, Training time: {training_time:.2f} seconds")
+                    else:
+                        # For other models, tune hyperparameters and measure training time
                         print(">> Tuning hyperparameters")
-                        model = model_class(random_state=42 if model_config['name'] == 'LR' else None)
                         best_params, val_score, training_time = tune_hyperparameters_sparse(
                             model, X_train_scaled, y_train, X_val_scaled, y_val, 
                             model_config['hyperparameters']
                         )
-                        print(f"Best parameters: {best_params}, validation score: {val_score:.4f}, training time: {training_time:.2f}s")
-                    else:
-                        # For SVM - no tuning, use default parameters
-                        print(">> Training with default parameters")
-                        model = model_class(random_state=42)
-                        val_score, training_time = train_model_sparse(
-                            model, X_train_scaled, y_train, X_val_scaled, y_val
-                        )
-                        best_params = "NaN"  # As requested for SVM
-                        print(f"Validation score: {val_score:.4f}, Training time: {training_time:.2f}s")
+                        print(f"Best parameters: {best_params}, validation score: {val_score:.4f}, training time: {training_time:.2f} seconds")
                     
                     # Store results
                     result = {
                         'include_digits': include_digit,
                         'feature_extraction': feature_extraction['name'],
-                        'pca': pca_name,
+                        'dim': dim_name,
                         'model': model_config['name'],
                         'val_score': val_score,
                         'training_time': training_time,
@@ -451,5 +393,51 @@ def main():
 
     
 if __name__ == '__main__':
-    main()
 
+    include_digits = (False, )
+    embedding_dim = 200
+    feature_extractions = (
+        # {
+        #     "extractor": CountVectorizer(ngram_range=(1,1), max_features=50000),
+        #     "name": "BoW_1",
+        #     "include_sw": False
+        # },
+        {
+            "extractor": CountVectorizer(ngram_range=(2,2), max_features=50000),
+            "name": "BoW_2",
+            "include_sw": True
+        },
+        {
+            "extractor": TfidfVectorizer(max_features=50000),
+            "name": "TF-IDF",
+            "include_sw": False
+        }
+    )
+    dims = (-1, embedding_dim)
+    models = (
+        {
+            "model": SVC,
+            "name": "SVM",
+            "hyperparameters": {},
+            "scale": True,
+            "requires_non_negative": False
+        },
+        {
+            "model": MultinomialNB,
+            "name": "NB",
+            "hyperparameters": {'alpha': [0.1, 0.5, 1.0, 1.5, 2.0]},
+            "scale": False,
+            "requires_non_negative": True
+        },
+        {
+            "model": LogisticRegression,
+            "name": "LR",
+            "hyperparameters": {'C': [0.1, 1.0, 10.0], 'max_iter': [100, 200, 300], 
+                               'penalty':['l1', 'l2'], 'solver':['liblinear']},
+            "scale": True,
+            "requires_non_negative": False
+        },
+    )
+    filename = 'val_results.csv'
+    run_experiment(include_digits, feature_extractions, dims, models, filename)
+    
