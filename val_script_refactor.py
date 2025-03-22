@@ -489,26 +489,30 @@ class ExperimentRunner:
             target: Column name containing labels
         """
         # Process data if not already processed for this include_digit setting
-        if 'train_texts' not in processed_data:
-            print(">> Processing training data")
+        data_key = f"data_{include_digit}_{include_sw}"
+        if data_key not in processed_data:
+            print(f">> Processing data with include_digits={include_digit}, include_sw={include_sw}")
+            
             train_texts, train_labels = self.data_loader.process_in_batches(
                 train_files, feature, target, include_sw=include_sw, include_digits=include_digit
             )
             
-            print(">> Processing validation data")
             val_texts, val_labels = self.data_loader.process_in_batches(
                 val_files, feature, target, include_sw=include_sw, include_digits=include_digit
             )
             
-            processed_data['train_texts'] = train_texts
-            processed_data['train_labels'] = train_labels
-            processed_data['val_texts'] = val_texts
-            processed_data['val_labels'] = val_labels
+            processed_data[data_key] = {
+                'train_texts': train_texts,
+                'train_labels': train_labels,
+                'val_texts': val_texts,
+                'val_labels': val_labels
+            }
         else:
-            train_texts = processed_data['train_texts']
-            train_labels = processed_data['train_labels']
-            val_texts = processed_data['val_texts']
-            val_labels = processed_data['val_labels']
+            cached_data = processed_data[data_key]
+            train_texts = cached_data['train_texts']
+            train_labels = cached_data['train_labels']
+            val_texts = cached_data['val_texts']
+            val_labels = cached_data['val_labels']
         
         # Create feature extractor
         feature_extractor = FeatureExtractor(
