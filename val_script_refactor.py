@@ -19,6 +19,7 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from sklearn.model_selection import ParameterGrid
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.decomposition import TruncatedSVD
+import gensim
 import re
 import gc
 import os
@@ -159,27 +160,152 @@ class DataLoader:
         return processed_texts, labels
 
 
+class WordEmbeddingsModel:
+    """
+    Handles word embedding model training and feature extraction.
+    """
+    def __init__(self, vector_size: int, window: int, min_count: int, workers: int, sg: int, include_sw: bool, include_digits: bool):
+        """
+        Initialize word embedding model.
+        
+        Args:
+            vector_size: Dimensionality of word vectors
+            window: Maximum distance between current and predicted word
+            min_count: Ignores all words with total frequency lower than this
+            workers: Number of CPU cores to use
+            pretrained_path: Path to pretrained word vectors (if using pretrained model)
+        """
+        self.save_dir = "embeddings"
+        os.makedirs(self.save_dir, exist_ok=True)
+
+        self.vector_size = vector_size
+        self.window = window
+        self.min_count = min_count
+        self.workers = workers
+        self.sg = sg
+        self.include_sw = include_sw
+        self.include_digits = include_digits
+
+        self.wv = None
+        self.get_saved_model_if_exists()
+
+    def is_trained(self):
+        return self.wv is not None
+
+    def get_save_path(self):
+        # Generate filename based on model parameters
+        sw_flag = "with_sw" if self.include_sw else "no_sw"
+        model_type = "cbow" if self.sg == 0 else "skipgram"
+        digits_flag = "with_digits" if self.include_digits else "no_digits"
+
+        filename = f"word2vec_{model_type}_v{self.vector_size}_w{self.window}_min{self.min_count}_{sw_flag}_{digits_flag}.kv"
+        return os.path.join(self.save_dir, filename)
+
+    def get_saved_model_if_exists(self):
+        if os.path.exists(self.get_save_path()):
+            print(f"Loading trained embeddings from {self.get_save_path()}")
+            self.wv = gensim.models.KeyedVectors.load(self.get_save_path())
+
+    def save_model(self):
+        if self.wv is not None:
+            self.wv.save(self.get_save_path())
+            print(f"Saved word embeddings to {self.get_save_path()}")
+        else:
+            print("Warning: Word embeddings are not trained yet, nothing to save.")
+
+    def train(self, texts: List[str]):
+        """
+        Train a Word2Vec model on tokenized texts.
+
+        Args:
+            tokenized_texts: List of tokenized documents
+        """
+        print("Training Word2Vec model...")
+        tokenized_texts = [text.split() for text in texts]
+        self.model = gensim.models.Word2Vec(
+            sentences=tokenized_texts,
+            vector_size=self.vector_size,
+            window=self.window,
+            min_count=self.min_count,
+            workers=self.workers,
+            sg=self.sg,
+        )
+        self.wv = self.model.wv
+        self.save_model()
+
+    def get_document_vector(self, text: str) -> np.ndarray:
+        """
+        Compute document vector by averaging word vectors.
+
+        Args:
+            text: text of a document (whitespace separated tokens)
+
+        Returns:
+            Document vector (averaged word vectors)
+        """
+        tokens = text.split()
+        if not tokens:
+            # Return zero vector for empty documents
+            return np.zeros(self.vector_size)
+
+        # Get vectors for tokens that exist in vocabulary
+        vectors = []
+        for token in tokens:
+            try:
+                vectors.append(self.wv.get_vector(token))
+            except KeyError:
+                # Skip tokens not in vocabulary
+                continue
+
+        if not vectors:
+            # Return zero vector if no tokens were found in vocabulary
+            return np.zeros(self.vector_size)
+
+        # Return average vector
+        return np.mean(vectors, axis=0)
+
+    def transform_documents(self, docs: List[str]) -> np.ndarray:
+        """
+        Transform documents to vectors.
+
+        Args:
+            docs: List of documents
+
+        Returns:
+            Document vectors as numpy array
+        """
+        doc_vectors = np.vstack([self.get_document_vector(doc) for doc in docs])
+        return doc_vectors
+
+
 class FeatureExtractor:
     """
     Handles feature extraction from text data using various vectorization methods.
     """
-    def __init__(self, extractor_type: str, params: Dict[str, Any]):
+    def __init__(self, extractor_type: str, params: Dict[str, Any], reuse_configuration: dict[str, Any] = None):
         """
         Initialize the feature extractor.
         
         Args:
             extractor_type: Type of extractor (BoW, TF-IDF, etc.)
             params: Parameters for the extractor
+            reuse_configuration: Configuration for reusing an already trained model (or saving one)
         """
         self.extractor_type = extractor_type
-        
+        self.vectorizer = None
+
+        if extractor_type == "word2vec" and reuse_configuration is None:
+            raise ValueError("Must provide reuse configuration for word2vec model")
+
         if extractor_type.startswith("BoW"):
             self.vectorizer = CountVectorizer(**params)
         elif extractor_type == "TF-IDF":
             self.vectorizer = TfidfVectorizer(**params)
+        elif extractor_type == "word2vec":
+            self.vectorizer = WordEmbeddingsModel(**params, **reuse_configuration)
         else:
             raise ValueError(f"Unsupported extractor type: {extractor_type}")
-            
+
     def extract_features(self, texts: List[str], train: bool = False):
         """
         Extract features while keeping matrices sparse.
@@ -191,10 +317,15 @@ class FeatureExtractor:
         Returns:
             Sparse feature matrix
         """
-        if train:
-            return self.vectorizer.fit_transform(texts)
+        if self.extractor_type == "word2vec":
+            if train and not self.vectorizer.is_trained():
+                self.vectorizer.train(texts)    # Train it if not already trained
+            return self.vectorizer.transform_documents(texts)
         else:
-            return self.vectorizer.transform(texts)
+            if train:
+                return self.vectorizer.fit_transform(texts)
+            else:
+                return self.vectorizer.transform(texts)
 
 
 class DimensionalityReducer:
@@ -423,11 +554,15 @@ class ExperimentRunner:
                 
                 # Get include_sw flag from feature_extraction
                 include_sw = feature_extraction['include_sw']
-                
+
                 for dim in self.dimension_options:
                     # Determine dim name
                     dim_name = "full" if dim == -1 else f"SVD_{dim}"
-                    
+
+                    if feature_extraction['name'] == "word2vec" and dim_name != "full":
+                        print(f"Skipping dimensionality reduction for word2vec (already low-dimensional)")
+                        continue
+
                     for model_config in self.model_configs:
                         # Check if this configuration has already been completed
                         config_key = (
@@ -517,9 +652,14 @@ class ExperimentRunner:
         # Create feature extractor
         feature_extractor = FeatureExtractor(
             feature_extraction['name'],
-            feature_extraction['params']
+            feature_extraction['params'],
+            reuse_configuration = (
+                {"include_digits": include_digit, "include_sw": include_sw}
+                if feature_extraction['name'] == "word2vec"
+                else None
+            ),
         )
-        
+
         # Extract features
         print(">> Extracting features for training data")
         X_train = feature_extractor.extract_features(train_texts, train=True)
@@ -553,7 +693,7 @@ class ExperimentRunner:
                 return
         
         # Apply scaling based on model requirements
-        if model_config['requires_non_negative'] and dim > 0:
+        if model_config['requires_non_negative'] and (dim > 0 or feature_extraction['name'] == "word2vec"):
             # For MultinomialNB after dimensionality reduction, ensure non-negative values
             print(">> Ensuring non-negative values for MultinomialNB")
             scaler = FeatureScaler(method="minmax", requires_non_negative=True)
@@ -619,58 +759,63 @@ def main():
     runner = ExperimentRunner(file_paths, output_path)
     
     # Define experiment configurations
-    include_digits_options = (True, False)
+    include_digits_options = [True, False]
     embedding_dim = 200
     
     # Feature extraction configurations
-    feature_extraction_configs = (
+    feature_extraction_configs = [
+        # {
+        #     "name": "BoW_1",
+        #     "params": {"ngram_range": (1, 1), "max_features": 50000},
+        #     "include_sw": False,
+        # },
+        # {
+        #     "name": "BoW_2",
+        #     "params": {"ngram_range": (2, 2), "max_features": 50000},
+        #     "include_sw": True,
+        # },
+        # {
+        #     "name": "TF-IDF",
+        #     "params": {"max_features": 50000},
+        #     "include_sw": False,
+        # },
         {
-            "name": "BoW_1",
-            "params": {"ngram_range": (1, 1), "max_features": 50000},
-            "include_sw": False
+            "name": "word2vec",
+            "params": {"vector_size": embedding_dim, "window": 10, "min_count": 2, "workers": 10, "sg": 1},
+            "include_sw": True,
         },
-        {
-            "name": "BoW_2",
-            "params": {"ngram_range": (2, 2), "max_features": 50000},
-            "include_sw": True
-        },
-        {
-            "name": "TF-IDF",
-            "params": {"max_features": 50000},
-            "include_sw": False
-        }
-    )
+    ]
     
     # Dimensionality reduction options
-    dimension_options = (-1, embedding_dim)
+    dimension_options = [-1, embedding_dim]
     
     # Model configurations
-    model_configs = (
-        {
-            "name": "SVM",
-            "hyperparameters": {},
-            "scale": True,
-            "requires_non_negative": False
-        },
+    model_configs = [
+        # {
+        #     "name": "SVM",
+        #     "hyperparameters": {},
+        #     "scale": True,
+        #     "requires_non_negative": False,
+        # },
         {
             "name": "NB",
             "hyperparameters": {'alpha': [0.1, 0.5, 1.0, 1.5, 2.0]},
             "scale": False,
-            "requires_non_negative": True
+            "requires_non_negative": True,
         },
         {
             "name": "LR",
             "hyperparameters": {
                 'C': [0.1, 1.0, 10.0], 
                 'max_iter': [100, 200, 300], 
-                'penalty': ['l1', 'l2'], 
-                'solver': ['liblinear']
+                'penalty': ['l1', 'l2'],
+                'solver': ['liblinear', 'saga'],
             },
             "scale": True,
             "requires_non_negative": False
         },
-    )
-    
+    ]
+
     # Set up and run experiment
     runner.setup_experiment(include_digits_options, feature_extraction_configs, 
                            dimension_options, model_configs)
