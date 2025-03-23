@@ -393,14 +393,14 @@ class ModelTrainer:
         end_time = time.time()
         training_time = end_time - start_time
         
-        return self.model, training_time
+        return self.model, round(training_time, 3)
         
     def evaluate_model(self, X_val, y_val):
         """
         Evaluate model on validation data, returning accuracy score.
         """
         y_pred = self.model.predict(X_val)
-        return accuracy_score(y_val, y_pred)
+        return round(accuracy_score(y_val, y_pred), 4)
         
     def tune_hyperparameters(self, X_train, y_train, X_val, y_val):
         """
@@ -764,26 +764,26 @@ def main():
     
     # Feature extraction configurations
     feature_extraction_configs = [
-        # {
-        #     "name": "BoW_1",
-        #     "params": {"ngram_range": (1, 1), "max_features": 50000},
-        #     "include_sw": False,
-        # },
-        # {
-        #     "name": "BoW_2",
-        #     "params": {"ngram_range": (2, 2), "max_features": 50000},
-        #     "include_sw": True,
-        # },
-        # {
-        #     "name": "TF-IDF",
-        #     "params": {"max_features": 50000},
-        #     "include_sw": False,
-        # },
         {
-            "name": "word2vec",
-            "params": {"vector_size": embedding_dim, "window": 10, "min_count": 2, "workers": 10, "sg": 1},
+            "name": "BoW_1",
+            "params": {"ngram_range": (1, 1), "max_features": 50000},
+            "include_sw": False,
+        },
+        {
+            "name": "BoW_2",
+            "params": {"ngram_range": (2, 2), "max_features": 50000},
             "include_sw": True,
         },
+        {
+            "name": "TF-IDF",
+            "params": {"max_features": 50000},
+            "include_sw": False,
+        },
+        # {
+        #     "name": "word2vec",
+        #     "params": {"vector_size": embedding_dim, "window": 10, "min_count": 2, "workers": 10, "sg": 1},
+        #     "include_sw": True,
+        # },
     ]
     
     # Dimensionality reduction options
@@ -797,23 +797,26 @@ def main():
         #     "scale": True,
         #     "requires_non_negative": False,
         # },
-        {
-            "name": "NB",
-            "hyperparameters": {'alpha': [0.1, 0.5, 1.0, 1.5, 2.0]},
-            "scale": False,
-            "requires_non_negative": True,
-        },
+        # {
+        #     "name": "NB",
+        #     "hyperparameters": {'alpha': [0.1, 0.5, 1.0, 1.5, 2.0]},
+        #     "scale": False,
+        #     "requires_non_negative": True,
+        # },
         {
             "name": "LR",
-            "hyperparameters": {
-                'C': [0.1, 1.0, 10.0], 
-                'max_iter': [100, 200, 300], 
-                'penalty': ['l1', 'l2'],
-                'solver': ['liblinear', 'saga'],
-            },
+            "hyperparameters": [
+                # Configuration for l2 penalty
+                {
+                    'C': [0.01, 0.1, 1.0, 10.0], 
+                    'max_iter': [100, 200, 300, 500], 
+                    'penalty': ['l2'],
+                    'solver': ['lbfgs', 'liblinear', 'saga']
+                },
+            ],
             "scale": True,
-            "requires_non_negative": False
-        },
+            "requires_non_negative": False,
+        }
     ]
 
     # Set up and run experiment

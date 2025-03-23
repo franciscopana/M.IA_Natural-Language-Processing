@@ -1,1 +1,37 @@
 include_digits,feature_extraction,dim,model,val_score,training_time,best_params
+True,BoW_1,full,SVM,0.8403,800.783,{}
+True,BoW_1,full,NB,0.7865,0.059,{'alpha': 0.1}
+True,BoW_1,SVD_200,SVM,0.8704,1037.193,{}
+True,BoW_1,SVD_200,NB,0.7238,0.072,{'alpha': 0.1}
+True,BoW_2,full,SVM,0.8808,3645.149,{}
+True,BoW_2,full,NB,0.8531,0.062,{'alpha': 0.1}
+True,BoW_2,SVD_200,SVM,0.8706,803.984,{}
+True,BoW_2,SVD_200,NB,0.7449,0.067,{'alpha': 0.1}
+True,TF-IDF,full,SVM,0.8363,815.325,{}
+True,TF-IDF,full,NB,0.7866,0.058,{'alpha': 0.1}
+True,TF-IDF,SVD_200,SVM,0.8803,917.132,{}
+True,TF-IDF,SVD_200,NB,0.7575,0.067,{'alpha': 0.1}
+False,BoW_1,full,SVM,0.8396,794.496,{}
+False,BoW_1,full,NB,0.789,0.055,{'alpha': 0.1}
+False,BoW_1,SVD_200,SVM,0.8682,1061.265,{}
+False,BoW_1,SVD_200,NB,0.7298,0.067,{'alpha': 0.1}
+False,BoW_2,full,SVM,0.8818,3746.797,{}
+False,BoW_2,full,NB,0.8543,0.062,{'alpha': 0.1}
+False,BoW_2,SVD_200,SVM,0.8713,852.129,{}
+False,BoW_2,SVD_200,NB,0.7419,0.071,{'alpha': 0.5}
+False,TF-IDF,full,SVM,0.8362,802.542,{}
+False,TF-IDF,full,NB,0.7884,0.055,{'alpha': 0.1}
+False,TF-IDF,SVD_200,SVM,0.8776,904.754,{}
+False,TF-IDF,SVD_200,NB,0.7549,0.067,{'alpha': 0.1}
+True,BoW_1,full,LR,0.8612,1.618,"{'C': 0.01, 'max_iter': 100, 'penalty': 'l2', 'solver': 'lbfgs'}"
+True,BoW_1,SVD_200,LR,0.8171,0.984,"{'C': 10.0, 'max_iter': 100, 'penalty': 'l2', 'solver': 'lbfgs'}"
+True,BoW_2,full,LR,0.884,5.142,"{'C': 0.1, 'max_iter': 100, 'penalty': 'l2', 'solver': 'saga'}"
+True,BoW_2,SVD_200,LR,0.8377,21.277,"{'C': 0.1, 'max_iter': 100, 'penalty': 'l2', 'solver': 'saga'}"
+True,TF-IDF,full,LR,0.8595,1.859,"{'C': 0.01, 'max_iter': 200, 'penalty': 'l2', 'solver': 'lbfgs'}"
+True,TF-IDF,SVD_200,LR,0.8247,5.764,"{'C': 0.1, 'max_iter': 100, 'penalty': 'l2', 'solver': 'saga'}"
+False,BoW_1,full,LR,0.8617,1.506,"{'C': 0.01, 'max_iter': 100, 'penalty': 'l2', 'solver': 'lbfgs'}"
+False,BoW_1,SVD_200,LR,0.8173,1.389,"{'C': 0.1, 'max_iter': 100, 'penalty': 'l2', 'solver': 'lbfgs'}"
+False,BoW_2,full,LR,0.8836,4.879,"{'C': 0.01, 'max_iter': 100, 'penalty': 'l2', 'solver': 'saga'}"
+False,BoW_2,SVD_200,LR,0.8367,1.428,"{'C': 1.0, 'max_iter': 100, 'penalty': 'l2', 'solver': 'lbfgs'}"
+False,TF-IDF,full,LR,0.8601,1.886,"{'C': 0.01, 'max_iter': 200, 'penalty': 'l2', 'solver': 'lbfgs'}"
+False,TF-IDF,SVD_200,LR,0.8233,3.753,"{'C': 0.01, 'max_iter': 100, 'penalty': 'l2', 'solver': 'saga'}"
