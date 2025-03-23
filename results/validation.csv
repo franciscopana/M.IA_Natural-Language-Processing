@@ -35,3 +35,9 @@ False,BoW_2,full,LR,0.8836,4.879,"{'C': 0.01, 'max_iter': 100, 'penalty': 'l2', 
 False,BoW_2,SVD_200,LR,0.8367,1.428,"{'C': 1.0, 'max_iter': 100, 'penalty': 'l2', 'solver': 'lbfgs'}"
 False,TF-IDF,full,LR,0.8601,1.886,"{'C': 0.01, 'max_iter': 200, 'penalty': 'l2', 'solver': 'lbfgs'}"
 False,TF-IDF,SVD_200,LR,0.8233,3.753,"{'C': 0.01, 'max_iter': 100, 'penalty': 'l2', 'solver': 'saga'}"
+True,word2vec,full,NB,0.7429,0.082,{'alpha': 0.1}
+True,word2vec,full,LR,0.8512,21.479,"{'C': 1.0, 'max_iter': 100, 'penalty': 'l2', 'solver': 'saga'}"
+False,word2vec,full,NB,0.7465,0.077,{'alpha': 0.1}
+False,word2vec,full,LR,0.8503,3.053,"{'C': 1.0, 'max_iter': 200, 'penalty': 'l2', 'solver': 'lbfgs'}"
+True,word2vec,full,SVM,0.8946,430.046,{}
+False,word2vec,full,SVM,0.896,429.459,{}
