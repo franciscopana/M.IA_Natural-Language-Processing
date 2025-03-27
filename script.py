@@ -745,107 +745,8 @@ class ExperimentRunner:
         self.tracker.add_result(result)
 
 
-
-def validation():
-    # Define file paths
-    file_paths = {
-        'train_cot': 'data/train/train_cot.csv',
-        'train_few_shot': 'data/train/train_few_shot.csv',
-        'val_cot': 'data/validation/val_cot.csv',
-        'val_few_shot': 'data/validation/val_few_shot.csv',
-    }
-
-    # Initialize experiment runner
-    output_dir = 'results'
-    output_file = 'validation.csv'
-    output_path = os.path.join(output_dir, output_file)
-    runner = ExperimentRunner(file_paths, output_path)
-
-    # Define experiment configurations
-    include_digits_options = [False]
-    embedding_dim = 200
-
-    # Feature extraction configurations
-    feature_extraction_configs = [
-        # {
-        #     "name": "BoW_1",
-        #     "params": {"ngram_range": (1, 1), "max_features": 50000},
-        #     "include_sw": False,
-        # },
-        # {
-        #     "name": "BoW_2",
-        #     "params": {"ngram_range": (2, 2), "max_features": 50000},
-        #     "include_sw": True,
-        # },
-        # {
-        #     "name": "TF-IDF",
-        #     "params": {"max_features": 50000},
-        #     "include_sw": False,
-        # },
-        {
-            "name": "word2vec",
-            "params": {"vector_size": embedding_dim, "window": 10, "min_count": 2, "workers": 10, "sg": 1},
-            "include_sw": True,
-        },
-    ]
-
-    # Dimensionality reduction options
-    dimension_options = [-1, embedding_dim]
-
-    # Model configurations
-    model_configs = [
-        {
-            "name": "SVM",
-            "hyperparameters": {
-                'C': [0.01, 0.1, 1.0],
-                'kernel': ['sigmoid'],
-                'gamma': ['scale', 'auto']
-            },
-            "scale": True,
-            "requires_non_negative": False,
-        },
-        # {
-        #     "name": "NB",
-        #     "hyperparameters": {'alpha': [0.1, 0.5, 1.0, 1.5, 2.0]},
-        #     "scale": False,
-        #     "requires_non_negative": True,
-        # },
-        # {
-        #     "name": "LR",
-        #     "hyperparameters": [
-        #         # Configuration for l2 penalty
-        #         {
-        #             'C': [0.01, 0.1, 1.0, 10.0],
-        #             'max_iter': [100, 200, 300, 500],
-        #             'penalty': ['l2'],
-        #             'solver': ['lbfgs', 'liblinear', 'saga']
-        #         },
-        #     ],
-        #     "scale": True,
-        #     "requires_non_negative": False,
-        # }
-    ]
-
-    # Set up and run experiment
-    runner.setup_experiment(include_digits_options, feature_extraction_configs,
-                           dimension_options, model_configs)
-    runner.run_experiment()
-
-
 class Test:
-    """
-    Handles the testing phase of the NLP pipeline, training a specified model on the training data
-    and evaluating its performance on merged test data.
-    """
     def __init__(self, file_paths: dict, test_output_path: str = "results/test.csv", misclassifications_path: str = "results/misclassifications.csv"):
-        """
-        Initialize the Test class.
-        
-        Args:
-            file_paths: Dictionary containing paths to train and test data files
-            test_output_path: Path to save test results
-            misclassifications_path: Path to save misclassified instances
-        """
         download_nltk_resources()
         
         self.file_paths = file_paths
@@ -867,23 +768,7 @@ class Test:
                 apply_dim_reduction: bool = False,
                 n_components: int = 200,
                 scale_features: bool = True):
-        """
-        Train a model on training data and evaluate on merged test data.
         
-        Args:
-            model: Initialized ML model (e.g., SVC, MultinomialNB, LogisticRegression)
-            feature_extraction_config: Configuration for feature extraction
-            include_digits: Whether to include digits in preprocessing
-            include_sw: Whether to include stopwords in preprocessing
-            feature_col: Column name containing text data
-            target_col: Column name containing labels
-            apply_dim_reduction: Whether to apply dimensionality reduction
-            n_components: Number of components for dimensionality reduction
-            scale_features: Whether to scale features
-            
-        Returns:
-            Dictionary containing test results
-        """
         print(f"Starting test with {model.__class__.__name__}")
         start_time = time.time()
         
@@ -1015,16 +900,6 @@ class Test:
         return results
     
     def _save_misclassifications(self, original_texts, true_labels, predicted_labels, model_name, feature_extraction_name):
-        """
-        Save misclassified instances to a CSV file.
-        
-        Args:
-            original_texts: List of original text sentences
-            true_labels: List of true labels
-            predicted_labels: List of predicted labels
-            model_name: Name of the model
-            feature_extraction_name: Name of the feature extraction method
-        """
         # Create a list to store misclassified instances
         misclassifications = []
         
@@ -1056,14 +931,6 @@ class Test:
 
         
     def _save_confusion_matrix(self, cm, class_names, filepath):
-        """
-        Save confusion matrix as a PNG using seaborn heatmap.
-        
-        Args:
-            cm: Confusion matrix
-            class_names: List of class names for labels
-            filepath: Path to save the PNG
-        """
         plt.figure(figsize=(10, 8))
         sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
                     xticklabels=class_names, 
@@ -1077,14 +944,6 @@ class Test:
         print(f"Confusion matrix saved to {filepath}")
     
     def _save_results(self, results, model_name, feature_extraction_name):
-        """
-        Save test results to CSV file.
-        
-        Args:
-            results: Dictionary containing test results
-            model_name: Name of the model
-            feature_extraction_name: Name of the feature extraction method
-        """
         rows = []
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
@@ -1118,11 +977,84 @@ class Test:
         print(f"Results saved to {self.test_output_path}")
 
 
+def validation():
+    file_paths = {
+        'train_cot': 'data/train/train_cot.csv',
+        'train_few_shot': 'data/train/train_few_shot.csv',
+        'val_cot': 'data/validation/val_cot.csv',
+        'val_few_shot': 'data/validation/val_few_shot.csv',
+    }
+
+    output_dir = 'results'
+    output_file = 'validation.csv'
+    output_path = os.path.join(output_dir, output_file)
+    runner = ExperimentRunner(file_paths, output_path)
+
+    include_digits_options = [False]
+    embedding_dim = 200
+
+    feature_extraction_configs = [
+        # {
+        #     "name": "BoW_1",
+        #     "params": {"ngram_range": (1, 1), "max_features": 50000},
+        #     "include_sw": False,
+        # },
+        # {
+        #     "name": "BoW_2",
+        #     "params": {"ngram_range": (2, 2), "max_features": 50000},
+        #     "include_sw": True,
+        # },
+        # {
+        #     "name": "TF-IDF",
+        #     "params": {"max_features": 50000},
+        #     "include_sw": False,
+        # },
+        {
+            "name": "word2vec",
+            "params": {"vector_size": embedding_dim, "window": 10, "min_count": 2, "workers": 10, "sg": 1},
+            "include_sw": True,
+        },
+    ]
+    dimension_options = [-1, embedding_dim]
+    model_configs = [
+        {
+            "name": "SVM",
+            "hyperparameters": {
+                'C': [0.01, 0.1, 1.0],
+                'kernel': ['sigmoid'],
+                'gamma': ['scale', 'auto']
+            },
+            "scale": True,
+            "requires_non_negative": False,
+        },
+        # {
+        #     "name": "NB",
+        #     "hyperparameters": {'alpha': [0.1, 0.5, 1.0, 1.5, 2.0]},
+        #     "scale": False,
+        #     "requires_non_negative": True,
+        # },
+        # {
+        #     "name": "LR",
+        #     "hyperparameters": [
+        #         # Configuration for l2 penalty
+        #         {
+        #             'C': [0.01, 0.1, 1.0, 10.0],
+        #             'max_iter': [100, 200, 300, 500],
+        #             'penalty': ['l2'],
+        #             'solver': ['lbfgs', 'liblinear', 'saga']
+        #         },
+        #     ],
+        #     "scale": True,
+        #     "requires_non_negative": False,
+        # }
+    ]
+
+    runner.setup_experiment(include_digits_options, feature_extraction_configs,
+                           dimension_options, model_configs)
+    runner.run_experiment()
+
+
 def test():
-    """
-    Run the test phase with the best model configuration from validation.
-    """
-    # Define file paths
     file_paths = {
         'train_cot': 'data/train/train_cot.csv',
         'train_few_shot': 'data/train/train_few_shot.csv',
@@ -1131,22 +1063,18 @@ def test():
         'test_LMs': 'data/test/test_lms.csv'
     }
     
-    # Create Test instance with explicit misclassifications path
     tester = Test(
         file_paths, 
-        test_output_path="results/test_results.csv", 
+        test_output_path="results/test.csv", 
         misclassifications_path="results/misclassifications.csv"
     )
-    
-    # Define best model based on validation results
+
     model = SVC(kernel='rbf', C=1.0, gamma='scale')
-    # Define feature extraction configuration
     feature_extraction_config = {
         "name": "word2vec",
         "params": {"vector_size": 200, "window": 10, "min_count": 2, "workers": 10, "sg": 1},
     }
     
-    # Run test
     tester.run_test(
         model=model,
         feature_extraction_config=feature_extraction_config,
