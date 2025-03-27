@@ -26,7 +26,9 @@ import os
 import time
 from datetime import datetime
 from typing import List, Dict, Tuple, Any, Optional, Union, Set
-
+import seaborn as sns
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Download NLTK resources if not already available
 def download_nltk_resources():
@@ -36,7 +38,7 @@ def download_nltk_resources():
         ('taggers/averaged_perceptron_tagger', 'averaged_perceptron_tagger'),
         ('corpora/wordnet', 'wordnet')
     ]
-    
+
     for resource_path, resource_name in resources:
         try:
             nltk.data.find(resource_path)
@@ -52,14 +54,14 @@ class TextPreprocessor:
     def __init__(self):
         self.lemmatizer = WordNetLemmatizer()
         self.stopwords = set(stopwords.words('english'))
-        
+
     def get_wordnet_pos(self, nltk_tag: str) -> str:
         """
         Convert NLTK POS tags to WordNet POS tags.
-        
+
         Args:
             nltk_tag: NLTK POS tag
-            
+
         Returns:
             Corresponding WordNet POS tag
         """
@@ -70,29 +72,29 @@ class TextPreprocessor:
             'R': wordnet.ADV
         }
         return tag_to_wordnet.get(nltk_tag[0], wordnet.NOUN)
-    
+
     def preprocess_text(self, text: str, include_sw: bool, include_digits: bool) -> str:
         """
         Preprocess text data for NLP tasks.
-        
+
         Args:
             text: Raw text to preprocess
             include_sw: Whether to include stopwords
             include_digits: Whether to include digits
-            
+
         Returns:
             Preprocessed text
         """
         # Handle None or empty strings
         if not text or pd.isna(text):
             return ""
-            
+
         # Remove non-alphabetic characters (and optionally digits)
         if not include_digits:
             text = re.sub('[^a-zA-Z]', ' ', text)
         else:
             text = re.sub('[^a-zA-Z0-9]', ' ', text)
-            
+
         text = text.lower()
 
         # Tokenize
@@ -103,11 +105,11 @@ class TextPreprocessor:
 
         # Lemmatize with POS tags and handle stopwords based on the include_sw flag
         lemmatized_words = [
-            self.lemmatizer.lemmatize(word, self.get_wordnet_pos(pos_tag)) 
-            for word, pos_tag in tagged_words 
+            self.lemmatizer.lemmatize(word, self.get_wordnet_pos(pos_tag))
+            for word, pos_tag in tagged_words
             if word not in self.stopwords or include_sw
         ]
-        
+
         return ' '.join(lemmatized_words)
 
 
@@ -118,17 +120,17 @@ class DataLoader:
     def __init__(self, file_paths: Dict[str, str], preprocessor: TextPreprocessor):
         self.file_paths = file_paths
         self.preprocessor = preprocessor
-        
-    def process_in_batches(self, 
-                          paths: List[str], 
-                          feature: str, 
-                          target: str, 
-                          include_sw: bool, 
-                          include_digits: bool, 
+
+    def process_in_batches(self,
+                          paths: List[str],
+                          feature: str,
+                          target: str,
+                          include_sw: bool,
+                          include_digits: bool,
                           batch_size: int = 1000) -> Tuple[List[str], List[int]]:
         """
         Process files in batches to avoid memory issues.
-        
+
         Args:
             paths: List of file paths to process
             feature: Column name containing text data
@@ -136,13 +138,13 @@ class DataLoader:
             include_sw: Whether to include stopwords in preprocessing
             include_digits: Whether to include digits in preprocessing
             batch_size: Number of records to process at once
-            
+
         Returns:
             Tuple of processed texts and corresponding labels
         """
         processed_texts = []
         labels = []
-        
+
         for path in paths:
             print(f"Processing file: {path}")
             # Process file in chunks
@@ -152,11 +154,11 @@ class DataLoader:
                 )
                 processed_texts.extend(chunk_texts.tolist())
                 labels.extend(chunk[target].tolist())
-                
+
                 # Free memory
                 del chunk_texts
                 gc.collect()
-        
+
         return processed_texts, labels
 
 
@@ -167,7 +169,7 @@ class WordEmbeddingsModel:
     def __init__(self, vector_size: int, window: int, min_count: int, workers: int, sg: int, include_sw: bool, include_digits: bool):
         """
         Initialize word embedding model.
-        
+
         Args:
             vector_size: Dimensionality of word vectors
             window: Maximum distance between current and predicted word
@@ -285,7 +287,7 @@ class FeatureExtractor:
     def __init__(self, extractor_type: str, params: Dict[str, Any], reuse_configuration: dict[str, Any] = None):
         """
         Initialize the feature extractor.
-        
+
         Args:
             extractor_type: Type of extractor (BoW, TF-IDF, etc.)
             params: Parameters for the extractor
@@ -309,11 +311,11 @@ class FeatureExtractor:
     def extract_features(self, texts: List[str], train: bool = False):
         """
         Extract features while keeping matrices sparse.
-        
+
         Args:
             texts: List of processed text documents
             train: Whether this is training data (fit_transform) or not (transform)
-            
+
         Returns:
             Sparse feature matrix
         """
@@ -335,12 +337,12 @@ class DimensionalityReducer:
     def __init__(self, method: str = "SVD", n_components: int = 200):
         self.method = method
         self.n_components = n_components
-        
+
         if method == "SVD":
             self.reducer = TruncatedSVD(n_components=n_components, random_state=42)
         else:
             raise ValueError(f"Unsupported dimensionality reduction method: {method}")
-            
+
     def reduce_dimensions(self, X, train: bool = False):
         if train:
             return self.reducer.fit_transform(X)
@@ -355,14 +357,14 @@ class FeatureScaler:
     def __init__(self, method: str = "standard", with_mean: bool = True, requires_non_negative: bool = False):
         self.method = method
         self.with_mean = with_mean
-        
+
         if requires_non_negative:
             self.scaler = MinMaxScaler()
         elif method == "standard":
             self.scaler = StandardScaler(with_mean=with_mean)
         else:
             raise ValueError(f"Unsupported scaling method: {method}")
-            
+
     def scale_features(self, X, train: bool = False):
         if train:
             return self.scaler.fit_transform(X)
@@ -377,7 +379,7 @@ class ModelTrainer:
     def __init__(self, model_type: str, hyperparameters: Dict[str, List[Any]] = None):
         self.model_type = model_type
         self.hyperparameters = hyperparameters or {}
-        
+
         if model_type == "SVM":
             self.model = SVC(random_state=42)
         elif model_type == "NB":
@@ -386,58 +388,58 @@ class ModelTrainer:
             self.model = LogisticRegression(random_state=42)
         else:
             raise ValueError(f"Unsupported model type: {model_type}")
-            
+
     def train_model(self, X_train, y_train):
         start_time = time.time()
         self.model.fit(X_train, y_train)
         end_time = time.time()
         training_time = end_time - start_time
-        
+
         return self.model, round(training_time, 3)
-        
+
     def evaluate_model(self, X_val, y_val):
         """
         Evaluate model on validation data, returning accuracy score.
         """
         y_pred = self.model.predict(X_val)
         return round(accuracy_score(y_val, y_pred), 4)
-        
+
     def tune_hyperparameters(self, X_train, y_train, X_val, y_val):
         """
         Tune hyperparameters using grid search.
-        
+
         Args:
             X_train: Training feature matrix
             y_train: Training labels
             X_val: Validation feature matrix
             y_val: Validation labels
-            
+
         Returns:
             Best parameters, validation score, and training time
         """
         best_score = 0
         best_params = None
         best_training_time = 0
-        
+
         # If no hyperparameters to tune or model is SVM, just train once with default parameters
-        if not self.hyperparameters or self.model_type == "SVM":
+        if not self.hyperparameters:
             model, training_time = self.train_model(X_train, y_train)
             score = self.evaluate_model(X_val, y_val)
             return {} if self.model_type == "SVM" else self.model.get_params(), score, training_time
-        
+
         # Otherwise, tune hyperparameters
         for params in ParameterGrid(self.hyperparameters):
             self.model.set_params(**params)
-            
+
             model, training_time = self.train_model(X_train, y_train)
             score = self.evaluate_model(X_val, y_val)
-            
+
             print(f"Score: {score:.4f}, Time: {training_time:.2f}s for {params}")
             if score > best_score:
                 best_score = score
                 best_params = params
                 best_training_time = training_time
-        
+
         return best_params, best_score, best_training_time
 
 
@@ -449,13 +451,13 @@ class ExperimentTracker:
         self.filename = filename
         self.results = []
         self.completed_configs = set()
-        
+
         # Load existing results if file exists
         if os.path.exists(filename):
             try:
                 existing_df = pd.read_csv(filename)
                 self.results = existing_df.to_dict('records')
-                
+
                 # Create a set of completed configurations
                 for result in self.results:
                     config_key = (
@@ -465,17 +467,17 @@ class ExperimentTracker:
                         result['model']
                     )
                     self.completed_configs.add(config_key)
-                
+
                 print(f"Loaded {len(self.results)} existing results from {filename}")
             except Exception as e:
                 print(f"Error loading existing results: {e}")
-    
+
     def is_completed(self, config_key: Tuple) -> bool:
         return config_key in self.completed_configs
-        
+
     def add_result(self, result: Dict[str, Any]):
         self.results.append(result)
-        
+
         # Add to completed configs
         config_key = (
             result['include_digits'],
@@ -484,14 +486,14 @@ class ExperimentTracker:
             result['model']
         )
         self.completed_configs.add(config_key)
-        
+
         # Save results incrementally
         self.save_results()
-        
+
     def save_results(self):
         pd.DataFrame(self.results).to_csv(self.filename, index=False)
         print(f"Results saved to {self.filename}")
-        
+
     def get_best_config(self):
         results_df = pd.DataFrame(self.results)
         best_config = results_df.loc[results_df['val_score'].idxmax()]
@@ -504,20 +506,20 @@ class ExperimentRunner:
     """
     def __init__(self, file_paths: Dict[str, str], results_filename: str):
         download_nltk_resources()
-        
+
         self.file_paths = file_paths
         self.preprocessor = TextPreprocessor()
         self.data_loader = DataLoader(file_paths, self.preprocessor)
         self.tracker = ExperimentTracker(results_filename)
-        
-    def setup_experiment(self, 
+
+    def setup_experiment(self,
                          include_digits_options: Tuple[bool, ...],
                          feature_extraction_configs: Tuple[Dict[str, Any], ...],
                          dimension_options: Tuple[int, ...],
                          model_configs: Tuple[Dict[str, Any], ...]):
         """
         Set up experiment configurations.
-        
+
         Args:
             include_digits_options: Options for including digits
             feature_extraction_configs: Configurations for feature extraction
@@ -528,30 +530,30 @@ class ExperimentRunner:
         self.feature_extraction_configs = feature_extraction_configs
         self.dimension_options = dimension_options
         self.model_configs = model_configs
-        
+
     def run_experiment(self, feature: str = 'text', target: str = 'label'):
         """
         Run the experiment with all configurations.
-        
+
         Args:
             feature: Column name containing text data
             target: Column name containing labels
         """
         train_files = [self.file_paths['train_cot'], self.file_paths['train_few_shot']]
         val_files = [self.file_paths['val_cot'], self.file_paths['val_few_shot']]
-        
+
         # Loop through all experiment combinations
         for include_digit in self.include_digits_options:
             print(f"\n{'='*50}")
             print(f"Processing with include_digit={include_digit}")
-            
+
             # Process data once for each include_digit setting
             processed_data = {}
-            
+
             for feature_extraction in self.feature_extraction_configs:
                 print(f"\n{'-'*50}")
                 print(f"Feature extraction: {feature_extraction['name']}")
-                
+
                 # Get include_sw flag from feature_extraction
                 include_sw = feature_extraction['include_sw']
 
@@ -571,30 +573,30 @@ class ExperimentRunner:
                             dim_name,
                             model_config['name']
                         )
-                        
+
                         if self.tracker.is_completed(config_key):
                             print(f"Skipping already completed configuration: {config_key}")
                             continue
-                        
+
                         print(f"\n{'-'*30}")
                         print(f"Model: {model_config['name']}")
-                        
+
                         try:
                             # Run this specific experiment configuration
                             self._run_single_experiment(
                                 include_digit, include_sw, feature_extraction, dim, dim_name,
-                                model_config, processed_data, train_files, val_files, 
+                                model_config, processed_data, train_files, val_files,
                                 feature, target
                             )
                         except Exception as e:
                             print(f"Error in experiment: {e}")
                             continue
-        
+
         # Print summary of best configurations
         best_config = self.tracker.get_best_config()
         print("\nBest configuration by validation score:")
         print(best_config)
-    
+
     def _run_single_experiment(self,
                               include_digit: bool,
                               include_sw: bool,
@@ -609,7 +611,7 @@ class ExperimentRunner:
                               target: str):
         """
         Run a single experiment configuration.
-        
+
         Args:
             include_digit: Whether to include digits
             include_sw: Whether to include stopwords
@@ -627,15 +629,15 @@ class ExperimentRunner:
         data_key = f"data_{include_digit}_{include_sw}"
         if data_key not in processed_data:
             print(f">> Processing data with include_digits={include_digit}, include_sw={include_sw}")
-            
+
             train_texts, train_labels = self.data_loader.process_in_batches(
                 train_files, feature, target, include_sw=include_sw, include_digits=include_digit
             )
-            
+
             val_texts, val_labels = self.data_loader.process_in_batches(
                 val_files, feature, target, include_sw=include_sw, include_digits=include_digit
             )
-            
+
             processed_data[data_key] = {
                 'train_texts': train_texts,
                 'train_labels': train_labels,
@@ -648,7 +650,7 @@ class ExperimentRunner:
             train_labels = cached_data['train_labels']
             val_texts = cached_data['val_texts']
             val_labels = cached_data['val_labels']
-        
+
         # Create feature extractor
         feature_extractor = FeatureExtractor(
             feature_extraction['name'],
@@ -664,34 +666,34 @@ class ExperimentRunner:
         print(">> Extracting features for training data")
         X_train = feature_extractor.extract_features(train_texts, train=True)
         print(f"Training data shape: {X_train.shape}")
-        
+
         print(">> Extracting features for validation data")
         X_val = feature_extractor.extract_features(val_texts)
         print(f"Validation data shape: {X_val.shape}")
-        
+
         # Reduce dimensions if needed
         if dim == -1:
             X_train_red = X_train
             X_val_red = X_val
         else:
             print(f">> Applying dimensionality reduction with {dim} components")
-            
+
             try:
                 # Use TruncatedSVD for sparse matrices
                 dim_reducer = DimensionalityReducer(method="SVD", n_components=dim)
-                
+
                 # Process training data
                 X_train_red = dim_reducer.reduce_dimensions(X_train, train=True)
-                
+
                 # Process validation data
                 X_val_red = dim_reducer.reduce_dimensions(X_val)
-                
+
                 # Free memory
                 gc.collect()
             except MemoryError:
                 print("WARNING: Memory error during dimensionality reduction. Skipping this configuration.")
                 return
-        
+
         # Apply scaling based on model requirements
         if model_config['requires_non_negative'] and (dim > 0 or feature_extraction['name'] == "word2vec"):
             # For MultinomialNB after dimensionality reduction, ensure non-negative values
@@ -701,7 +703,7 @@ class ExperimentRunner:
             X_val_scaled = scaler.scale_features(X_val_red)
         elif model_config['scale']:
             print(">> Scaling features")
-            
+
             # Use appropriate scaler based on data type
             if isinstance(X_train_red, np.ndarray):
                 # Dense matrix (after dimensionality reduction)
@@ -716,20 +718,20 @@ class ExperimentRunner:
         else:
             X_train_scaled = X_train_red
             X_val_scaled = X_val_red
-        
+
         # Initialize model trainer
         model_trainer = ModelTrainer(
             model_config['name'],
             model_config['hyperparameters']
         )
-        
+
         # Train and evaluate model
         best_params, val_score, training_time = model_trainer.tune_hyperparameters(
             X_train_scaled, train_labels, X_val_scaled, val_labels
         )
-        
+
         print(f"Best parameters: {best_params}, validation score: {val_score:.4f}, training time: {training_time:.2f} seconds")
-        
+
         # Store results
         result = {
             'include_digits': include_digit,
@@ -743,7 +745,8 @@ class ExperimentRunner:
         self.tracker.add_result(result)
 
 
-def main():
+
+def validation():
     # Define file paths
     file_paths = {
         'train_cot': 'data/train/train_cot.csv',
@@ -751,17 +754,17 @@ def main():
         'val_cot': 'data/validation/val_cot.csv',
         'val_few_shot': 'data/validation/val_few_shot.csv',
     }
-    
+
     # Initialize experiment runner
     output_dir = 'results'
     output_file = 'validation.csv'
     output_path = os.path.join(output_dir, output_file)
     runner = ExperimentRunner(file_paths, output_path)
-    
+
     # Define experiment configurations
-    include_digits_options = [True, False]
+    include_digits_options = [False]
     embedding_dim = 200
-    
+
     # Feature extraction configurations
     feature_extraction_configs = [
         # {
@@ -785,15 +788,19 @@ def main():
             "include_sw": True,
         },
     ]
-    
+
     # Dimensionality reduction options
     dimension_options = [-1, embedding_dim]
-    
+
     # Model configurations
     model_configs = [
         {
             "name": "SVM",
-            "hyperparameters": {},
+            "hyperparameters": {
+                'C': [0.01, 0.1, 1.0],
+                'kernel': ['sigmoid'],
+                'gamma': ['scale', 'auto']
+            },
             "scale": True,
             "requires_non_negative": False,
         },
@@ -808,8 +815,8 @@ def main():
         #     "hyperparameters": [
         #         # Configuration for l2 penalty
         #         {
-        #             'C': [0.01, 0.1, 1.0, 10.0], 
-        #             'max_iter': [100, 200, 300, 500], 
+        #             'C': [0.01, 0.1, 1.0, 10.0],
+        #             'max_iter': [100, 200, 300, 500],
         #             'penalty': ['l2'],
         #             'solver': ['lbfgs', 'liblinear', 'saga']
         #         },
@@ -820,10 +827,335 @@ def main():
     ]
 
     # Set up and run experiment
-    runner.setup_experiment(include_digits_options, feature_extraction_configs, 
+    runner.setup_experiment(include_digits_options, feature_extraction_configs,
                            dimension_options, model_configs)
     runner.run_experiment()
 
 
+class Test:
+    """
+    Handles the testing phase of the NLP pipeline, training a specified model on the training data
+    and evaluating its performance on merged test data.
+    """
+    def __init__(self, file_paths: dict, test_output_path: str = "results/test.csv", misclassifications_path: str = "results/misclassifications.csv"):
+        """
+        Initialize the Test class.
+        
+        Args:
+            file_paths: Dictionary containing paths to train and test data files
+            test_output_path: Path to save test results
+            misclassifications_path: Path to save misclassified instances
+        """
+        download_nltk_resources()
+        
+        self.file_paths = file_paths
+        self.test_output_path = test_output_path
+        self.misclassifications_path = misclassifications_path
+        self.preprocessor = TextPreprocessor()
+        self.data_loader = DataLoader(file_paths, self.preprocessor)
+        
+        # Create output directory if it doesn't exist
+        os.makedirs(os.path.dirname(test_output_path), exist_ok=True)
+        
+    def run_test(self, 
+                model,
+                feature_extraction_config: dict,
+                include_digits: bool = False,
+                include_sw: bool = True,
+                feature_col: str = 'text',
+                target_col: str = 'label',
+                apply_dim_reduction: bool = False,
+                n_components: int = 200,
+                scale_features: bool = True):
+        """
+        Train a model on training data and evaluate on merged test data.
+        
+        Args:
+            model: Initialized ML model (e.g., SVC, MultinomialNB, LogisticRegression)
+            feature_extraction_config: Configuration for feature extraction
+            include_digits: Whether to include digits in preprocessing
+            include_sw: Whether to include stopwords in preprocessing
+            feature_col: Column name containing text data
+            target_col: Column name containing labels
+            apply_dim_reduction: Whether to apply dimensionality reduction
+            n_components: Number of components for dimensionality reduction
+            scale_features: Whether to scale features
+            
+        Returns:
+            Dictionary containing test results
+        """
+        print(f"Starting test with {model.__class__.__name__}")
+        start_time = time.time()
+        
+        # Process training data
+        print("Processing training data...")
+        train_files = [self.file_paths['train_cot'], self.file_paths['train_few_shot']]
+        train_texts, train_labels = self.data_loader.process_in_batches(
+            train_files, feature_col, target_col, include_sw, include_digits
+        )
+        
+        # Process merged test data
+        print("Processing merged test data...")
+        test_files = [
+            self.file_paths['test_cot'], 
+            self.file_paths['test_few_shot'], 
+            self.file_paths['test_LMs']
+        ]
+        test_texts, test_labels = self.data_loader.process_in_batches(
+            test_files, feature_col, target_col, include_sw, include_digits
+        )
+        
+        # Original (raw) test texts for misclassification tracking
+        original_test_files = [
+            self.file_paths['test_cot'], 
+            self.file_paths['test_few_shot'], 
+            self.file_paths['test_LMs']
+        ]
+        original_test_texts = []
+        for file_path in original_test_files:
+            df = pd.read_csv(file_path)
+            original_test_texts.extend(df[feature_col].tolist())
+        
+        # Create feature extractor
+        feature_extractor = FeatureExtractor(
+            feature_extraction_config['name'],
+            feature_extraction_config['params'],
+            reuse_configuration = (
+                {"include_digits": include_digits, "include_sw": include_sw}
+                if feature_extraction_config['name'] == "word2vec"
+                else None
+            )
+        )
+        
+        # Extract features for training data
+        print("Extracting features for training data...")
+        X_train = feature_extractor.extract_features(train_texts, train=True)
+        print(f"Training data shape: {X_train.shape}")
+        
+        # Extract features for test data
+        print("Extracting features for test data...")
+        X_test = feature_extractor.extract_features(test_texts)
+        print(f"Test data shape: {X_test.shape}")
+        
+        # Apply dimensionality reduction if specified
+        dim_reducer = None
+        if apply_dim_reduction and feature_extraction_config['name'] != "word2vec":
+            print(f"Applying dimensionality reduction with {n_components} components...")
+            dim_reducer = DimensionalityReducer(method="SVD", n_components=n_components)
+            X_train = dim_reducer.reduce_dimensions(X_train, train=True)
+            X_test = dim_reducer.reduce_dimensions(X_test)
+            print(f"Reduced training data shape: {X_train.shape}")
+            print(f"Reduced test data shape: {X_test.shape}")
+        
+        # Apply scaling if specified
+        scaler = None
+        if scale_features:
+            print("Scaling features...")
+            if hasattr(model, "requires_positive") and model.requires_positive:
+                scaler = FeatureScaler(method="minmax", requires_non_negative=True)
+            elif isinstance(X_train, np.ndarray):
+                scaler = FeatureScaler(method="standard", with_mean=True)
+            else:
+                scaler = FeatureScaler(method="standard", with_mean=False)
+            
+            X_train = scaler.scale_features(X_train, train=True)
+            X_test = scaler.scale_features(X_test)
+        
+        # Train the model
+        print(f"Training {model.__class__.__name__}...")
+        model_start_time = time.time()
+        model.fit(X_train, train_labels)
+        training_time = time.time() - model_start_time
+        print(f"Model trained in {training_time:.2f} seconds")
+        
+        # Make predictions
+        print("Making predictions...")
+        y_pred = model.predict(X_test)
+        
+        # Get unique class labels (in order they appear)
+        unique_classes = list(set(test_labels))
+        
+        # Calculate metrics
+        accuracy = accuracy_score(test_labels, y_pred)
+        report = classification_report(test_labels, y_pred, output_dict=True)
+        conf_matrix = confusion_matrix(test_labels, y_pred, labels=unique_classes)
+        
+        # Save confusion matrix as PNG
+        self._save_confusion_matrix(conf_matrix, unique_classes, f"results/confusion_matrix.png")
+        
+        # Save misclassifications
+        self._save_misclassifications(
+            original_test_texts, 
+            test_labels, 
+            y_pred, 
+            model.__class__.__name__, 
+            feature_extraction_config['name']
+        )
+        
+        # Prepare results
+        results = {
+            'accuracy': accuracy,
+            'report': report,
+            'confusion_matrix': conf_matrix,
+            'predictions': y_pred,
+            'true_labels': test_labels,
+            'unique_classes': unique_classes
+        }
+        
+        print(f"Test Accuracy: {accuracy:.4f}")
+        print("Classification Report:")
+        print(classification_report(test_labels, y_pred))
+        
+        # Save results to CSV
+        self._save_results(results, model.__class__.__name__, feature_extraction_config['name'])
+        
+        total_time = time.time() - start_time
+        print(f"Test completed in {total_time:.2f} seconds")
+        
+        return results
+    
+    def _save_misclassifications(self, original_texts, true_labels, predicted_labels, model_name, feature_extraction_name):
+        """
+        Save misclassified instances to a CSV file.
+        
+        Args:
+            original_texts: List of original text sentences
+            true_labels: List of true labels
+            predicted_labels: List of predicted labels
+            model_name: Name of the model
+            feature_extraction_name: Name of the feature extraction method
+        """
+        # Create a list to store misclassified instances
+        misclassifications = []
+        
+        # Iterate through predictions and find misclassified instances
+        for text, true_label, predicted_label in zip(original_texts, true_labels, predicted_labels):
+            if true_label != predicted_label:
+                misclassifications.append({
+                    'text': text,
+                    'true_label': true_label,
+                    'predicted_label': predicted_label,
+                    'model': model_name,
+                    'feature_extraction': feature_extraction_name
+                })
+        
+        # Convert to DataFrame
+        misclassifications_df = pd.DataFrame(misclassifications)
+        
+        # Append to existing file or create new one
+        if os.path.exists(self.misclassifications_path):
+            existing_df = pd.read_csv(self.misclassifications_path)
+            misclassifications_df = pd.concat([existing_df, misclassifications_df], ignore_index=True)
+        
+        # Save to file
+        misclassifications_df.to_csv(self.misclassifications_path, index=False)
+        
+        # Print summary
+        print(f"Misclassifications saved to {self.misclassifications_path}")
+        print(f"Total misclassified instances: {len(misclassifications_df)}")
+
+        
+    def _save_confusion_matrix(self, cm, class_names, filepath):
+        """
+        Save confusion matrix as a PNG using seaborn heatmap.
+        
+        Args:
+            cm: Confusion matrix
+            class_names: List of class names for labels
+            filepath: Path to save the PNG
+        """
+        plt.figure(figsize=(10, 8))
+        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
+                    xticklabels=class_names, 
+                    yticklabels=class_names)
+        plt.title('Confusion Matrix')
+        plt.xlabel('Predicted Label')
+        plt.ylabel('True Label')
+        plt.tight_layout()
+        plt.savefig(filepath)
+        plt.close()
+        print(f"Confusion matrix saved to {filepath}")
+    
+    def _save_results(self, results, model_name, feature_extraction_name):
+        """
+        Save test results to CSV file.
+        
+        Args:
+            results: Dictionary containing test results
+            model_name: Name of the model
+            feature_extraction_name: Name of the feature extraction method
+        """
+        rows = []
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        row = {
+            'timestamp': timestamp,
+            'model': model_name,
+            'feature_extraction': feature_extraction_name,
+            'accuracy': results['accuracy'],
+            'macro_f1': results['report']['macro avg']['f1-score'],
+            'weighted_f1': results['report']['weighted avg']['f1-score'],
+        }
+        
+        # Add class-specific metrics
+        for class_label, metrics in results['report'].items():
+            if isinstance(metrics, dict):  # Skip 'accuracy' key
+                row[f'class_{class_label}_precision'] = metrics['precision']
+                row[f'class_{class_label}_recall'] = metrics['recall']
+                row[f'class_{class_label}_f1'] = metrics['f1-score']
+        
+        rows.append(row)
+        
+        # Create DataFrame and save
+        df = pd.DataFrame(rows)
+        
+        # Append to existing file if it exists
+        if os.path.exists(self.test_output_path):
+            existing_df = pd.read_csv(self.test_output_path)
+            df = pd.concat([existing_df, df], ignore_index=True)
+        
+        df.to_csv(self.test_output_path, index=False)
+        print(f"Results saved to {self.test_output_path}")
+
+
+def test():
+    """
+    Run the test phase with the best model configuration from validation.
+    """
+    # Define file paths
+    file_paths = {
+        'train_cot': 'data/train/train_cot.csv',
+        'train_few_shot': 'data/train/train_few_shot.csv',
+        'test_cot': 'data/test/test_cot.csv',
+        'test_few_shot': 'data/test/test_few_shot.csv',
+        'test_LMs': 'data/test/test_lms.csv'
+    }
+    
+    # Create Test instance with explicit misclassifications path
+    tester = Test(
+        file_paths, 
+        test_output_path="results/test_results.csv", 
+        misclassifications_path="results/misclassifications.csv"
+    )
+    
+    # Define best model based on validation results
+    model = SVC(kernel='rbf', C=1.0, gamma='scale')
+    # Define feature extraction configuration
+    feature_extraction_config = {
+        "name": "word2vec",
+        "params": {"vector_size": 200, "window": 10, "min_count": 2, "workers": 10, "sg": 1},
+    }
+    
+    # Run test
+    tester.run_test(
+        model=model,
+        feature_extraction_config=feature_extraction_config,
+        include_digits=False,
+        include_sw=True,
+        scale_features=True
+    )
+
+
 if __name__ == '__main__':
-    main()
+    #validation()
+    test()
