@@ -20,7 +20,6 @@ from sklearn.model_selection import ParameterGrid
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.decomposition import TruncatedSVD
 import gensim
-import shap
 import re
 import gc
 import os
@@ -774,7 +773,8 @@ class Test:
                 scale_features: bool = True,
                 save_results: bool = True,
                 save_misclassifications: bool = True,
-                apply_explainability: bool = False):
+                apply_explainability: bool = False,
+                should_train: bool = True):
         
         print(f"Starting test with {model.__class__.__name__}")
         start_time = time.time()
@@ -847,13 +847,16 @@ class Test:
             
             X_train = scaler.scale_features(X_train, train=True)
             X_test = scaler.scale_features(X_test)
-        
-        print(f"Training {model.__class__.__name__}...")
-        model_start_time = time.time()
-        model.fit(X_train, train_labels)
-        training_time = time.time() - model_start_time
-        print(f"Model trained in {training_time:.2f} seconds")
-        
+
+        if should_train:
+            print(f"Training {model.__class__.__name__}...")
+            model_start_time = time.time()
+            model.fit(X_train, train_labels)
+            training_time = time.time() - model_start_time
+            print(f"Model trained in {training_time:.2f} seconds")
+        else:
+            print("Skipping training, using pre-trained model")
+
         print("Making predictions...")
         y_pred = model.predict(X_test)
 
@@ -875,15 +878,14 @@ class Test:
 
         if apply_explainability:
             print(">> Applying explainability techniques:")
-            top_features_nr = 10
+            top_features_nr = 5
             feature_names = feature_extractor.get_feature_names_out()
 
             if type(model) is LogisticRegression:
                 print("Plotting logistic regression coefficients...")
                 self._plot_logistic_regression_coefficients(model, feature_names, feature_extraction_config['name'], top_features_nr)
             else:
-                print("Plotting SHAP values...")
-                self._plot_shap_values(model, X_train, X_test, feature_names, feature_extraction_config['name'], top_features_nr)
+                raise NotImplementedError("Explainability techniques not implemented for this model type")
 
         results = {
             'accuracy': accuracy,
@@ -977,60 +979,25 @@ class Test:
             class_coef = model.coef_[class_idx]
             top_positive_idx = np.argsort(class_coef)[-top_features_nr:]  # Top positive features
             top_negative_idx = np.argsort(class_coef)[:top_features_nr]   # Top negative features
-            top_idx = np.concatenate([top_negative_idx, top_positive_idx])
+            top_features_idx = np.concatenate([top_negative_idx, top_positive_idx])
 
-            top_features = [feature_names[idx] for idx in top_idx]
-            top_values = [class_coef[idx] for idx in top_idx]
+            def plot_top_features(top_features_idxs, class_coef, feature_names, filepath, title):
+                top_features = [feature_names[idx] for idx in top_features_idxs]
+                top_values = [class_coef[idx] for idx in top_features_idxs]
+                plt.figure(figsize=(10, 6))
+                plt.barh(range(len(top_features)), top_values, color=['red' if val < 0 else 'blue' for val in top_values])
+                plt.yticks(range(len(top_features)), top_features)
+                plt.xlabel("Contribution to classification (Logistic Regression coefficients)")
+                plt.title(title)
+                plt.tight_layout()
+                plt.savefig(filepath)
+                plt.close()
 
             filepath = f"results/plots/logistic_regression_{class_name}_{feature_extraction_name}.png"
-            plt.figure(figsize=(10, 6))
-            plt.barh(range(len(top_features)), top_values, color=['red' if val < 0 else 'blue' for val in top_values])
-            plt.yticks(range(len(top_features)), top_features)
-            plt.title(f'Class \'{class_name}\' - Top 10 Positive and Negative Feature Contributions')
-            plt.tight_layout()
-            plt.savefig(filepath)
-            plt.close()
-
-
-    def _plot_shap_values(self, model, X_train, X_test, feature_names, classes, feature_extraction_name, top_features_nr=10):
-        """
-        Plot SHAP values for the top `top_features_nr` positive and negative features.
-        """
-        explainer = shap.KernelExplainer(model, X_train)    # Use KernelExplainer for non-linear models
-        shap_values = explainer(X_test)
-
-        # Save SHAP summary plots
-        for class_idx, class_name in enumerate(classes):
-            # Extract SHAP values for this class
-            class_shap_values = shap_values[:, :, class_idx]  # Shape: (n_samples, n_features)
-            top_positive_idx = np.argsort(class_shap_values)[-top_features_nr:]  # Top positive features
-            top_negative_idx = np.argsort(class_shap_values)[:top_features_nr]   # Top negative features
-            top_idx = np.concatenate([top_negative_idx, top_positive_idx])
-            top_features = [feature_names[idx] for idx in top_idx]
-            top_values = [class_shap_values[idx] for idx in top_idx]
-
-            # Calculate mean SHAP values (not absolute) to preserve direction
-            mean_shap_values = np.mean(class_shap_values.values, axis=0)
-
-            # Sort by absolute value to get top features, but keep original signs
-            top_indices = np.argsort(np.abs(mean_shap_values))[-10:][::-1]  # Top 10 features
-            top_features = [feature_names[i] for i in top_indices]
-            top_values = mean_shap_values[top_indices]
-
-            filepath = f"results/plots/shap_bar_{class_name}_{feature_extraction_name}.png"
-            plt.figure(figsize=(10, 6))
-            bars = plt.barh(top_features, top_values)
-            plt.xlabel('Mean SHAP Value')
-            plt.title(f'Class \'{class_name}\' - Top 10 Positive and Negative Feature Contributions')
-
-            # Color bars based on direction
-            for bar, value in zip(bars, top_values):
-                bar.set_color('blue' if value > 0 else 'red')
-
-            plt.tight_layout()
-            plt.savefig(filepath)
-            plt.close()
-        print(f"SHAP plots saved to results/plots/")
+            plot_top_features(
+                top_features_idx, class_coef, feature_names,
+                filepath, f"Logistic Regression Coefficients for Class '{class_name}'"
+            )
 
 def validation():
     file_paths = {
@@ -1144,6 +1111,7 @@ def test():
         save_results=False,
         save_misclassifications=False,
         apply_explainability=True,
+        should_train=True,
     )
 
 
