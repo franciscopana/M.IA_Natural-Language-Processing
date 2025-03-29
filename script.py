@@ -20,6 +20,7 @@ from sklearn.model_selection import ParameterGrid
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.decomposition import TruncatedSVD
 import gensim
+import shap
 import re
 import gc
 import os
@@ -329,6 +330,10 @@ class FeatureExtractor:
             else:
                 return self.vectorizer.transform(texts)
 
+    def get_feature_names_out(self):
+        if type(self.vectorizer) is WordEmbeddingsModel:
+            raise ValueError("Word2Vec model does not have feature names.")
+        return self.vectorizer.get_feature_names_out()
 
 class DimensionalityReducer:
     """
@@ -767,7 +772,10 @@ class Test:
                 target_col: str = 'label',
                 apply_dim_reduction: bool = False,
                 n_components: int = 200,
-                scale_features: bool = True):
+                scale_features: bool = True,
+                save_results: bool = True,
+                save_misclassifications: bool = True,
+                apply_explainability: bool = False):
         
         print(f"Starting test with {model.__class__.__name__}")
         start_time = time.time()
@@ -819,9 +827,9 @@ class Test:
         
         # Extract features for test data
         print("Extracting features for test data...")
-        X_test = feature_extractor.extract_features(test_texts)
+        X_test = feature_extractor.extract_features(test_texts, train=False)
         print(f"Test data shape: {X_test.shape}")
-        
+
         # Apply dimensionality reduction if specified
         dim_reducer = None
         if apply_dim_reduction and feature_extraction_config['name'] != "word2vec":
@@ -858,25 +866,39 @@ class Test:
         y_pred = model.predict(X_test)
         
         # Get unique class labels (in order they appear)
-        unique_classes = list(set(test_labels))
+        unique_classes = list(sorted(set(test_labels)))
         
         # Calculate metrics
         accuracy = accuracy_score(test_labels, y_pred)
         report = classification_report(test_labels, y_pred, output_dict=True)
         conf_matrix = confusion_matrix(test_labels, y_pred, labels=unique_classes)
         
-        # Save confusion matrix as PNG
-        self._save_confusion_matrix(conf_matrix, unique_classes, f"results/confusion_matrix.png")
+        if save_results:
+            # Save confusion matrix as PNG
+            self._save_confusion_matrix(conf_matrix, unique_classes, f"results/confusion_matrix.png")
         
-        # Save misclassifications
-        self._save_misclassifications(
-            original_test_texts, 
-            test_labels, 
-            y_pred, 
-            model.__class__.__name__, 
-            feature_extraction_config['name']
-        )
-        
+        if save_misclassifications:
+            # Save misclassifications
+            self._save_misclassifications(
+                original_test_texts, 
+                test_labels, 
+                y_pred, 
+                model.__class__.__name__, 
+                feature_extraction_config['name']
+            )
+
+        if apply_explainability:
+            print(">> Applying explainability techniques:")
+            top_features_nr = 10
+            feature_names = feature_extractor.get_feature_names_out()
+
+            if type(model) is LogisticRegression:
+                print("Plotting logistic regression coefficients...")
+                self._plot_logistic_regression_coefficients(model, feature_names, feature_extraction_config['name'], top_features_nr)
+            else:
+                print("Plotting SHAP values...")
+                self._plot_shap_values(model, X_train, X_test, feature_names, feature_extraction_config['name'], top_features_nr)
+
         # Prepare results
         results = {
             'accuracy': accuracy,
@@ -890,9 +912,10 @@ class Test:
         print(f"Test Accuracy: {accuracy:.4f}")
         print("Classification Report:")
         print(classification_report(test_labels, y_pred))
-        
-        # Save results to CSV
-        self._save_results(results, model.__class__.__name__, feature_extraction_config['name'])
+
+        if save_results:
+            # Save results to CSV
+            self._save_results(results, model.__class__.__name__, feature_extraction_config['name'])
         
         total_time = time.time() - start_time
         print(f"Test completed in {total_time:.2f} seconds")
@@ -976,6 +999,68 @@ class Test:
         df.to_csv(self.test_output_path, index=False)
         print(f"Results saved to {self.test_output_path}")
 
+    def _plot_logistic_regression_coefficients(self, model, feature_names, feature_extraction_name, top_features_nr=10):
+        """
+        Plot the top `top_features_nr` positive and negative coefficients of a logistic regression model.
+        """
+        for class_idx, class_name in enumerate(model.classes_):
+            class_coef = model.coef_[class_idx]
+            top_positive_idx = np.argsort(class_coef)[-top_features_nr:]  # Top positive features
+            top_negative_idx = np.argsort(class_coef)[:top_features_nr]   # Top negative features
+            top_idx = np.concatenate([top_negative_idx, top_positive_idx])
+
+            top_features = [feature_names[idx] for idx in top_idx]
+            top_values = [class_coef[idx] for idx in top_idx]
+
+            filepath = f"results/plots/logistic_regression_{class_name}_{feature_extraction_name}.png"
+            plt.figure(figsize=(10, 6))
+            plt.barh(range(len(top_features)), top_values, color=['red' if val < 0 else 'blue' for val in top_values])
+            plt.yticks(range(len(top_features)), top_features)
+            plt.title(f'Class \'{class_name}\' - Top 10 Positive and Negative Feature Contributions')
+            plt.tight_layout()
+            plt.savefig(filepath)
+            plt.close()
+
+
+    def _plot_shap_values(self, model, X_train, X_test, feature_names, classes, feature_extraction_name, top_features_nr=10):
+        """
+        Plot SHAP values for the top `top_features_nr` positive and negative features.
+        """
+        explainer = shap.KernelExplainer(model, X_train)    # Use KernelExplainer for non-linear models
+        shap_values = explainer(X_test)
+
+        # Save SHAP summary plots
+        for class_idx, class_name in enumerate(classes):
+            # Extract SHAP values for this class
+            class_shap_values = shap_values[:, :, class_idx]  # Shape: (n_samples, n_features)
+            top_positive_idx = np.argsort(class_shap_values)[-top_features_nr:]  # Top positive features
+            top_negative_idx = np.argsort(class_shap_values)[:top_features_nr]   # Top negative features
+            top_idx = np.concatenate([top_negative_idx, top_positive_idx])
+            top_features = [feature_names[idx] for idx in top_idx]
+            top_values = [class_shap_values[idx] for idx in top_idx]
+
+            # Calculate mean SHAP values (not absolute) to preserve direction
+            mean_shap_values = np.mean(class_shap_values.values, axis=0)
+
+            # Sort by absolute value to get top features, but keep original signs
+            top_indices = np.argsort(np.abs(mean_shap_values))[-10:][::-1]  # Top 10 features
+            top_features = [feature_names[i] for i in top_indices]
+            top_values = mean_shap_values[top_indices]
+
+            filepath = f"results/plots/shap_bar_{class_name}_{feature_extraction_name}.png"
+            plt.figure(figsize=(10, 6))
+            bars = plt.barh(top_features, top_values)
+            plt.xlabel('Mean SHAP Value')
+            plt.title(f'Class \'{class_name}\' - Top 10 Positive and Negative Feature Contributions')
+
+            # Color bars based on direction
+            for bar, value in zip(bars, top_values):
+                bar.set_color('blue' if value > 0 else 'red')
+
+            plt.tight_layout()
+            plt.savefig(filepath)
+            plt.close()
+        print(f"SHAP plots saved to results/plots/")
 
 def validation():
     file_paths = {
@@ -1069,10 +1154,15 @@ def test():
         misclassifications_path="results/misclassifications.csv"
     )
 
-    model = SVC(kernel='rbf', C=1.0, gamma='scale')
+    # model = SVC(kernel='rbf', C=1.0, gamma='scale')
+    # feature_extraction_config = {
+    #     "name": "word2vec",
+    #     "params": {"vector_size": 200, "window": 10, "min_count": 2, "workers": 10, "sg": 1},
+    # }
+    model = LogisticRegression(C=0.1, max_iter=100, penalty='l2', solver='saga')
     feature_extraction_config = {
-        "name": "word2vec",
-        "params": {"vector_size": 200, "window": 10, "min_count": 2, "workers": 10, "sg": 1},
+        "name": "BoW_2",
+        "params": {"ngram_range": (2, 2), "max_features": 50000},
     }
     
     tester.run_test(
@@ -1080,7 +1170,10 @@ def test():
         feature_extraction_config=feature_extraction_config,
         include_digits=False,
         include_sw=True,
-        scale_features=True
+        scale_features=True,
+        save_results=False,
+        save_misclassifications=False,
+        apply_explainability=True,
     )
 
 
