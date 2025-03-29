@@ -1,0 +1,4926 @@
+Word	POS	Frequency	IsStopword	Polarity	Politeness
+you	PRP	131480	True	0	polite
+to	TO	102887	True	0	polite
+the	DT	88169	True	0	impolite
+i	NN	74401	True	0	somewhat polite
+be	VB	64987	True	0	neutral
+your	PRP$	63750	True	0	polite
+our	PRP$	60058	True	0	polite
+a	DT	52569	True	0	polite
+for	IN	44755	True	0	somewhat polite
+and	CC	42770	True	0	polite
+re	NN	39853	True	0	impolite
+can	MD	37275	True	0	somewhat polite
+we	PRP	37170	True	0	polite
+it	PRP	34590	True	0	impolite
+with	IN	31857	True	0	polite
+have	VB	28530	True	0	polite
+that	IN	27275	True	0	somewhat polite
+s	NN	27213	True	0	impolite
+on	IN	25105	True	0	neutral
+of	IN	23237	True	0	impolite
+if	IN	22807	True	0	polite
+about	IN	21841	True	0	somewhat polite
+in	IN	19946	True	0	polite
+t	NN	19535	True	0	impolite
+like	IN	19221	False	0	polite
+m	NN	18218	True	0	polite
+help	NN	17430	False	0	polite
+please	NN	16650	False	0	polite
+happy	JJ	16562	False	0.8	polite
+not	RB	16078	True	0	impolite
+but	CC	14928	True	0	somewhat polite
+d	NN	14393	True	0	polite
+or	CC	13482	True	0	polite
+more	RBR	13388	True	0.5	somewhat polite
+provide	NN	12798	False	0	somewhat polite
+ll	NN	12772	True	0	somewhat polite
+fee	NN	12671	False	0	polite
+any	DT	12497	True	0	polite
+me	PRP	11978	True	0	polite
+time	NN	10583	False	0	impolite
+do	VB	9707	True	0	somewhat polite
+information	NN	9691	False	0	somewhat polite
+look	NN	9594	False	0	somewhat polite
+need	NN	8981	False	0	polite
+question	NN	8649	False	0	polite
+don	NN	8606	True	0	impolite
+just	RB	8176	True	0	impolite
+would	MD	8043	False	0	polite
+this	DT	7949	True	0	impolite
+see	VB	7594	False	0	somewhat polite
+offer	NN	7581	False	0	somewhat polite
+option	NN	7566	False	0	somewhat polite
+understand	NN	7057	False	0	somewhat polite
+check	NN	7019	False	0	neutral
+what	WP	6839	True	0	somewhat polite
+will	MD	6768	True	0	neutral
+appreciate	NN	6744	False	0	polite
+out	IN	6431	True	0	polite
+some	DT	6428	True	0	somewhat polite
+ve	NN	6352	True	0	impolite
+due	JJ	6241	False	-0.12	neutral
+next	JJ	6212	False	0	neutral
+get	VB	6172	False	0	impolite
+at	IN	6165	True	0	neutral
+assist	NN	6089	False	0	polite
+charge	NN	5986	False	0	polite
+policy	NN	5982	False	0	somewhat polite
+available	JJ	5961	False	0.4	neutral
+course	NN	5730	False	0	polite
+know	VB	5701	False	0	polite
+u	NN	5609	False	0	polite
+unfortunately	RB	5572	False	-0.5	neutral
+refund	NN	5450	False	0	impolite
+let	VB	5382	False	0	polite
+concern	NN	5208	False	0	somewhat polite
+so	RB	5064	True	0	polite
+experience	NN	5047	False	0	polite
+issue	NN	5008	False	0	somewhat polite
+detail	NN	4899	False	0	somewhat polite
+from	IN	4899	True	0	neutral
+my	PRP$	4859	True	0	somewhat polite
+schedule	NN	4849	False	0	neutral
+there	RB	4813	True	0	polite
+flight	NN	4811	False	0	neutral
+process	NN	4792	False	0	neutral
+sorry	NN	4771	False	-0.5	somewhat polite
+make	VB	4740	False	0	polite
+find	VB	4715	False	0	polite
+membership	NN	4684	False	0	polite
+account	NN	4679	False	0	neutral
+skill	NN	4640	False	0	polite
+order	NN	4580	False	0	neutral
+season	NN	4517	False	0	polite
+clearly	RB	4512	False	0.1	impolite
+best	JJS	4453	False	1	somewhat polite
+summer	NN	4440	False	0	polite
+team	NN	4415	False	0	polite
+hear	NN	4382	False	0	somewhat polite
+go	VB	4368	False	0	impolite
+an	DT	4356	True	0	neutral
+however	RB	4282	False	0	somewhat polite
+ask	NN	4274	False	0	polite
+interest	NN	4144	False	0	polite
+take	VB	4085	False	0	polite
+try	NN	4018	False	0	impolite
+menu	NN	3948	False	0	neutral
+seem	NN	3936	False	0	polite
+website	NN	3841	False	0	neutral
+new	JJ	3814	False	0.14	polite
+price	NN	3758	False	0	impolite
+hour	NN	3699	False	0	neutral
+exhibit	NN	3673	False	0	polite
+complain	NN	3662	False	0	impolite
+during	IN	3545	True	0	polite
+free	JJ	3544	False	0.4	polite
+within	IN	3490	False	0	neutral
+book	NN	3455	False	0	neutral
+may	MD	3414	False	0	polite
+expect	VB	3398	False	0	impolite
+purchase	NN	3375	False	0	polite
+return	NN	3363	False	0	somewhat polite
+further	RB	3355	True	0	polite
+pay	NN	3342	False	0	impolite
+up	RB	3303	True	0	impolite
+service	NN	3275	False	0	polite
+into	IN	3272	True	0	somewhat polite
+interested	JJ	3196	False	0.25	polite
+hesitate	NN	3149	False	0	polite
+delay	NN	3106	False	0	somewhat polite
+might	MD	3103	False	0	somewhat polite
+review	NN	3066	False	0	somewhat polite
+month	NN	3003	False	0	impolite
+through	IN	2956	True	0	polite
+explain	NN	2944	False	0	impolite
+why	WRB	2944	True	0	impolite
+state	NN	2937	False	0	impolite
+day	NN	2937	False	0	neutral
+which	WDT	2935	True	0	polite
+still	RB	2932	False	0	impolite
+should	MD	2921	True	0	impolite
+credit	NN	2906	False	0	somewhat polite
+here	RB	2891	True	0	polite
+current	JJ	2877	False	0	somewhat polite
+item	NN	2869	False	0	somewhat polite
+note	NN	2845	False	0	somewhat polite
+sure	NN	2812	False	0.5	neutral
+seriously	RB	2810	False	-0.33	impolite
+currently	RB	2796	False	0	neutral
+cover	NN	2767	False	0	neutral
+certainly	RB	2727	False	0.21	neutral
+sport	NN	2724	False	0	polite
+visit	NN	2707	False	0	polite
+workshop	NN	2701	False	0	polite
+payment	NN	2700	False	0	neutral
+upcoming	VBG	2670	False	0	polite
+store	NN	2669	False	0	somewhat polite
+possible	JJ	2633	False	0	somewhat polite
+pm	NN	2596	False	0	neutral
+discount	NN	2590	False	0	polite
+include	NN	2564	False	0	neutral
+loan	NN	2521	False	0	polite
+change	NN	2487	False	0	impolite
+late	RB	2455	False	-0.3	impolite
+recommend	NN	2447	False	0	polite
+assistance	NN	2427	False	0	polite
+standard	NN	2423	False	0	polite
+seasonal	JJ	2396	False	0	polite
+ticket	NN	2388	False	0	polite
+how	WRB	2368	True	0	polite
+because	IN	2364	True	0	impolite
+high	JJ	2358	False	0.16	neutral
+work	NN	2322	False	0	polite
+all	DT	2290	True	0	polite
+online	NN	2288	False	0	neutral
+week	NN	2254	False	0	neutral
+already	RB	2238	False	0	impolite
+training	NN	2234	False	0	neutral
+date	NN	2233	False	0	neutral
+additional	JJ	2231	False	0	somewhat polite
+one	CD	2225	False	0	polite
+rate	NN	2197	False	0	polite
+program	NN	2179	False	0	polite
+reach	NN	2179	False	0	polite
+request	NN	2161	False	0	somewhat polite
+travel	NN	2148	False	0	polite
+special	JJ	2135	False	0.36	polite
+deal	NN	2118	False	0	impolite
+plan	NN	2106	False	0	polite
+cost	NN	2104	False	0	somewhat polite
+improve	VB	2093	False	0	polite
+specific	JJ	2092	False	0	polite
+dish	NN	2087	False	0	polite
+product	NN	2079	False	0	polite
+as	IN	2041	True	0	somewhat polite
+condition	NN	2038	False	0	neutral
+now	RB	2025	True	0	impolite
+even	RB	2018	False	0	impolite
+soon	RB	2003	False	0	somewhat polite
+update	NN	1978	False	0	neutral
+tennis	NN	1964	False	0	polite
+show	NN	1962	False	0	neutral
+receive	NN	1947	False	0	neutral
+alternative	NN	1935	False	0	somewhat polite
+clarify	NN	1925	False	0	somewhat polite
+system	NN	1906	False	0	neutral
+before	IN	1904	True	0	impolite
+bootcamp	NN	1851	False	0	neutral
+maybe	RB	1845	False	0	impolite
+staff	NN	1835	False	0	polite
+again	RB	1834	True	0	impolite
+when	WRB	1827	True	0	impolite
+anything	NN	1820	False	0	polite
+arrive	JJ	1814	False	0	neutral
+ensure	VB	1807	False	0	polite
+back	RB	1803	False	0	somewhat polite
+rental	NN	1778	False	0	somewhat polite
+inconvenience	NN	1767	False	0	somewhat polite
+accommodate	NN	1739	False	0	impolite
+extra	JJ	1715	False	0	impolite
+by	IN	1693	True	0	neutral
+didn	NN	1665	True	0	impolite
+variety	NN	1659	False	0	polite
+first	RB	1645	False	0.25	polite
+stock	NN	1638	False	0	neutral
+court	NN	1638	False	0	neutral
+could	MD	1637	False	0	somewhat polite
+something	NN	1626	False	0	impolite
+material	NN	1618	False	0	neutral
+maintenance	NN	1613	False	0	neutral
+application	NN	1591	False	0	neutral
+promotion	NN	1584	False	0	polite
+winter	NN	1582	False	0	polite
+exchange	NN	1580	False	0	somewhat polite
+step	NN	1577	False	0	polite
+close	RB	1565	False	0	neutral
+peak	NN	1557	False	0	polite
+they	PRP	1547	True	0	impolite
+read	NN	1541	False	0	impolite
+tell	NN	1526	False	0	impolite
+apologize	VB	1516	False	0	somewhat polite
+want	NN	1516	False	0	somewhat polite
+garden	NN	1516	False	0	polite
+end	NN	1514	False	0	polite
+learn	NN	1493	False	0	polite
+only	RB	1487	True	0	somewhat polite
+discuss	NN	1487	False	0	polite
+train	NN	1480	False	0	polite
+problem	NN	1479	False	0	impolite
+guide	NN	1476	False	0	polite
+open	JJ	1473	False	0	neutral
+feel	NN	1466	False	0	polite
+congratulation	NN	1466	False	0	polite
+email	NN	1459	False	0	neutral
+status	NN	1456	False	0	neutral
+over	IN	1456	True	0	impolite
+recent	JJ	1449	False	0	polite
+availability	NN	1445	False	0	neutral
+glad	NN	1438	False	0.5	polite
+last	JJ	1434	False	0	impolite
+good	JJ	1433	False	0.7	impolite
+museum	NN	1420	False	0	neutral
+ridiculous	JJ	1416	False	-0.33	impolite
+toy	NN	1414	False	0	polite
+resolve	NN	1408	False	0	somewhat polite
+food	NN	1395	False	0	polite
+minute	NN	1380	False	0	neutral
+session	NN	1375	False	0	neutral
+weather	NN	1373	False	0	neutral
+explore	NN	1373	False	0	polite
+receipt	NN	1372	False	0	somewhat polite
+year	NN	1372	False	0	impolite
+renewal	NN	1366	False	0	neutral
+art	NN	1348	False	0	polite
+design	NN	1343	False	0	polite
+sale	NN	1341	False	0	polite
+few	JJ	1333	True	-0.2	somewhat polite
+give	VB	1326	False	0	impolite
+full	JJ	1325	False	0.35	impolite
+business	NN	1315	False	0	neutral
+fine	NN	1315	False	0.42	impolite
+customer	NN	1299	False	0	impolite
+them	PRP	1283	True	0	impolite
+non	NN	1282	False	0	somewhat polite
+afraid	NN	1281	False	-0.6	neutral
+than	IN	1277	True	0	polite
+use	NN	1275	False	0	impolite
+premium	NN	1272	False	0	polite
+waive	NN	1270	False	0	impolite
+integration	NN	1266	False	0	somewhat polite
+technical	JJ	1265	False	0	neutral
+different	JJ	1260	False	0	somewhat polite
+really	RB	1244	False	0.2	impolite
+gluten	NNS	1241	False	0	neutral
+waste	NN	1240	False	-0.2	impolite
+creative	JJ	1240	False	0.5	polite
+inquiry	NN	1237	False	0	polite
+trip	NN	1236	False	0	polite
+trouble	NN	1225	False	-0.2	somewhat polite
+answer	NN	1225	False	0	polite
+cause	NN	1224	False	0	neutral
+ski	NN	1219	False	0	impolite
+future	NN	1210	False	0	somewhat polite
+after	IN	1205	True	0	impolite
+demand	NN	1202	False	0	neutral
+start	NN	1183	False	0	neutral
+botanical	JJ	1179	False	0	polite
+associate	NN	1158	False	0	somewhat polite
+prior	RB	1146	False	0	neutral
+excite	NN	1144	False	0	polite
+sign	NN	1137	False	0	impolite
+wait	NN	1124	False	0	impolite
+join	NN	1122	False	0	polite
+else	RB	1122	False	0	impolite
+complaint	NN	1120	False	-0.3	impolite
+event	NN	1115	False	0	polite
+club	NN	1108	False	0	polite
+since	IN	1107	False	0	polite
+card	NN	1104	False	0	neutral
+thank	NN	1102	False	0	polite
+term	NN	1102	False	0	impolite
+development	NN	1097	False	0	polite
+cancel	NN	1097	False	0	impolite
+today	NN	1086	False	0	polite
+bother	NN	1083	False	0	impolite
+registration	NN	1078	False	0	neutral
+meet	NN	1077	False	0	somewhat polite
+equipment	NN	1070	False	0	polite
+upgrade	NN	1059	False	0	polite
+professional	JJ	1054	False	0.1	polite
+package	NN	1051	False	0	polite
+great	JJ	1049	False	0.8	polite
+off	IN	1048	True	0	impolite
+lack	NN	1047	False	0	impolite
+support	NN	1039	False	0	polite
+insurance	NN	1035	False	0	polite
+towards	NNS	1034	False	0	polite
+list	NN	1017	False	0	neutral
+water	NN	1014	False	0	polite
+selection	NN	1012	False	0	polite
+hope	NN	1004	False	0	polite
+ingredient	NN	989	False	0	polite
+two	CD	989	False	0	neutral
+right	NN	988	False	0.29	impolite
+query	NN	982	False	0	polite
+number	NN	981	False	0	somewhat polite
+print	NN	972	False	0	impolite
+resource	NN	971	False	0	somewhat polite
+similar	JJ	969	False	0	neutral
+complimentary	NN	969	False	0.3	polite
+send	NN	960	False	0	polite
+run	VB	956	False	0	impolite
+balance	NN	954	False	0	neutral
+halal	NN	952	False	0	polite
+come	VB	949	False	0	impolite
+collection	NN	948	False	0	polite
+other	JJ	940	True	-0.12	neutral
+consider	VB	936	False	0	impolite
+perfect	NN	935	False	1	polite
+tour	NN	935	False	0	polite
+bit	NN	935	False	0	somewhat polite
+medical	JJ	933	False	0	polite
+enjoy	NN	933	False	0.4	polite
+lesson	NN	933	False	0	somewhat polite
+once	RB	931	True	0	neutral
+booking	VBG	929	False	0	somewhat polite
+walk	NN	927	False	0	polite
+suitable	JJ	924	False	0.55	somewhat polite
+suit	NN	924	False	0	polite
+original	JJ	922	False	0.38	somewhat polite
+flavor	NN	915	False	0	polite
+access	NN	909	False	0	neutral
+confirm	NN	908	False	0	neutral
+pricing	NN	908	False	0	polite
+typically	RB	904	False	-0.17	somewhat polite
+way	NN	903	False	0	polite
+transaction	NN	896	False	0	neutral
+fully	RB	894	False	0	neutral
+statement	NN	882	False	0	polite
+feedback	NN	881	False	0	polite
+their	PRP$	878	True	0	polite
+spot	NN	875	False	0	neutral
+far	RB	874	False	0.1	polite
+no	DT	868	True	0	impolite
+communication	NN	863	False	0	neutral
+dietary	JJ	862	False	0	polite
+call	NN	850	False	0	impolite
+likely	JJ	850	False	0	polite
+instructor	NN	848	False	0	polite
+reschedule	NN	846	False	0	neutral
+bring	NN	844	False	0	polite
+game	NN	840	False	-0.4	impolite
+thrill	NN	840	False	0	polite
+clear	JJ	832	False	0.1	impolite
+expectation	NN	831	False	0	somewhat polite
+unforeseen	JJ	828	False	0	neutral
+recommendation	NN	827	False	0	polite
+quality	NN	822	False	0	impolite
+refundable	JJ	822	False	0	somewhat polite
+delivery	NN	822	False	0	neutral
+regard	NN	816	False	0	polite
+meal	NN	814	False	0	polite
+necessary	JJ	812	False	0	neutral
+extremely	RB	811	False	-0.12	impolite
+overdraft	NN	807	False	0	impolite
+doesn	NN	800	True	0	neutral
+small	JJ	800	False	-0.25	polite
+goal	NN	799	False	0	polite
+library	NN	795	False	0	polite
+budget	NN	790	False	0	polite
+play	NN	789	False	0	impolite
+fit	NN	784	False	0.4	polite
+most	JJS	779	True	0.5	polite
+facility	NN	776	False	0	polite
+enthusiasm	NN	773	False	0	somewhat polite
+every	DT	773	False	0	polite
+apply	VB	767	False	0	polite
+local	JJ	764	False	0	polite
+notice	NN	763	False	0	neutral
+buffet	NN	755	False	0	polite
+least	JJS	755	False	-0.3	neutral
+isn	NN	752	True	0	impolite
+airline	NN	742	False	0	polite
+proceed	NN	739	False	0	somewhat polite
+contact	NN	739	False	0	neutral
+board	NN	733	False	0	polite
+match	NN	728	False	0	somewhat polite
+class	NN	724	False	0	polite
+care	NN	720	False	0	impolite
+basic	JJ	719	False	0	impolite
+thing	NN	715	False	0	impolite
+such	JJ	710	True	0	impolite
+well	RB	710	False	0	neutral
+chef	NN	699	False	0	polite
+yourself	PRP	695	True	0	impolite
+feature	NN	694	False	0	polite
+responsible	JJ	693	False	0.2	impolite
+stop	NN	689	False	0	impolite
+increase	NN	687	False	0	somewhat polite
+dessert	NN	686	False	0	polite
+base	NN	683	False	-0.8	polite
+suggest	NN	680	False	0	somewhat polite
+itinerary	NN	674	False	0	polite
+detailed	JJ	673	False	0.4	polite
+cancellation	NN	668	False	0	somewhat polite
+luxury	NN	666	False	0	polite
+require	NN	664	False	0	neutral
+disappoint	NN	664	False	0	impolite
+theater	NN	661	False	0	polite
+these	DT	655	True	0	polite
+restaurant	NN	653	False	0	impolite
+hard	JJ	650	False	-0.29	impolite
+allow	VB	650	False	0	neutral
+monday	NN	649	False	0	neutral
+zoo	NN	648	False	0	neutral
+preference	NN	648	False	0	polite
+th	NN	647	False	0	neutral
+money	NN	645	False	0	impolite
+hold	NN	645	False	0	neutral
+track	NN	643	False	0	neutral
+place	NN	640	False	0	impolite
+departure	NN	637	False	0	neutral
+vegetarian	JJ	637	False	0	neutral
+processing	NN	635	False	0	polite
+long	RB	629	False	-0.05	neutral
+cruise	NN	626	False	0	polite
+tv	NN	626	False	0	polite
+until	IN	626	True	0	neutral
+complete	JJ	625	False	0.1	neutral
+solution	NN	625	False	0	polite
+popular	JJ	624	False	0.6	polite
+discrepancy	NN	623	False	0	polite
+buy	VB	622	False	0	impolite
+those	DT	622	True	0	somewhat polite
+pizza	NN	621	False	0	neutral
+fresh	JJ	619	False	0.3	polite
+organic	JJ	615	False	0	polite
+enhance	NN	613	False	0	polite
+add	VB	613	False	0	neutral
+claim	NN	610	False	0	impolite
+kid	NN	607	False	0	impolite
+car	NN	603	False	0	somewhat polite
+avoid	NN	600	False	0	neutral
+satisfy	NN	600	False	0	polite
+patience	NN	600	False	0	polite
+international	JJ	600	False	0	neutral
+performance	NN	596	False	0	somewhat polite
+management	NN	595	False	0	neutral
+annual	JJ	594	False	0	polite
+adjust	NN	589	False	0	somewhat polite
+friendly	RB	583	False	0.38	polite
+sell	NN	583	False	0	impolite
+expert	NN	582	False	0	polite
+limited	JJ	580	False	-0.07	somewhat polite
+circumstance	NN	578	False	0	somewhat polite
+ready	JJ	578	False	0.2	neutral
+salad	NN	576	False	0	polite
+admission	NN	574	False	0	neutral
+reservation	NN	574	False	0	neutral
+situation	NN	573	False	0	somewhat polite
+gallery	NN	571	False	0	polite
+gear	NN	569	False	0	polite
+reserve	NN	565	False	0	polite
+ship	NN	564	False	0	neutral
+restock	NN	562	False	0	impolite
+record	NN	562	False	0	neutral
+child	NN	561	False	0	polite
+limit	NN	560	False	0	somewhat polite
+handle	NN	558	False	0	impolite
+enjoyable	JJ	557	False	0.5	polite
+soft	JJ	556	False	0.1	polite
+inform	NN	554	False	0	polite
+think	NN	553	False	0	impolite
+breakdown	NN	551	False	0	polite
+also	RB	545	False	0	polite
+delight	NN	545	False	0	polite
+depart	NN	544	False	0	neutral
+set	NN	543	False	0	neutral
+shop	NN	540	False	0	polite
+knowledgeable	JJ	539	False	0	polite
+software	NN	534	False	0	impolite
+plant	NN	533	False	0	impolite
+effective	JJ	528	False	0.6	neutral
+replacement	NN	528	False	0	somewhat polite
+outline	NN	528	False	0	neutral
+topic	NN	526	False	0	neutral
+subject	NN	525	False	-0.17	neutral
+coverage	NN	520	False	0	polite
+must	MD	519	False	0	neutral
+home	NN	519	False	0	polite
+without	IN	516	False	0	impolite
+keep	VB	516	False	0	impolite
+shipment	NN	515	False	0	neutral
+coach	NN	513	False	0	polite
+drink	NN	510	False	0	impolite
+forward	RB	507	False	0	polite
+aren	NNS	506	True	0	impolite
+choose	NN	503	False	0	polite
+journey	NN	503	False	0	polite
+financial	JJ	501	False	0	polite
+adjustment	NN	500	False	0	somewhat polite
+who	WP	499	True	0	impolite
+believe	VB	498	False	0	impolite
+especially	RB	496	False	0	impolite
+unacceptable	JJ	495	False	0	impolite
+completely	RB	494	False	0.1	impolite
+area	NN	493	False	0	polite
+airport	NN	492	False	0	neutral
+room	NN	491	False	0	impolite
+stay	NN	491	False	0	polite
+smooth	NN	488	False	0.4	polite
+welcome	NN	484	False	0.8	polite
+certification	NN	483	False	0	impolite
+put	NN	482	False	0	impolite
+fall	NN	482	False	0	somewhat polite
+cake	NN	481	False	0	impolite
+street	NN	479	False	0	polite
+always	RB	478	False	0	polite
+decision	NN	478	False	0	neutral
+then	RB	477	True	0	impolite
+piece	NN	475	False	0	polite
+bill	NN	474	False	0	impolite
+size	NN	471	False	0	somewhat polite
+figure	NN	470	False	0	impolite
+level	NN	465	False	0	polite
+animal	NN	465	False	0	polite
+valid	JJ	464	False	0	somewhat polite
+control	NN	463	False	0	impolite
+everyone	NN	462	False	0	impolite
+delicious	JJ	460	False	1	polite
+warranty	NN	460	False	0	impolite
+fusion	NN	459	False	0	polite
+guidance	NN	457	False	0	polite
+helpful	NN	456	False	0	polite
+attend	NN	455	False	0	impolite
+taste	NN	453	False	0	polite
+pickup	NN	451	False	0	neutral
+achieve	NN	450	False	0	polite
+enough	RB	450	False	0	impolite
+holiday	NN	450	False	0	polite
+bad	JJ	447	False	-0.7	impolite
+skincare	NN	447	False	0	polite
+structure	NN	445	False	0	polite
+activity	NN	443	False	0	neutral
+fault	NN	443	False	0	impolite
+quite	RB	442	False	0	somewhat polite
+notify	NN	442	False	0	neutral
+volume	NN	440	False	0	neutral
+bread	NN	440	False	0	neutral
+stick	NN	436	False	0	impolite
+prepare	NN	429	False	0	polite
+serve	NN	429	False	0	impolite
+data	NNS	428	False	0	neutral
+production	NN	425	False	0	polite
+favorite	NN	425	False	0.5	impolite
+little	JJ	424	False	-0.19	impolite
+follow	VB	423	False	0	impolite
+project	NN	420	False	0	neutral
+saturday	NN	419	False	0	neutral
+vegan	NN	414	False	0	impolite
+friday	NN	414	False	0	neutral
+difficulty	NN	413	False	0	neutral
+produce	NN	413	False	0	polite
+exhibition	NN	411	False	0	somewhat polite
+break	NN	411	False	0	impolite
+personalized	VBN	411	False	0	polite
+seat	NN	411	False	0	polite
+nothing	NN	410	False	0	impolite
+appear	VB	410	False	0	neutral
+guarantee	NN	406	False	0	somewhat polite
+amount	NN	404	False	0	neutral
+member	NN	404	False	0	polite
+aquarium	NN	403	False	0	polite
+life	NN	403	False	0	polite
+loyalty	NN	402	False	0	polite
+restriction	NN	402	False	0	polite
+actually	RB	399	False	0	impolite
+packaging	NN	398	False	0	polite
+confirmation	NN	398	False	0	neutral
+sofa	NN	397	False	0	neutral
+whine	NN	397	False	0	impolite
+location	NN	396	False	0	neutral
+prefer	NN	396	False	0	polite
+pass	NN	396	False	0	somewhat polite
+combat	NN	395	False	0	polite
+source	NN	395	False	0	neutral
+type	NN	393	False	0	polite
+miss	NN	393	False	0	impolite
+coffee	NN	392	False	0	impolite
+comprehensive	NN	392	False	0	polite
+struggle	NN	391	False	0	impolite
+under	IN	390	True	0	neutral
+burger	NN	390	False	0	impolite
+world	NN	387	False	0	polite
+destination	NN	385	False	0	polite
+instruction	NN	382	False	0	neutral
+history	NN	381	False	0	neutral
+value	NN	381	False	0	polite
+preferred	VBN	380	False	0	somewhat polite
+student	NN	380	False	0	polite
+practice	NN	379	False	0	polite
+scheduled	VBN	378	False	0	neutral
+advance	NN	376	False	0	polite
+shouldn	NN	376	True	0	impolite
+refer	NN	376	False	0	neutral
+unique	NN	375	False	0.38	polite
+section	NN	375	False	0	neutral
+racket	NN	374	False	0	polite
+quarter	NN	373	False	0	neutral
+cultural	JJ	371	False	0.1	polite
+requirement	NN	370	False	0	neutral
+wide	JJ	370	False	-0.1	polite
+around	IN	370	False	0	polite
+voucher	NN	369	False	0	somewhat polite
+win	NN	369	False	0.8	impolite
+usual	JJ	369	False	-0.25	neutral
+relate	NN	369	False	0	polite
+shock	NN	368	False	0	impolite
+period	NN	368	False	0	somewhat polite
+able	JJ	367	False	0.5	impolite
+affect	NN	365	False	0	neutral
+hotel	NN	365	False	0	impolite
+instead	RB	358	False	0	impolite
+people	NNS	356	False	0	impolite
+maintain	NN	355	False	0	somewhat polite
+suppose	NN	354	False	0	impolite
+past	NN	354	False	-0.25	impolite
+display	NN	353	False	0	polite
+while	IN	352	True	0	somewhat polite
+accord	NN	351	False	0	neutral
+depend	NN	351	False	0	neutral
+inventory	NN	349	False	0	somewhat polite
+regional	JJ	348	False	0	somewhat polite
+window	NN	347	False	0	polite
+error	NN	344	False	0	somewhat polite
+furniture	NN	341	False	0	polite
+deadline	NN	340	False	0	neutral
+vary	NN	340	False	0	neutral
+model	NN	338	False	0	polite
+share	NN	337	False	0	polite
+unhappy	JJ	336	False	-0.6	impolite
+final	JJ	334	False	0	somewhat polite
+unexpected	JJ	333	False	0.1	polite
+meantime	NN	331	False	0	neutral
+carefully	RB	331	False	-0.1	polite
+craft	NN	331	False	0	polite
+own	JJ	330	True	0.6	impolite
+contract	NN	329	False	0	impolite
+down	RB	329	True	-0.16	impolite
+compensation	NN	329	False	0	somewhat polite
+become	NN	328	False	0	neutral
+expire	NN	328	False	0	impolite
+cater	NN	328	False	0	impolite
+commit	NN	326	False	0	polite
+visitor	NN	326	False	0	neutral
+waitlist	NN	326	False	0	neutral
+manage	NN	325	False	0	impolite
+choice	NN	324	False	0	polite
+hand	NN	323	False	0	polite
+defective	JJ	323	False	0	impolite
+say	VB	321	False	0	neutral
+aware	JJ	320	False	0.25	neutral
+sunday	NN	320	False	0	neutral
+understanding	VBG	320	False	0	polite
+resort	NN	320	False	0	impolite
+score	NN	320	False	0	neutral
+style	NN	319	False	0	polite
+potential	JJ	318	False	0	polite
+regular	JJ	317	False	0	neutral
+baggage	NN	315	False	0	impolite
+indicate	NN	314	False	0	neutral
+clarification	NN	313	False	0	polite
+happen	VB	312	False	0	impolite
+slope	NN	312	False	0	polite
+couch	NN	311	False	0	impolite
+weekend	NN	311	False	0	neutral
+reason	NN	310	False	0	impolite
+same	JJ	310	True	0	impolite
+eligible	JJ	309	False	0	neutral
+rule	NN	309	False	0	impolite
+guided	VBN	305	False	0	polite
+accept	NN	303	False	0	impolite
+leave	VB	302	False	0	impolite
+pas	NN	301	False	0	somewhat polite
+graphic	JJ	301	False	0	neutral
+early	RB	300	False	0.1	polite
+signature	NN	299	False	0	polite
+surprise	NN	298	False	0	impolite
+transfer	NN	298	False	0	neutral
+entire	JJ	297	False	0	impolite
+camp	NN	296	False	0	impolite
+kayak	NN	295	False	0	impolite
+negotiable	JJ	291	False	0	impolite
+focus	NN	290	False	0	polite
+advantage	NN	289	False	0	polite
+three	CD	286	False	0	impolite
+estimate	NN	286	False	0	neutral
+longer	NN	285	False	0	neutral
+attention	NN	284	False	0	impolite
+suggestion	NN	284	False	0	somewhat polite
+dispute	NN	284	False	0	impolite
+love	NN	284	False	0.5	polite
+low	JJ	284	False	0	neutral
+successfully	RB	283	False	0.75	neutral
+daily	JJ	281	False	0	neutral
+okay	NN	281	False	0.5	somewhat polite
+monthly	RB	281	False	0	neutral
+line	NN	280	False	0	impolite
+tomorrow	NN	278	False	0	neutral
+artist	NN	277	False	0	polite
+august	NN	277	False	0	neutral
+locally	RB	276	False	0	polite
+company	NN	276	False	0	impolite
+lose	VB	274	False	0	impolite
+bank	NN	274	False	0	neutral
+afford	NN	273	False	0	impolite
+along	IN	273	False	0	somewhat polite
+unable	JJ	272	False	-0.5	neutral
+damage	NN	272	False	0	impolite
+mind	NN	270	False	0	impolite
+ferry	NN	270	False	0	neutral
+decent	NN	269	False	0.17	impolite
+label	NN	268	False	0	impolite
+reference	NN	268	False	0	polite
+explanation	NN	267	False	0	somewhat polite
+range	NN	267	False	0	polite
+content	NN	267	False	0	impolite
+too	RB	267	True	0	impolite
+specialty	NN	266	False	0	polite
+public	NN	265	False	0	impolite
+usually	RB	264	False	-0.25	somewhat polite
+competitive	JJ	260	False	0	polite
+disappointed	JJ	260	False	-0.75	impolite
+platform	NN	260	False	0	neutral
+willing	JJ	259	False	0.25	somewhat polite
+appointment	NN	259	False	0	neutral
+newsflash	NN	258	False	0	impolite
+updated	VBN	257	False	0	neutral
+register	NN	257	False	0	neutral
+shipping	NN	257	False	0	neutral
+offering	NN	256	False	0	polite
+bus	NN	255	False	0	Mixed
+effort	NN	255	False	0	impolite
+multiple	NN	253	False	0	impolite
+everything	NN	252	False	0	polite
+analysis	NN	251	False	0	neutral
+cuisine	NN	250	False	0	polite
+gate	NN	250	False	0	neutral
+bakery	NN	249	False	0	polite
+matter	NN	249	False	0	polite
+together	RB	249	False	0	Mixed
+trainer	NN	248	False	0	polite
+result	NN	248	False	0	somewhat polite
+directly	RB	247	False	0.1	neutral
+create	NN	247	False	0	polite
+behind	IN	246	False	-0.4	impolite
+specie	NN	246	False	0	neutral
+confuse	NN	245	False	0	somewhat polite
+luggage	NN	244	False	0	impolite
+boxing	NN	244	False	0	polite
+banking	NN	244	False	0	polite
+technique	NN	244	False	0	polite
+total	JJ	242	False	0	impolite
+league	NN	241	False	0	impolite
+career	NN	241	False	0	polite
+view	NN	241	False	0	neutral
+brand	NN	241	False	0	impolite
+shortly	RB	240	False	0	neutral
+report	NN	240	False	0	neutral
+replace	VB	238	False	0	impolite
+outstanding	JJ	238	False	0.5	neutral
+feed	NN	238	False	0	impolite
+expedite	NN	237	False	0	somewhat polite
+various	JJ	236	False	0	polite
+big	JJ	235	False	0	impolite
+round	NN	234	False	-0.2	impolite
+gym	NN	234	False	0	impolite
+develop	VB	234	False	0	polite
+cod	NN	233	False	0	impolite
+forget	NN	233	False	0	impolite
+meeting	NN	233	False	0	somewhat polite
+exception	NN	233	False	0	impolite
+simple	NN	233	False	0	impolite
+arrival	NN	232	False	0	neutral
+upon	IN	232	False	0	neutral
+each	DT	232	True	0	polite
+sharp	JJ	232	False	-0.12	neutral
+select	NN	231	False	0	polite
+ice	NN	231	False	0	neutral
+locate	NN	230	False	0	somewhat polite
+mistake	NN	229	False	0	impolite
+responsibility	NN	229	False	0	impolite
+much	JJ	229	False	0.2	impolite
+highly	RB	229	False	0.16	polite
+discounted	VBN	228	False	0	polite
+tool	NN	226	False	0	polite
+interactive	JJ	226	False	0	polite
+nearby	RB	225	False	0	neutral
+job	NN	225	False	0	impolite
+market	NN	223	False	0	somewhat polite
+unbelievable	JJ	223	False	-0.25	impolite
+wasn	NN	223	True	0	somewhat polite
+ago	RB	223	False	0	impolite
+case	NN	222	False	0	Mixed
+pastry	NN	222	False	0	polite
+wrong	JJ	221	False	-0.5	impolite
+personal	JJ	221	False	0	impolite
+age	NN	220	False	0	polite
+broken	NN	220	False	-0.4	impolite
+another	DT	220	False	0	impolite
+tournament	NN	219	False	0	polite
+eat	NN	218	False	0	impolite
+arrangement	NN	218	False	0	polite
+subpar	NN	217	False	0	impolite
+reflect	NN	217	False	0	neutral
+beautiful	NN	216	False	0.85	polite
+knowledge	NN	216	False	0	polite
+whichever	NN	216	False	0	polite
+worth	NN	216	False	0.3	impolite
+certain	JJ	215	False	0.21	somewhat polite
+top	NN	215	False	0.5	polite
+difference	NN	215	False	0	impolite
+subscription	NN	215	False	0	polite
+marine	NN	214	False	0	polite
+per	IN	214	False	0	neutral
+cancelled	VBN	214	False	0	impolite
+dedicate	NN	213	False	0	polite
+wonderful	NN	213	False	1	polite
+rebooking	VBG	212	False	0	neutral
+senior	JJ	212	False	0	polite
+touch	NN	212	False	0	polite
+box	NN	211	False	0	neutral
+address	NN	211	False	0	polite
+ever	RB	211	False	0	polite
+idea	NN	211	False	0	impolite
+tip	NN	210	False	0	polite
+topping	VBG	208	False	0	impolite
+log	NN	208	False	0	neutral
+charity	NN	208	False	0	impolite
+deny	NN	208	False	0	impolite
+educational	JJ	208	False	0.25	polite
+field	NN	207	False	0	polite
+outdated	VBN	207	False	-0.4	impolite
+benefit	NN	206	False	0	polite
+better	RBR	206	False	0.5	somewhat polite
+troubleshoot	NN	206	False	0	somewhat polite
+temporary	JJ	205	False	0	neutral
+part	NN	205	False	0	polite
+documentation	NN	204	False	0	neutral
+blend	NN	204	False	0	polite
+spoon	NN	204	False	0	impolite
+description	NN	204	False	0	impolite
+renovation	NN	203	False	0	neutral
+cheap	NN	203	False	0.4	impolite
+kitchen	NN	202	False	0	neutral
+exactly	RB	202	False	0.25	impolite
+enrollment	NN	202	False	0	Mixed
+speaking	VBG	201	False	0	polite
+cream	NN	201	False	0	neutral
+route	NN	201	False	0	neutral
+learning	VBG	200	False	0	polite
+tutorial	NN	200	False	0	impolite
+context	NN	199	False	0	somewhat polite
+properly	RB	199	False	0	impolite
+fruit	NN	199	False	0	polite
+correct	NN	198	False	0	polite
+confident	NN	198	False	0.5	polite
+exceed	NN	198	False	0	polite
+active	JJ	198	False	-0.13	neutral
+camping	VBG	196	False	0	polite
+confusion	NN	196	False	0	polite
+footage	NN	196	False	0	somewhat polite
+via	IN	196	False	0	neutral
+agreement	NN	196	False	0	neutral
+probably	RB	194	False	0	impolite
+expired	VBD	194	False	0	impolite
+smart	NN	193	False	0.21	polite
+navigate	NN	192	False	0	polite
+grocery	NN	192	False	0	polite
+cabin	NN	191	False	0	somewhat polite
+artwork	NN	191	False	0	polite
+health	NN	187	False	0	polite
+industry	NN	186	False	0	polite
+amenity	NN	186	False	0	polite
+sandwich	NN	186	False	0	neutral
+face	NN	186	False	0	impolite
+person	NN	185	False	0	impolite
+reopen	VB	185	False	0	neutral
+old	JJ	183	False	0.1	impolite
+designated	VBN	183	False	0	neutral
+manual	JJ	183	False	0	impolite
+lift	NN	182	False	0	impolite
+accommodation	NN	182	False	0	polite
+secure	NN	182	False	0.4	polite
+sushi	NN	182	False	0	neutral
+din	NN	181	False	0	polite
+finance	NN	181	False	0	impolite
+though	IN	180	False	0	impolite
+cry	NN	180	False	0	impolite
+operating	NN	180	False	0	neutral
+quickly	RB	180	False	0.33	somewhat polite
+advanced	JJ	180	False	0.4	somewhat polite
+flexible	JJ	179	False	0	polite
+ahead	RB	179	False	0	impolite
+individual	JJ	178	False	0	polite
+science	NN	178	False	0	impolite
+surcharge	NN	178	False	0	polite
+cut	NN	177	False	0	impolite
+name	NN	177	False	0	neutral
+quote	NN	177	False	0	polite
+pre	NN	177	False	0	neutral
+tailor	NN	177	False	0	polite
+march	NN	177	False	0	neutral
+perhaps	RB	177	False	0	impolite
+document	NN	176	False	0	neutral
+automatically	RB	176	False	0	neutral
+haven	NN	176	True	0	impolite
+ancient	NN	176	False	0	neutral
+accordingly	RB	175	False	0	neutral
+exist	NN	175	False	0	neutral
+entry	NN	174	False	0	somewhat polite
+specifically	RB	172	False	0	impolite
+very	RB	172	True	0.2	polite
+beauty	NN	171	False	0	polite
+group	NN	171	False	0	polite
+priority	NN	171	False	0	polite
+fast	NN	171	False	0.2	polite
+approve	VB	171	False	0	neutral
+traffic	NN	171	False	0	impolite
+family	NN	170	False	0	polite
+color	NN	170	False	0	impolite
+short	JJ	169	False	0	polite
+lot	NN	169	False	0	impolite
+emergency	NN	168	False	0	Mixed
+possibly	RB	168	False	0	impolite
+intricacy	NN	168	False	0	impolite
+consultation	NN	168	False	0	polite
+excel	NN	168	False	0	polite
+kind	NN	167	False	0.6	impolite
+office	NN	167	False	0	neutral
+fix	NN	167	False	0	impolite
+app	NN	167	False	0	neutral
+security	NN	167	False	0	neutral
+comfortable	JJ	165	False	0.4	polite
+slot	NN	165	False	0	neutral
+author	NN	165	False	0	polite
+rent	NN	164	False	0	impolite
+skills	NNS	164	False	0	polite
+code	NN	163	False	0	polite
+deduct	NN	163	False	0	neutral
+specify	NN	163	False	0	neutral
+save	VB	163	False	0	polite
+unforgettable	JJ	163	False	0.8	polite
+method	NN	163	False	0	neutral
+slight	NN	162	False	-0.17	polite
+yet	RB	160	False	0	neutral
+st	NN	159	False	0	neutral
+adult	NN	159	False	0.1	neutral
+fare	NN	159	False	0	neutral
+bake	NN	159	False	0	neutral
+tag	NN	159	False	0	impolite
+star	NN	159	False	0	impolite
+hasn	NN	159	True	0	somewhat polite
+where	WRB	158	True	0	polite
+integrate	NN	158	False	0	polite
+civilization	NN	158	False	0	neutral
+leadership	NN	158	False	0	polite
+accurate	NN	158	False	0.4	somewhat polite
+calculate	NN	157	False	0	polite
+entrance	NN	157	False	0	neutral
+point	NN	157	False	0	impolite
+bar	NN	157	False	0	polite
+fact	NN	157	False	0	impolite
+despite	IN	157	False	0	impolite
+modern	JJ	157	False	0.2	impolite
+particular	JJ	157	False	0.17	polite
+essential	JJ	157	False	0	neutral
+throughout	IN	156	False	0	polite
+incur	NN	156	False	0	somewhat polite
+presentation	NN	156	False	0	impolite
+delayed	NNS	156	False	0	impolite
+overpriced	VBN	156	False	0	impolite
+module	NN	156	False	0	neutral
+general	JJ	155	False	0.05	somewhat polite
+notification	NN	155	False	0	neutral
+concept	NN	155	False	0	impolite
+wednesday	NN	154	False	0	neutral
+diverse	NN	154	False	0	polite
+verify	NN	153	False	0	somewhat polite
+upkeep	JJ	153	False	0	somewhat polite
+research	NN	153	False	0	impolite
+space	NN	153	False	0	polite
+middle	NN	152	False	0	impolite
+spring	NN	151	False	0	polite
+pick	NN	151	False	0	neutral
+community	NN	151	False	0	polite
+fitness	NN	151	False	0	polite
+operation	NN	150	False	0	neutral
+elsewhere	RB	150	False	0	impolite
+experienced	JJ	149	False	0.8	polite
+fundamental	JJ	148	False	0	neutral
+personalize	NN	148	False	0	polite
+sometimes	RB	148	False	0	somewhat polite
+expiration	NN	148	False	0	impolite
+penalty	NN	147	False	0	impolite
+deliver	NN	147	False	0	impolite
+trust	NN	147	False	0	polite
+honestly	RB	147	False	0.6	impolite
+applicable	JJ	147	False	0	somewhat polite
+renew	NN	147	False	0	neutral
+expense	NN	147	False	0	somewhat polite
+player	NN	146	False	0	polite
+beginner	NN	146	False	0	impolite
+agenda	NN	146	False	0	neutral
+writing	VBG	146	False	0	neutral
+resolution	NN	145	False	0	polite
+vacation	NN	145	False	0	impolite
+rip	NN	145	False	0	impolite
+tent	NN	145	False	0	polite
+anyway	RB	144	False	0	impolite
+somewhere	RB	144	False	0	impolite
+exclusive	JJ	144	False	0	polite
+scam	NN	144	False	0	impolite
+flower	NN	143	False	0	polite
+tax	NN	143	False	0	Mixed
+id	NN	142	False	0	neutral
+thursday	NN	142	False	0	neutral
+pending	VBG	141	False	0	neutral
+five	CD	141	False	0	impolite
+curriculum	NN	141	False	0	polite
+resume	NN	141	False	0	neutral
+reduce	VB	141	False	0	somewhat polite
+frustration	NN	140	False	0	somewhat polite
+affordable	JJ	140	False	0	somewhat polite
+coupon	NN	139	False	0	impolite
+assure	NN	139	False	0	polite
+opportunity	NN	139	False	0	polite
+diligently	RB	139	False	0	polite
+economy	NN	138	False	0	polite
+real	JJ	138	False	0.2	impolite
+progress	NN	138	False	0	polite
+equip	NN	138	False	0	polite
+move	NN	137	False	0	impolite
+strive	NN	137	False	0	polite
+continue	NN	137	False	0	neutral
+clarifies	NNS	137	False	0	somewhat polite
+outside	IN	136	False	0	somewhat polite
+whole	JJ	136	False	0.2	impolite
+upset	NN	135	False	0	impolite
+preparation	NN	135	False	0	neutral
+bunch	NN	134	False	0	impolite
+vehicle	NN	134	False	0	neutral
+martial	NN	134	False	0	polite
+engage	NN	134	False	0	polite
+phone	NN	134	False	0	neutral
+milk	NN	133	False	0	Mixed
+temporarily	RB	133	False	0	neutral
+procedure	NN	133	False	0	neutral
+pasta	NN	133	False	0	neutral
+slow	VB	133	False	-0.3	impolite
+conflict	NN	133	False	0	somewhat polite
+gift	NN	132	False	0	polite
+supplier	NN	132	False	0	neutral
+someone	NN	132	False	0	impolite
+completion	NN	132	False	0	neutral
+bag	NN	132	False	0	impolite
+hike	NN	132	False	0	polite
+series	NN	131	False	0	polite
+attach	NN	131	False	0	neutral
+treatment	NN	131	False	0	impolite
+message	NN	130	False	0	neutral
+timeframe	NN	130	False	0	neutral
+large	JJ	130	False	0.21	polite
+skiing	NN	130	False	0	impolite
+cold	NN	130	False	-0.6	impolite
+coat	NN	130	False	0	impolite
+mess	NN	130	False	-0.17	impolite
+rocket	NN	129	False	0	impolite
+strategy	NN	129	False	0	neutral
+slightly	RB	129	False	-0.17	neutral
+succeed	VB	128	False	0	polite
+city	NN	128	False	0	polite
+absolutely	RB	128	False	0.2	polite
+truly	RB	128	False	0	polite
+laughable	JJ	128	False	-0.5	impolite
+key	NN	128	False	0	neutral
+private	JJ	127	False	0	polite
+dress	NN	127	False	0	polite
+squash	NN	127	False	0	neutral
+reading	NN	126	False	0	Mixed
+relevant	NN	126	False	0.4	somewhat polite
+decline	NN	126	False	0	neutral
+safety	NN	126	False	0	polite
+rest	NN	126	False	0	polite
+shelf	NN	126	False	0	impolite
+enrol	NN	125	False	0	neutral
+specified	VBN	125	False	0	neutral
+flag	NN	125	False	0	neutral
+normal	JJ	124	False	0.15	impolite
+opening	NN	124	False	0	somewhat polite
+factor	NN	123	False	0	neutral
+outrageous	JJ	123	False	-1	impolite
+estimated	VBN	123	False	0	neutral
+promotional	JJ	123	False	0	polite
+shopping	NN	122	False	0	polite
+both	DT	122	True	0	polite
+separate	JJ	122	False	0	neutral
+later	RB	122	False	0	neutral
+previous	JJ	122	False	-0.17	polite
+hit	NN	122	False	0	impolite
+sea	NN	122	False	0	neutral
+minimize	VB	121	False	0	somewhat polite
+extend	NN	121	False	0	polite
+valuable	JJ	121	False	0	polite
+title	NN	121	False	0	somewhat polite
+basketball	NN	121	False	0	impolite
+fund	NN	121	False	0	neutral
+listen	NN	121	False	0	impolite
+minor	NN	121	False	-0.05	impolite
+substitute	NN	120	False	0	neutral
+mobile	NN	120	False	0	neutral
+overdue	JJ	120	False	0	polite
+seek	NN	120	False	0	somewhat polite
+remain	NN	120	False	0	neutral
+moment	NN	120	False	0	polite
+effect	NN	119	False	0	polite
+morning	NN	119	False	0	neutral
+plot	NN	118	False	0	impolite
+partial	JJ	118	False	-0.1	somewhat polite
+july	NN	118	False	0	impolite
+passenger	NN	118	False	0	polite
+common	JJ	118	False	-0.3	impolite
+excuse	NN	118	False	-0.05	impolite
+repair	NN	117	False	0	polite
+strawberry	NN	117	False	0	polite
+clearance	NN	117	False	0	Mixed
+speak	NN	117	False	0	impolite
+fry	NN	116	False	0	impolite
+honor	NN	116	False	0	impolite
+watch	NN	116	False	0	impolite
+snow	NN	116	False	0	impolite
+role	NN	115	False	0	neutral
+third	JJ	115	False	0	impolite
+strict	NN	114	False	0	somewhat polite
+file	NN	114	False	0	neutral
+incompetent	NN	114	False	-0.35	impolite
+implement	NN	114	False	0	polite
+protection	NN	113	False	0	polite
+informative	JJ	113	False	0	polite
+magically	RB	113	False	0.5	impolite
+risk	NN	113	False	0	impolite
+sort	NN	113	False	0	impolite
+lion	NN	112	False	0	neutral
+painting	NN	112	False	0	impolite
+effectively	RB	112	False	0.6	polite
+custom	NN	112	False	0	polite
+beer	NN	112	False	0	polite
+immediately	RB	112	False	0	impolite
+living	NN	112	False	0	polite
+inactivity	NN	112	False	0	impolite
+promise	NN	112	False	0	impolite
+required	VBN	112	False	0	neutral
+wave	NN	111	False	0	impolite
+farm	NN	111	False	0	neutral
+remake	NN	111	False	0	impolite
+leg	NN	111	False	0	impolite
+cocktail	NN	111	False	0	polite
+dolphin	NN	111	False	0	somewhat polite
+september	NN	111	False	0	neutral
+exceptional	JJ	111	False	0.67	polite
+stall	NN	110	False	0	neutral
+often	RB	110	False	0	somewhat polite
+air	NN	110	False	0	impolite
+shirt	NN	110	False	0	impolite
+recently	RB	109	False	0	polite
+loss	NN	109	False	0	impolite
+expertise	NN	109	False	0	polite
+table	NN	109	False	0	polite
+picky	NN	109	False	0	impolite
+busy	JJ	109	False	0.1	impolite
+correctly	RB	108	False	0	impolite
+minimum	NN	108	False	0	neutral
+proof	NN	108	False	0	impolite
+soup	NN	108	False	0	neutral
+routine	NN	107	False	0	polite
+veggie	NN	107	False	0	polite
+guy	NN	107	False	0	impolite
+electronics	NNS	107	False	0	polite
+tonight	NN	107	False	0	polite
+between	IN	106	True	0	neutral
+unless	IN	106	False	0	somewhat polite
+definitely	RB	106	False	0	somewhat polite
+pace	NN	106	False	0	polite
+improvement	NN	105	False	0	somewhat polite
+inquire	NN	105	False	0	neutral
+arm	NN	105	False	0	impolite
+decor	NN	105	False	0	polite
+saving	VBG	105	False	0	neutral
+fight	NN	104	False	0	impolite
+link	NN	104	False	0	neutral
+catch	NN	104	False	0	impolite
+workflow	NN	104	False	0	polite
+fantastic	JJ	104	False	0.4	polite
+festival	NN	104	False	0	polite
+mark	NN	103	False	0	impolite
+optimize	VB	103	False	0	polite
+safe	JJ	103	False	0.5	polite
+agree	NN	103	False	0	impolite
+coaching	VBG	103	False	0	somewhat polite
+hi	NN	103	False	0	polite
+excellent	NN	103	False	1	polite
+boot	NN	103	False	0	Mixed
+forecast	NN	102	False	0	impolite
+showcase	NN	102	False	0	polite
+extended	VBN	102	False	0	neutral
+participate	VB	102	False	0	Mixed
+closure	NN	101	False	0	neutral
+prioritize	NN	101	False	0	neutral
+act	NN	101	False	0	impolite
+complicate	NN	101	False	0	impolite
+side	NN	101	False	0	polite
+certificate	NN	101	False	0	neutral
+live	JJ	100	False	0.14	polite
+single	JJ	100	False	-0.07	impolite
+user	NN	100	False	0	neutral
+mention	NN	100	False	0	somewhat polite
+deposit	NN	100	False	0	neutral
+goodwill	NN	99	False	0	polite
+accessory	NN	99	False	0	polite
+reminder	NN	99	False	0	neutral
+gesture	NN	98	False	0	polite
+snowboard	NN	98	False	0	neutral
+trial	NN	98	False	0	polite
+vegetable	NN	98	False	0	polite
+many	JJ	98	False	0.5	Mixed
+bird	NN	98	False	0	polite
+spend	NN	98	False	0	impolite
+freshness	NN	97	False	0	neutral
+jacket	NN	97	False	0	impolite
+terrible	JJ	97	False	-1	impolite
+adventure	NN	97	False	0	polite
+chance	NN	97	False	0	somewhat polite
+tuesday	NN	97	False	0	neutral
+incompetence	NN	97	False	0	impolite
+grow	NN	97	False	0	polite
+refresh	NN	97	False	0	neutral
+suite	NN	97	False	0	polite
+surf	NN	97	False	0	impolite
+doctor	NN	97	False	0	somewhat polite
+income	NN	96	False	0	neutral
+post	NN	96	False	0	impolite
+outfit	NN	96	False	0	polite
+checkout	NN	96	False	0	polite
+counter	NN	96	False	0	neutral
+entitle	NN	96	False	0	impolite
+teach	NN	96	False	0	impolite
+begin	NN	96	False	0	neutral
+misunderstand	NN	96	False	0	polite
+gps	NN	95	False	0	somewhat polite
+action	NN	95	False	0.1	polite
+manager	NN	95	False	0	impolite
+amazing	VBG	95	False	0.6	polite
+expensive	JJ	95	False	-0.5	impolite
+insight	NN	95	False	0	polite
+sailing	VBG	95	False	0	neutral
+chicken	NN	94	False	-0.6	neutral
+sauce	NN	94	False	0	impolite
+unusual	JJ	94	False	0.2	neutral
+ongoing	VBG	94	False	0	polite
+june	NN	94	False	0	polite
+away	RB	94	False	0	polite
+involve	NN	94	False	0	somewhat polite
+convenience	NN	92	False	0	polite
+digital	NN	92	False	0	polite
+impact	NN	92	False	0	neutral
+freshly	RB	92	False	0.3	polite
+conservation	NN	92	False	0	Mixed
+inclement	NN	92	False	0	neutral
+organize	VB	92	False	0	neutral
+seamless	NN	92	False	0.1	polite
+grasp	NN	92	False	0	impolite
+taco	NN	91	False	0	neutral
+advice	NN	91	False	0	polite
+referee	NN	90	False	0	impolite
+pool	NN	90	False	0	neutral
+participant	NN	90	False	0	polite
+catalog	NN	90	False	0	polite
+authentic	JJ	90	False	0.5	polite
+introduce	NN	90	False	0	polite
+growth	NN	90	False	0	polite
+hassle	NN	90	False	0	impolite
+decide	NN	89	False	0	impolite
+administrative	JJ	89	False	0	somewhat polite
+magic	NN	89	False	0.5	impolite
+debt	NN	89	False	0	impolite
+wear	NN	89	False	0	impolite
+appliance	NN	89	False	0	polite
+soccer	NN	89	False	0	polite
+pleasure	NN	88	False	0	polite
+investment	NN	88	False	0	polite
+penguin	NN	88	False	0	neutral
+tart	NN	88	False	0	polite
+chocolate	NN	87	False	0	polite
+unlock	NN	87	False	0	polite
+paperwork	NN	87	False	0	neutral
+coding	VBG	87	False	0	impolite
+handling	VBG	87	False	0	neutral
+poor	JJ	87	False	-0.4	impolite
+social	JJ	86	False	0.03	neutral
+verification	NN	86	False	0	neutral
+ramadan	NN	86	False	0	somewhat polite
+worry	NN	86	False	0	polite
+consideration	NN	85	False	0	somewhat polite
+noise	NN	85	False	0	impolite
+teamwork	NN	85	False	0	polite
+deductible	JJ	85	False	0	impolite
+transition	NN	85	False	0	polite
+exact	NN	85	False	0.25	neutral
+skin	NN	85	False	0	polite
+culinary	NN	85	False	0	polite
+overprice	NN	85	False	0	impolite
+confidence	NN	85	False	0	polite
+lounge	NN	85	False	0	polite
+crew	NN	84	False	0	polite
+speed	NN	84	False	0	somewhat polite
+task	NN	84	False	0	neutral
+quinoa	NN	84	False	0	polite
+recipe	NN	84	False	0	impolite
+sound	NN	84	False	0.4	polite
+spice	NN	84	False	0	impolite
+knock	NN	83	False	0	impolite
+rebook	NN	83	False	0	neutral
+weekday	NN	83	False	0	neutral
+brief	NN	83	False	0	somewhat polite
+whining	VBG	83	False	0	impolite
+environment	NN	83	False	0	polite
+mean	NN	83	False	-0.31	impolite
+croissant	NN	83	False	0	neutral
+tourist	NN	82	False	0	impolite
+guest	NN	82	False	0	polite
+medium	NN	82	False	0	neutral
+satisfaction	NN	82	False	0	polite
+extensive	JJ	82	False	0	polite
+either	DT	82	False	0	impolite
+login	NN	82	False	0	neutral
+wonder	NN	82	False	0	impolite
+billing	NN	82	False	0	polite
+storytelling	VBG	82	False	0	neutral
+shampoo	NN	81	False	0	impolite
+batch	NN	81	False	0	neutral
+attraction	NN	81	False	0	polite
+competition	NN	81	False	0	impolite
+write	NN	81	False	0	impolite
+python	NN	81	False	0	neutral
+luck	NN	81	False	0	impolite
+bike	NN	81	False	0	impolite
+encounter	NN	81	False	0	polite
+road	NN	81	False	0	impolite
+fascinating	VBG	80	False	0.7	polite
+seasonally	RB	80	False	0	polite
+below	IN	80	True	0	polite
+wouldn	NN	80	True	0	impolite
+grateful	NN	79	False	0	impolite
+miscommunication	NN	79	False	0	impolite
+thought	NN	79	False	0	impolite
+traditional	JJ	79	False	0	neutral
+lately	RB	78	False	-0.3	somewhat polite
+useless	NN	78	False	-0.5	impolite
+layover	NN	78	False	0	neutral
+defect	NN	78	False	0	polite
+rich	JJ	78	False	0.38	polite
+insufficient	NN	78	False	0	neutral
+inspiration	NN	78	False	0	polite
+submit	NN	78	False	0	neutral
+argue	NN	78	False	0	impolite
+hospital	NN	77	False	0	neutral
+frustrate	NN	77	False	0	impolite
+initial	JJ	77	False	0	somewhat polite
+unsure	NN	77	False	0	somewhat polite
+hamlet	NN	77	False	0	neutral
+escalate	NN	77	False	0	neutral
+incredible	JJ	77	False	0.9	polite
+settle	VB	77	False	0	neutral
+door	NN	76	False	0	neutral
+troubleshooting	VBG	76	False	0	somewhat polite
+cafe	NN	76	False	0	polite
+vendor	NN	75	False	0	somewhat polite
+collect	NN	75	False	0	neutral
+department	NN	75	False	0	neutral
+align	NN	75	False	0	somewhat polite
+upskilling	VBG	74	False	0	polite
+clueless	NN	74	False	0	impolite
+disaster	NN	74	False	0	impolite
+finalize	VB	74	False	0	neutral
+reasonable	JJ	74	False	0.2	neutral
+treat	NN	74	False	0	polite
+server	NN	74	False	0	neutral
+artistic	JJ	74	False	0.33	polite
+never	RB	74	False	0	impolite
+fluctuation	NN	74	False	0	somewhat polite
+spicy	NN	73	False	0	impolite
+double	RB	73	False	0	somewhat polite
+repayment	NN	73	False	0	polite
+crowd	NN	73	False	0	neutral
+automatic	JJ	73	False	0	neutral
+waiver	NN	73	False	0	somewhat polite
+memorable	JJ	73	False	0.5	polite
+glitch	NN	73	False	0	neutral
+language	NN	72	False	0	impolite
+pretty	RB	72	False	0.25	impolite
+mechanical	JJ	72	False	0	neutral
+doubt	NN	72	False	0	impolite
+disruption	NN	72	False	0	neutral
+pair	NN	71	False	0	polite
+restocking	VBG	71	False	0	somewhat polite
+determine	NN	71	False	0	neutral
+beyond	IN	71	False	0	somewhat polite
+listening	VBG	71	False	0	neutral
+outdoor	NN	71	False	0	polite
+promptly	RB	71	False	0	polite
+qualify	VB	71	False	0	impolite
+scheduling	VBG	71	False	0	somewhat polite
+certify	NN	71	False	0	neutral
+loyal	NN	71	False	0.33	impolite
+build	NN	70	False	0	polite
+map	NN	70	False	0	polite
+opt	NN	70	False	0	polite
+region	NN	70	False	0	polite
+missed	VBN	70	False	0	impolite
+lego	NN	70	False	0	neutral
+second	JJ	70	False	0	neutral
+prepared	JJ	70	False	0	Mixed
+dedicated	VBN	70	False	0	polite
+participation	NN	70	False	0	polite
+evening	VBG	70	False	0	polite
+ability	NN	70	False	0	polite
+dining	VBG	70	False	0	polite
+thanks	NNS	69	False	0.2	polite
+fill	NN	69	False	0	impolite
+mad	NN	69	False	-0.62	impolite
+curator	NN	69	False	0	somewhat polite
+several	JJ	69	False	0	neutral
+modification	NN	69	False	0	polite
+clean	NN	68	False	0.37	neutral
+setup	NN	68	False	0	somewhat polite
+consequence	NN	68	False	0	impolite
+attendance	NN	68	False	0	neutral
+input	NN	68	False	0	polite
+partner	NN	68	False	0	polite
+duration	NN	68	False	0	neutral
+nonsense	NN	68	False	0	impolite
+tailored	VBN	68	False	0	polite
+practical	JJ	68	False	0	polite
+unavailable	JJ	68	False	0	neutral
+plenty	NN	68	False	0	impolite
+lecture	NN	68	False	0	impolite
+reconsider	NN	68	False	0	impolite
+perform	NN	68	False	0	neutral
+sail	NN	67	False	0	polite
+browse	NN	67	False	0	polite
+joke	NN	67	False	0	impolite
+video	NN	67	False	0	impolite
+rain	NN	67	False	0	impolite
+exercise	NN	67	False	0	polite
+flavorful	NN	67	False	0	polite
+concert	NN	67	False	0	polite
+near	IN	66	False	0.1	neutral
+terminal	NN	66	False	0	neutral
+postpone	NN	66	False	0	somewhat polite
+rush	NN	66	False	0	impolite
+major	JJ	66	False	0.06	impolite
+calm	NN	66	False	0.3	impolite
+rink	NN	66	False	0	neutral
+floor	NN	66	False	0	neutral
+cross	NN	66	False	0	neutral
+indeed	RB	66	False	0	polite
+timeline	NN	66	False	0	neutral
+yours	NNS	65	True	0	impolite
+investigate	NN	65	False	0	somewhat polite
+seating	VBG	65	False	0	polite
+actual	JJ	65	False	0	impolite
+enroll	NN	65	False	0	polite
+farmer	NN	65	False	0	polite
+shortcake	NN	65	False	0	polite
+huge	JJ	65	False	0.4	impolite
+surge	NN	65	False	0	polite
+drop	NN	64	False	0	impolite
+sweet	NN	64	False	0.35	polite
+simply	RB	64	False	0	polite
+talk	NN	64	False	0	impolite
+browser	NN	64	False	0	Mixed
+arrange	NN	64	False	0	polite
+fighter	NN	64	False	0	impolite
+cheesecake	NN	64	False	0	polite
+basis	NN	64	False	0	neutral
+trend	NN	64	False	0	polite
+contribute	NN	64	False	0	somewhat polite
+response	NN	64	False	0	impolite
+combination	NN	63	False	0	polite
+six	CD	63	False	0	neutral
+grab	NN	63	False	0	impolite
+snack	NN	63	False	0	polite
+drive	NN	63	False	0	neutral
+programming	VBG	63	False	0	neutral
+center	NN	63	False	-0.1	neutral
+form	NN	63	False	0	impolite
+cook	NN	63	False	0	neutral
+among	IN	63	False	0	polite
+couldn	NN	63	True	0	impolite
+front	NN	63	False	0	impolite
+april	NN	62	False	0	neutral
+contamination	NN	62	False	0	neutral
+warm	NN	62	False	0.6	polite
+compete	NN	62	False	0	neutral
+innovative	JJ	62	False	0.5	polite
+bartender	NN	62	False	0	polite
+transparent	NN	62	False	0	polite
+onboarding	VBG	62	False	0	polite
+designate	NN	62	False	0	neutral
+advisor	NN	62	False	0	polite
+stale	NN	61	False	-0.5	impolite
+compensate	NN	61	False	0	impolite
+desk	NN	61	False	0	neutral
+occasion	NN	61	False	0	polite
+aspect	NN	61	False	0	polite
+crust	NN	61	False	0	neutral
+visualization	NN	61	False	0	neutral
+wire	NN	61	False	0	neutral
+mandatory	NN	61	False	0	neutral
+approval	NN	61	False	0	neutral
+inspire	NN	61	False	0	polite
+related	JJ	61	False	0	neutral
+shark	NN	60	False	0	polite
+important	JJ	60	False	0.4	impolite
+fly	NN	60	False	0.8	impolite
+guideline	NN	60	False	0	neutral
+countless	NN	60	False	0	impolite
+unhelpful	JJ	60	False	0	impolite
+dine	NN	60	False	0	polite
+k	NN	60	False	0	neutral
+mail	NN	60	False	0	neutral
+curry	NN	60	False	0	neutral
+overall	JJ	60	False	0	somewhat polite
+obligate	NN	60	False	0	impolite
+convenient	NN	60	False	0	polite
+guess	NN	60	False	0	impolite
+night	NN	59	False	0	impolite
+supportive	NN	59	False	0.5	polite
+meat	NN	59	False	0	neutral
+increased	VBN	59	False	0	polite
+playing	VBG	59	False	0	somewhat polite
+device	NN	59	False	0	polite
+buddy	NN	59	False	0	impolite
+conference	NN	59	False	0	neutral
+ruin	NN	59	False	0	impolite
+dollar	NN	59	False	0	impolite
+supply	NN	58	False	0	neutral
+bud	NN	58	False	0	polite
+lucky	JJ	58	False	0.33	impolite
+calendar	NN	58	False	0	neutral
+faulty	NN	58	False	0	impolite
+itself	PRP	58	True	0	somewhat polite
+study	NN	58	False	0	impolite
+page	NN	58	False	0	neutral
+theory	NN	58	False	0	neutral
+curated	VBN	58	False	0	polite
+setting	VBG	58	False	0	neutral
+sit	NN	57	False	0	impolite
+thoroughly	RB	57	False	0	polite
+park	NN	57	False	0	impolite
+notch	NN	57	False	0	polite
+dispatch	NN	57	False	0	neutral
+checked	NNS	57	False	0	impolite
+audio	NN	57	False	0	somewhat polite
+nickel	NN	56	False	0	impolite
+informed	VBN	56	False	0	polite
+machine	NN	56	False	0	neutral
+mma	NN	56	False	0	impolite
+unreasonable	JJ	56	False	0	impolite
+quarterly	RB	56	False	0	polite
+uncommon	JJ	56	False	0.8	Mixed
+capacity	NN	56	False	0	neutral
+self	NN	56	False	0	impolite
+permanent	NN	55	False	0	polite
+impress	NN	55	False	0	polite
+school	NN	55	False	0	impolite
+approach	NN	55	False	0	polite
+frame	NN	55	False	0	neutral
+showtime	NN	55	False	0	neutral
+fun	NN	55	False	0.3	polite
+hot	JJ	55	False	0.25	impolite
+constantly	RB	55	False	0	polite
+extension	NN	55	False	0	somewhat polite
+driver	NN	54	False	0	polite
+wrap	NN	54	False	0	polite
+remind	NN	54	False	0	polite
+prerequisite	NN	54	False	0	somewhat polite
+recommended	VBN	54	False	0	polite
+version	NN	54	False	0	neutral
+occur	NN	54	False	0	Mixed
+brochure	NN	53	False	0	impolite
+pro	NNS	53	False	0	impolite
+house	NN	53	False	0	polite
+discontinue	NN	53	False	0	impolite
+operational	JJ	53	False	0	neutral
+challenge	NN	53	False	0	polite
+bean	NN	53	False	0	neutral
+throw	NN	53	False	0	impolite
+reward	NN	53	False	0	polite
+respond	NN	53	False	0	polite
+vip	NN	53	False	0	polite
+bowl	NN	53	False	0	polite
+weekly	JJ	53	False	0	polite
+culture	NN	53	False	0	polite
+scene	NN	53	False	0	polite
+upfront	NN	52	False	0	impolite
+classic	JJ	52	False	0.17	impolite
+opponent	NN	52	False	0	impolite
+quick	NN	52	False	0.33	impolite
+familiar	JJ	52	False	0.38	polite
+impressed	JJ	52	False	1	polite
+pride	NN	52	False	0	polite
+bland	NN	51	False	-0.17	impolite
+head	NN	51	False	0	neutral
+lazy	NN	51	False	-0.25	impolite
+easy	JJ	51	False	0.43	neutral
+frustrating	VBG	51	False	-0.4	polite
+buck	NN	51	False	0	impolite
+category	NN	51	False	0	Mixed
+describe	NN	51	False	0	neutral
+indoor	NN	51	False	0	neutral
+main	JJ	51	False	0.17	neutral
+fuel	NN	51	False	0	somewhat polite
+boarding	NN	50	False	0	polite
+boost	NN	50	False	0	polite
+noodle	NN	50	False	0	neutral
+birthday	NN	50	False	0	impolite
+lead	NN	50	False	0	Mixed
+upgraded	JJ	50	False	0	polite
+miracle	NN	50	False	0	impolite
+constant	JJ	50	False	0	impolite
+loaf	NN	50	False	0	polite
+nuance	NN	50	False	0	impolite
+dinner	NN	50	False	0	polite
+institution	NN	50	False	0	impolite
+placard	NN	50	False	0	impolite
+whim	NN	50	False	0	impolite
+concierge	NN	49	False	0	polite
+speaker	NN	49	False	0	polite
+basically	RB	49	False	0	impolite
+story	NN	49	False	0	polite
+character	NN	49	False	0	neutral
+flexibility	NN	49	False	0	somewhat polite
+initiate	NN	49	False	0	polite
+manageable	JJ	49	False	0	somewhat polite
+youtube	NN	49	False	0	impolite
+host	NN	49	False	0	neutral
+pointless	NN	49	False	-0.25	impolite
+visual	JJ	48	False	0	neutral
+discover	NN	48	False	0	polite
+york	NN	48	False	0	neutral
+clothing	NN	48	False	0	neutral
+plane	NN	48	False	0	impolite
+hop	NN	48	False	0	somewhat polite
+natural	JJ	48	False	0.1	neutral
+overnight	NN	48	False	0	impolite
+assemble	JJ	48	False	0	neutral
+dedication	NN	48	False	0	polite
+artisanal	JJ	47	False	0	polite
+heat	NN	47	False	0	impolite
+turn	NN	47	False	0	impolite
+credential	NN	47	False	0	neutral
+smoothly	RB	46	False	0.4	polite
+proficiency	NN	46	False	0	neutral
+historical	JJ	46	False	0	impolite
+irrelevant	NN	46	False	-0.5	impolite
+creativity	NN	46	False	0	impolite
+connection	NN	46	False	0	impolite
+lunch	NN	46	False	0	polite
+twice	RB	46	False	0	impolite
+profile	NN	46	False	0	neutral
+load	NN	46	False	0	neutral
+success	NN	46	False	0.3	polite
+opinion	NN	46	False	0	impolite
+assessment	NN	46	False	0	polite
+tank	NN	46	False	0	impolite
+parking	NN	46	False	0	impolite
+wakeboarding	VBG	46	False	0	impolite
+regardless	RB	46	False	0	impolite
+sourced	VBN	45	False	0	polite
+fake	NN	45	False	-0.5	impolite
+release	NN	45	False	0	somewhat polite
+tier	NN	45	False	0	polite
+grip	NN	45	False	0	impolite
+certified	VBN	45	False	0	polite
+surfing	VBG	45	False	0	impolite
+swim	NN	45	False	0	impolite
+slam	NN	45	False	0	impolite
+sync	NN	45	False	0	neutral
+accuracy	NN	45	False	0	impolite
+purpose	NN	44	False	0	impolite
+attendee	NN	44	False	0	polite
+accompany	NN	44	False	0	polite
+anytime	NN	44	False	0	impolite
+italian	JJ	44	False	0	neutral
+tend	NN	44	False	0	Mixed
+shawarma	NN	44	False	0	polite
+timely	RB	44	False	0	neutral
+highlight	NN	44	False	0	polite
+earlier	RBR	44	False	0	impolite
+stand	NN	44	False	0	impolite
+boat	NN	44	False	0	impolite
+blame	NN	44	False	0	impolite
+mediocre	NN	44	False	-0.5	impolite
+operate	NN	43	False	0	neutral
+unexpectedly	RB	43	False	0.1	somewhat polite
+received	VBN	43	False	0	impolite
+particularly	RB	43	False	0.17	polite
+fail	NN	43	False	-0.5	impolite
+raincheck	NN	43	False	0	polite
+sweater	NN	43	False	0	somewhat polite
+straight	NN	43	False	0.2	impolite
+appal	NN	43	False	0	impolite
+incident	NN	43	False	0	neutral
+cheese	NN	43	False	0	impolite
+objective	NN	43	False	0	polite
+allergy	NN	43	False	0	polite
+persist	NN	43	False	0	neutral
+wall	NN	43	False	0	impolite
+december	NN	43	False	0	neutral
+interesting	VBG	43	False	0.5	neutral
+fi	NN	43	False	0	impolite
+wand	NN	43	False	0	impolite
+wi	NN	43	False	0	impolite
+dramatic	JJ	42	False	-0.43	impolite
+prompt	NN	42	False	0	polite
+moisturizer	NN	42	False	0	polite
+spending	NN	42	False	0	neutral
+incomplete	NN	42	False	0	neutral
+barely	RB	42	False	0.05	impolite
+accessible	JJ	42	False	0.38	neutral
+fluctuate	NN	42	False	0	polite
+ours	NNS	42	True	0	impolite
+advertise	NN	42	False	0	impolite
+actor	NN	42	False	0	polite
+punch	NN	42	False	0	impolite
+party	NN	42	False	0	Mixed
+alone	RB	42	False	0	impolite
+lower	JJR	42	False	0	Mixed
+los	NN	42	False	0	neutral
+sculpture	NN	42	False	0	polite
+outcome	NN	42	False	0	neutral
+fair	NN	42	False	0.7	impolite
+angeles	NNS	42	False	0	neutral
+courtesy	NN	41	False	0	Mixed
+eventually	RB	41	False	0	impolite
+search	NN	41	False	0	somewhat polite
+mid	NN	41	False	0	polite
+faq	NN	41	False	0	neutral
+asian	JJ	41	False	0	neutral
+approximately	RB	41	False	-0.4	neutral
+feeding	VBG	41	False	0	neutral
+discussion	NN	41	False	0	impolite
+less	RBR	41	False	-0.17	impolite
+mix	NN	41	False	0	polite
+apparently	RB	41	False	0.05	impolite
+misunderstanding	VBG	40	False	0	polite
+paddleboard	NN	40	False	0	somewhat polite
+tab	NN	40	False	0	neutral
+hidden	NN	40	False	-0.17	polite
+viewing	VBG	40	False	0	polite
+adapt	NN	40	False	0	impolite
+country	NN	40	False	0	neutral
+click	NN	40	False	0	neutral
+apology	NN	40	False	0	impolite
+invoice	NN	40	False	0	polite
+manufacturer	NN	40	False	0	impolite
+contain	NN	40	False	0	neutral
+port	NN	40	False	0	neutral
+destroy	NN	40	False	-0.2	impolite
+criticism	NN	40	False	0	impolite
+baker	NN	40	False	0	polite
+skewer	NN	40	False	0	neutral
+january	NN	40	False	0	neutral
+positive	JJ	40	False	0.23	polite
+enclosure	NN	40	False	0	neutral
+usage	NN	39	False	0	neutral
+efficient	NN	39	False	0	neutral
+october	NN	39	False	0	neutral
+maximum	NN	39	False	0	neutral
+scarf	NN	39	False	0	polite
+sooner	NN	39	False	0	impolite
+proper	NN	39	False	0	impolite
+sense	NN	39	False	0	impolite
+pumpkin	NN	39	False	0	polite
+copy	NN	39	False	0	somewhat polite
+force	NN	39	False	0	impolite
+enter	NN	38	False	0	polite
+coddle	NN	38	False	0	impolite
+disappointment	NN	38	False	-0.6	impolite
+tradition	NN	38	False	0	polite
+racquet	NN	38	False	0	polite
+bbq	NN	38	False	0	polite
+capable	JJ	38	False	0.2	impolite
+transferable	JJ	38	False	0	neutral
+spill	NN	38	False	0	impolite
+bloom	NN	38	False	0	polite
+venue	NN	38	False	0	neutral
+announce	NN	38	False	0	polite
+complaining	VBG	38	False	0	impolite
+employee	NN	38	False	0	impolite
+restart	NN	38	False	0	neutral
+budgeting	NN	38	False	0	somewhat polite
+compatibility	NN	38	False	0	somewhat polite
+calculation	NN	38	False	0	somewhat polite
+redeem	NN	38	False	0	polite
+satisfied	JJ	38	False	0.5	impolite
+dude	NN	38	False	0	impolite
+quit	NN	38	False	0	impolite
+incredibly	RB	37	False	0.9	polite
+essentially	RB	37	False	0	impolite
+cart	NN	37	False	0	impolite
+atmosphere	RB	37	False	0	polite
+light	NN	37	False	0.4	polite
+masterpiece	NN	37	False	0	impolite
+commitment	NN	37	False	0	polite
+berry	NN	37	False	0	polite
+babysit	NN	37	False	0	impolite
+backorder	NN	37	False	0	neutral
+slice	NN	37	False	0	impolite
+vibrant	NN	37	False	0.17	polite
+poison	NN	37	False	0	impolite
+death	NN	37	False	0	impolite
+pie	NN	37	False	0	polite
+productivity	NN	37	False	0	polite
+regulation	NN	37	False	0	neutral
+transportation	NN	37	False	0	polite
+theme	NN	37	False	0	impolite
+audience	NN	37	False	0	impolite
+warehouse	NN	37	False	0	polite
+roll	NN	37	False	0	neutral
+warn	NN	36	False	0	impolite
+steep	NN	36	False	0	somewhat polite
+connect	NN	36	False	0	neutral
+severe	JJ	36	False	0	somewhat polite
+stuff	NN	36	False	0	impolite
+brainstorm	NN	36	False	0	neutral
+thousand	NN	36	False	0	impolite
+pathetic	JJ	36	False	-1	impolite
+kayaking	VBG	36	False	0	neutral
+rat	NN	36	False	0	polite
+picture	NN	36	False	0	impolite
+nicely	RB	36	False	0.6	impolite
+semester	NN	36	False	0	Mixed
+falafel	NN	36	False	0	polite
+famous	JJ	36	False	0.5	polite
+perishable	JJ	36	False	0	somewhat polite
+reimburse	NN	36	False	0	impolite
+composition	NN	36	False	0	neutral
+refill	NN	36	False	0	impolite
+storm	NN	35	False	0	somewhat polite
+black	JJ	35	False	-0.17	impolite
+eye	NN	35	False	0	polite
+rare	NN	35	False	0.3	impolite
+master	NN	35	False	0	polite
+tirelessly	RB	35	False	0	polite
+nerf	NN	35	False	0	neutral
+cycle	NN	35	False	0	polite
+requested	VBN	35	False	0	neutral
+format	NN	35	False	0	neutral
+electronic	JJ	35	False	0	polite
+portion	NN	35	False	0	somewhat polite
+planning	NN	35	False	0	impolite
+storage	NN	35	False	0	somewhat polite
+attitude	NN	35	False	0	impolite
+mountain	NN	35	False	0	polite
+mexican	JJ	35	False	0	neutral
+dim	NN	35	False	0.1	impolite
+beforehand	NN	35	False	0	impolite
+client	NN	34	False	0	polite
+generic	NN	34	False	0	impolite
+uninterested	JJ	34	False	0	impolite
+engaging	VBG	34	False	0.4	polite
+lush	NN	34	False	0.1	polite
+reply	NN	34	False	0	neutral
+meaning	NN	34	False	0	impolite
+spots	NNS	34	False	0	neutral
+threshold	NN	34	False	0	somewhat polite
+direct	JJ	34	False	0.1	neutral
+chosen	NN	34	False	0	polite
+station	NN	34	False	0	Mixed
+clothes	NNS	34	False	0	impolite
+closed	VBD	34	False	-0.1	impolite
+functioning	VBG	34	False	0	somewhat polite
+million	CD	34	False	0	impolite
+provider	NN	34	False	0	neutral
+anymore	RB	34	False	0	impolite
+vast	NN	34	False	0	polite
+contemporary	JJ	34	False	0.17	polite
+valued	VBN	34	False	0	polite
+assignment	NN	34	False	0	somewhat polite
+switch	NN	34	False	0	impolite
+customized	VBN	34	False	0	polite
+friend	NN	33	False	0	impolite
+unnecessary	JJ	33	False	-0.4	impolite
+staffed	NN	33	False	0	impolite
+provided	VBN	33	False	0	neutral
+modify	NN	33	False	0	neutral
+overcharge	NN	33	False	0	impolite
+marketing	NN	33	False	0	impolite
+instance	NN	33	False	0	polite
+town	NN	33	False	0	impolite
+import	NN	33	False	0	impolite
+prevent	NN	33	False	0	polite
+entitled	VBN	33	False	0	impolite
+reactivate	NN	33	False	0	neutral
+assess	NN	33	False	0	polite
+syllabus	NN	33	False	0	impolite
+stress	NN	33	False	0	polite
+stunning	VBG	33	False	0.5	polite
+patient	NN	33	False	0	polite
+february	JJ	33	False	0	neutral
+manufacturing	NN	33	False	0	polite
+chain	NN	33	False	0	somewhat polite
+function	NN	33	False	0	neutral
+refreshing	VBG	33	False	0.5	polite
+pepperoni	NN	33	False	0	neutral
+carry	NN	33	False	0	impolite
+holder	NN	32	False	0	polite
+hair	NN	32	False	0	impolite
+remove	VB	32	False	0	polite
+building	NN	32	False	0	polite
+fragrance	NN	32	False	0	somewhat polite
+layout	NN	32	False	0	impolite
+sore	NN	32	False	0	impolite
+comfort	NN	32	False	0	polite
+shoe	NN	32	False	0	neutral
+cup	NN	32	False	0	impolite
+onboard	NN	32	False	0	polite
+japanese	JJ	32	False	0	neutral
+reject	NN	32	False	0	impolite
+scuba	NN	32	False	0	somewhat polite
+encourage	NN	32	False	0	polite
+corporate	JJ	32	False	0	polite
+flora	NNS	32	False	0	polite
+rectify	VB	31	False	0	somewhat polite
+ride	NN	31	False	0	impolite
+artifact	NN	31	False	0	neutral
+talented	VBN	31	False	0.7	polite
+mushroom	NN	31	False	0	neutral
+taxonomy	NN	31	False	0	impolite
+luxurious	JJ	31	False	0	polite
+smartwatch	NN	31	False	0	polite
+surfboard	NN	31	False	0	impolite
+attempt	NN	31	False	0	Mixed
+golf	NN	31	False	0	impolite
+impressive	JJ	31	False	1	polite
+annually	RB	31	False	0	polite
+beat	NN	31	False	0	impolite
+combine	NN	31	False	0	polite
+breathe	NN	31	False	0	impolite
+dry	NN	31	False	-0.07	impolite
+stir	NN	31	False	0	neutral
+serene	NN	30	False	0	polite
+summary	NN	30	False	0	neutral
+unclear	JJ	30	False	0	somewhat polite
+advertised	JJ	30	False	0	neutral
+injury	NN	30	False	0	impolite
+establishment	NN	30	False	0	impolite
+ideal	NN	30	False	0.9	impolite
+following	VBG	30	False	0	neutral
+rise	NN	30	False	0	polite
+inactive	JJ	30	False	0	neutral
+music	NN	30	False	0	polite
+statistical	JJ	30	False	0	neutral
+complex	JJ	30	False	-0.3	impolite
+liking	VBG	30	False	0	somewhat polite
+stain	NN	30	False	0	impolite
+refinance	NN	30	False	0	neutral
+sugarcoat	NN	30	False	0	impolite
+difficult	JJ	30	False	-0.5	impolite
+anyone	NN	30	False	0	impolite
+skate	NN	30	False	0	neutral
+playoff	NN	29	False	0	impolite
+thai	NN	29	False	0	neutral
+sophisticated	JJ	29	False	0.5	impolite
+lake	NN	29	False	0	impolite
+exam	NN	29	False	0	impolite
+selling	VBG	29	False	0	polite
+reputable	JJ	29	False	0.5	impolite
+background	NN	29	False	0	impolite
+careful	NN	29	False	-0.1	impolite
+roast	NN	29	False	0	neutral
+donation	NN	29	False	0	neutral
+orchid	NN	29	False	0	polite
+appeal	NN	29	False	0	neutral
+ring	NN	29	False	0	impolite
+hey	NN	29	False	0	somewhat polite
+revise	NN	29	False	0	neutral
+portobello	NN	29	False	0	neutral
+revised	VBN	29	False	0	polite
+sql	NN	29	False	0	impolite
+accomplish	NN	29	False	0	somewhat polite
+protect	NN	29	False	0	Mixed
+relationship	NN	29	False	0	polite
+communicate	NN	29	False	0	impolite
+network	NN	29	False	0	polite
+ocean	NN	29	False	0	impolite
+lost	VBN	29	False	0	impolite
+upskill	NN	29	False	0	polite
+measure	NN	29	False	0	neutral
+borrow	NN	29	False	0	polite
+finish	NN	28	False	0	impolite
+biology	NN	28	False	0	impolite
+cash	NN	28	False	0	impolite
+array	NN	28	False	0	Mixed
+petty	NN	28	False	0	impolite
+classification	NN	28	False	0	impolite
+weren	NNS	28	True	0	impolite
+saw	NN	28	False	0	impolite
+fish	NN	28	False	0	impolite
+occasionally	RB	28	False	0	somewhat polite
+obvious	JJ	28	False	0	impolite
+kill	NN	28	False	0	impolite
+recur	NN	28	False	0	polite
+decadent	NN	28	False	0	polite
+concise	NN	28	False	0.1	neutral
+newsletter	NN	28	False	0	neutral
+reopening	VBG	28	False	0	neutral
+expedited	VBN	28	False	0	impolite
+direction	NN	28	False	0	polite
+cache	NN	28	False	0	somewhat polite
+criterion	NN	28	False	0	somewhat polite
+google	NN	27	False	0	impolite
+nature	NN	27	False	0	polite
+disappointing	VBG	27	False	-0.6	impolite
+half	NN	27	False	-0.17	impolite
+invaluable	JJ	27	False	0	polite
+regularly	RB	27	False	0	somewhat polite
+whether	IN	27	False	0	polite
+branch	NN	27	False	0	neutral
+amateur	NN	27	False	-0.25	impolite
+temperature	NN	27	False	0	neutral
+enthusiast	NN	27	False	0	polite
+constructive	NN	27	False	0	impolite
+unopened	JJ	27	False	0	somewhat polite
+typical	JJ	27	False	-0.17	Mixed
+easily	RB	27	False	0.43	polite
+tea	NN	27	False	0	polite
+site	NN	27	False	0	neutral
+prioritization	NN	27	False	0	neutral
+refresher	NN	27	False	0	impolite
+customize	NN	27	False	0	polite
+nice	JJ	27	False	0.6	impolite
+swing	VBG	27	False	0	impolite
+dive	NN	27	False	0	somewhat polite
+shortage	NN	27	False	0	somewhat polite
+others	NNS	27	False	0	impolite
+primarily	RB	27	False	0.4	polite
+christmas	NN	27	False	0	impolite
+joint	NN	27	False	0	impolite
+diet	NN	27	False	0	impolite
+apart	RB	27	False	0	impolite
+worker	NN	27	False	0	impolite
+gain	NN	26	False	0	polite
+chair	NN	26	False	0	impolite
+worn	NN	26	False	0	impolite
+sourdough	NN	26	False	0	neutral
+lettuce	NN	26	False	0	impolite
+seafood	NN	26	False	0	polite
+hefty	NN	26	False	0	impolite
+productive	JJ	26	False	0	polite
+gourmet	NN	26	False	0	impolite
+efficiently	RB	26	False	0	polite
+landmark	NN	26	False	0	polite
+raise	NN	26	False	0	impolite
+additionally	RB	26	False	0	polite
+consolidate	NN	26	False	0	somewhat polite
+fancy	NN	26	False	0	impolite
+myself	PRP	26	True	0	impolite
+apparel	NN	26	False	0	somewhat polite
+organization	NN	26	False	0	impolite
+download	NN	26	False	0	neutral
+relax	NN	26	False	0	polite
+american	JJ	26	False	0	neutral
+tolerate	NN	26	False	0	impolite
+sample	NN	26	False	0	polite
+rebooked	VBN	26	False	0	somewhat polite
+ball	NN	26	False	0	impolite
+yesterday	NN	26	False	0	impolite
+invalid	JJ	26	False	0	impolite
+truck	NN	26	False	0	impolite
+potentially	RB	26	False	0	somewhat polite
+gem	NN	26	False	0	polite
+stupid	JJ	25	False	-0.8	impolite
+laptop	NN	25	False	0	neutral
+korean	NN	25	False	0	neutral
+stagger	NN	25	False	0	impolite
+earn	NN	25	False	0	polite
+combo	NN	25	False	0	polite
+complexity	NN	25	False	0	polite
+perk	NN	25	False	0	polite
+sufficient	NN	25	False	0	neutral
+significant	JJ	25	False	0.38	polite
+agile	NN	25	False	0.5	impolite
+professionally	RB	25	False	0.1	polite
+lovely	RB	25	False	0.5	polite
+frequent	NN	25	False	0.1	polite
+bore	NN	25	False	0	impolite
+autumn	NN	25	False	0	neutral
+pleasant	NN	25	False	0.73	polite
+reasoning	VBG	25	False	0	somewhat polite
+cleanliness	NN	25	False	0	impolite
+championship	NN	25	False	0	impolite
+par	NN	25	False	0	impolite
+textbook	NN	25	False	0	impolite
+invest	NN	25	False	0	impolite
+commission	NN	25	False	0	somewhat polite
+poorly	RB	25	False	-0.4	impolite
+fruitcake	NN	25	False	0	polite
+dime	NN	25	False	0	impolite
+applies	NNS	25	False	0	neutral
+example	NN	25	False	0	neutral
+closely	RB	25	False	0	polite
+breakfast	NN	25	False	0	polite
+perfectly	RB	24	False	1	impolite
+fell	VBD	24	False	0	impolite
+underwriting	NN	24	False	0	Mixed
+indian	JJ	24	False	0	neutral
+young	JJ	24	False	0.1	polite
+paris	NN	24	False	0	polite
+dock	NN	24	False	0	neutral
+identification	NN	24	False	0	neutral
+tiny	JJ	24	False	0	impolite
+slide	NN	24	False	0	impolite
+enrich	NN	24	False	0	polite
+seamlessly	RB	24	False	0.1	polite
+seven	CD	24	False	0	neutral
+pack	NN	24	False	0	impolite
+outdoors	NNS	24	False	0	polite
+beef	NN	24	False	0	neutral
+behavior	NN	24	False	0	impolite
+cast	NN	24	False	0	polite
+vanilla	NN	24	False	0	polite
+snowstorm	NN	24	False	0	polite
+grant	NN	24	False	0	Mixed
+adequate	NN	24	False	0.33	neutral
+expression	NN	24	False	0	neutral
+roster	NN	24	False	0	Mixed
+snowboarding	VBG	24	False	0	neutral
+rob	NN	24	False	0	impolite
+delightful	NN	24	False	1	polite
+decade	NN	24	False	0	impolite
+plastic	NN	24	False	0	impolite
+blind	NN	24	False	-0.5	impolite
+beverage	NN	24	False	0	polite
+brew	NN	24	False	0	polite
+possibility	NN	24	False	0	somewhat polite
+straightforward	NN	24	False	0.38	neutral
+needs	NNS	23	False	0	polite
+misread	NN	23	False	0	impolite
+optional	JJ	23	False	0	impolite
+paint	NN	23	False	0	impolite
+misplace	NN	23	False	0	somewhat polite
+higher	JJR	23	False	0.25	neutral
+burrito	NN	23	False	0	impolite
+useful	JJ	23	False	0.3	neutral
+bunny	NN	23	False	0	impolite
+offset	NN	23	False	0	somewhat polite
+highway	NN	23	False	0	impolite
+colleague	NN	23	False	0	polite
+aboard	NN	23	False	0	polite
+incorrect	NN	23	False	0	somewhat polite
+disgust	NN	23	False	0	impolite
+weight	NN	23	False	0	Mixed
+incorrectly	RB	23	False	0	polite
+sensitive	JJ	23	False	0.1	impolite
+stage	NN	23	False	0	impolite
+overcook	NN	23	False	0	impolite
+kick	NN	23	False	0	impolite
+photography	NN	23	False	0	polite
+desired	VBN	23	False	0	somewhat polite
+penalize	NN	23	False	0	impolite
+automated	VBN	23	False	0	neutral
+position	NN	23	False	0	impolite
+zero	NN	23	False	0	somewhat polite
+rough	NN	23	False	-0.1	impolite
+reevaluate	NN	23	False	0	impolite
+initiative	NN	23	False	0	polite
+overview	NN	23	False	0	neutral
+serious	JJ	23	False	-0.33	impolite
+fabric	NN	23	False	0	neutral
+exciting	VBG	23	False	0.3	polite
+thinking	VBG	23	False	0	neutral
+athlete	NN	22	False	0	polite
+principle	NN	22	False	0	Mixed
+unused	JJ	22	False	0	somewhat polite
+unprofessional	JJ	22	False	0	impolite
+refrigerator	NN	22	False	0	polite
+hide	NN	22	False	0	impolite
+patty	NN	22	False	0	impolite
+identity	NN	22	False	0	neutral
+legitimate	NN	22	False	0	impolite
+hockey	NN	22	False	0	polite
+strong	JJ	22	False	0.43	polite
+pricey	NN	22	False	0	somewhat polite
+manner	NN	22	False	0	impolite
+scratch	NN	22	False	0	impolite
+competent	NN	22	False	0.5	impolite
+heatwave	NN	22	False	0	somewhat polite
+mileage	NN	22	False	0	polite
+lineup	NN	22	False	0	polite
+fuss	NN	22	False	0	impolite
+hostel	NN	22	False	0	impolite
+perfection	NN	22	False	0	neutral
+significantly	RB	22	False	0.38	neutral
+transport	NN	22	False	0	polite
+mood	NN	22	False	0	somewhat polite
+workaround	NN	22	False	0	neutral
+paddle	NN	22	False	0	impolite
+reset	NN	22	False	0	somewhat polite
+unprepared	JJ	22	False	0	impolite
+breath	NN	22	False	0	impolite
+apr	NN	22	False	0	neutral
+submission	NN	22	False	0	somewhat polite
+freeze	NN	22	False	0	impolite
+debit	NN	21	False	0	neutral
+creditworthiness	NN	21	False	0	neutral
+chart	NN	21	False	0	impolite
+recreational	JJ	21	False	0	polite
+healthy	JJ	21	False	0.5	impolite
+perspective	NN	21	False	0	polite
+malfunction	NN	21	False	0	impolite
+unlimited	JJ	21	False	0	polite
+sizing	VBG	21	False	0	polite
+string	NN	21	False	0	polite
+captivate	NN	21	False	0	polite
+hire	NN	21	False	0	impolite
+immersive	JJ	21	False	0	polite
+exotic	JJ	21	False	0.5	impolite
+japan	NN	21	False	0	polite
+breathtaking	NN	21	False	1	polite
+parent	NN	21	False	0	impolite
+photo	NN	21	False	0	impolite
+fortune	NN	21	False	0	impolite
+modeling	VBG	21	False	0	neutral
+patron	NN	21	False	0	polite
+solve	NN	21	False	0	neutral
+password	NN	21	False	0	neutral
+fixed	VBN	21	False	0.1	neutral
+marathon	NN	21	False	0	impolite
+reinstate	NN	21	False	0	neutral
+greenery	NN	21	False	0	polite
+shape	NN	21	False	0	impolite
+supervisor	NN	21	False	0	impolite
+adobe	NN	21	False	0	polite
+portfolio	NN	21	False	0	impolite
+grilled	VBN	21	False	0	polite
+conversation	NN	20	False	0	impolite
+collaboration	NN	20	False	0	neutral
+regatta	NN	20	False	0	impolite
+sir	NN	20	False	0	Mixed
+identify	VB	20	False	0	neutral
+reimbursement	NN	20	False	0	neutral
+spread	NN	20	False	0	polite
+traveler	NN	20	False	0	polite
+seminar	NN	20	False	0	impolite
+owe	NN	20	False	0	impolite
+nobody	NN	20	False	0	impolite
+above	IN	20	True	0	neutral
+skier	NN	20	False	0	impolite
+screen	NN	20	False	0	impolite
+promo	NN	20	False	0	polite
+wasted	VBN	20	False	-0.2	impolite
+wipe	NN	20	False	0	impolite
+eligibility	NN	20	False	0	somewhat polite
+amaze	NN	20	False	0	polite
+launch	NN	20	False	0	somewhat polite
+across	IN	20	False	0	polite
+database	NN	20	False	0	neutral
+backlog	NN	20	False	0	neutral
+against	IN	20	True	0	impolite
+unresponsive	JJ	20	False	0	impolite
+closing	NN	20	False	0	neutral
+generally	RB	20	False	0.05	somewhat polite
+profit	NN	20	False	0	impolite
+vision	NN	20	False	0	impolite
+lock	NN	20	False	0	neutral
+unoriginal	JJ	20	False	-0.2	impolite
+worst	JJS	20	False	-1	impolite
+anywhere	RB	20	False	0	impolite
+vague	NN	19	False	-0.5	impolite
+prorated	VBN	19	False	0	somewhat polite
+revert	NN	19	False	0	polite
+awful	NN	19	False	-1	impolite
+pairing	VBG	19	False	0	polite
+bothering	VBG	19	False	0	impolite
+afternoon	NN	19	False	0	Mixed
+specialized	JJ	19	False	0	somewhat polite
+dog	NN	19	False	0	impolite
+immediate	NN	19	False	0	neutral
+smoothie	NN	19	False	0	polite
+smoother	NN	19	False	0	polite
+attached	VBN	19	False	0	neutral
+ten	NNS	19	False	0	neutral
+compatible	JJ	19	False	0	neutral
+variation	NN	19	False	0	Mixed
+depth	NN	19	False	0	polite
+muay	NN	19	False	0	neutral
+supposedly	RB	19	False	0	impolite
+rescheduling	VBG	19	False	0	somewhat polite
+sustainable	JJ	19	False	0	polite
+installation	NN	19	False	0	Mixed
+heart	NN	19	False	0	impolite
+whenever	NN	19	False	0	polite
+loser	NN	19	False	0	impolite
+lifeguard	NN	19	False	0	neutral
+greenhouse	NN	19	False	0	polite
+creature	NN	19	False	0	polite
+realize	VB	19	False	0	impolite
+stadium	NN	19	False	0	neutral
+excursion	NN	19	False	0	impolite
+failure	NN	19	False	-0.32	impolite
+foreign	JJ	19	False	-0.12	polite
+solid	JJ	19	False	0	impolite
+coursework	NN	19	False	0	impolite
+repeat	NN	19	False	0	impolite
+tear	NN	19	False	0	polite
+tropical	JJ	19	False	0	polite
+refreshment	NN	19	False	0	polite
+apple	NN	19	False	0	Mixed
+appetizer	NN	19	False	0	polite
+workplace	NN	18	False	0	polite
+timing	NN	18	False	0	neutral
+gun	NN	18	False	0	neutral
+celebrate	NN	18	False	0	polite
+embarrass	NN	18	False	0	impolite
+rather	RB	18	False	0	impolite
+resubmit	NN	18	False	0	neutral
+yogurt	NN	18	False	0	impolite
+fitting	NN	18	False	0.5	polite
+craving	VBG	18	False	0	polite
+transit	NN	18	False	0	neutral
+ego	NN	18	False	0	impolite
+manually	RB	18	False	0	Mixed
+brick	NN	18	False	0	neutral
+wine	NN	18	False	0	polite
+fascinate	NN	18	False	0	polite
+latin	NN	18	False	0	neutral
+reptile	NN	18	False	0	neutral
+hearty	NN	18	False	0	polite
+serial	JJ	18	False	0	somewhat polite
+trigger	NN	18	False	0	somewhat polite
+bundle	NN	18	False	0	somewhat polite
+takeout	NN	18	False	0	Mixed
+botany	NN	18	False	0	impolite
+dashboard	NN	18	False	0	neutral
+ups	NNS	18	False	0	somewhat polite
+paper	NN	18	False	0	impolite
+formula	NN	18	False	0	impolite
+sugar	NN	18	False	0	impolite
+quiet	JJ	18	False	0	impolite
+acquire	VB	18	False	0	Mixed
+express	NN	18	False	0	neutral
+plate	NN	18	False	0	polite
+random	NN	18	False	-0.5	impolite
+withdrawal	NN	18	False	0	neutral
+q	NN	18	False	0	neutral
+expected	VBN	18	False	-0.1	Mixed
+bottle	NN	17	False	0	impolite
+battery	NN	17	False	0	somewhat polite
+inconvenient	NN	17	False	-0.6	impolite
+convey	NN	17	False	0	polite
+frivolous	JJ	17	False	0	impolite
+designer	NN	17	False	0	impolite
+unpaid	JJ	17	False	0.2	Mixed
+fan	NN	17	False	0	polite
+comp	NN	17	False	0	impolite
+assign	NN	17	False	0	neutral
+comment	NN	17	False	0	polite
+downgrade	NN	17	False	0	neutral
+closer	NN	17	False	0	neutral
+overdrawn	NN	17	False	0	impolite
+reduced	VBN	17	False	0	neutral
+dairy	NN	17	False	0	neutral
+safely	RB	17	False	0.5	impolite
+hill	NN	17	False	0	impolite
+pilot	NN	17	False	0	impolite
+remainder	NN	17	False	0	somewhat polite
+arise	NN	17	False	0	Mixed
+habitat	NN	17	False	0	polite
+habit	NN	17	False	0	impolite
+representative	NN	17	False	0	neutral
+loud	NN	17	False	0.1	impolite
+importance	NN	17	False	0	polite
+remember	VB	17	False	0	impolite
+wind	NN	17	False	0	impolite
+internet	NN	17	False	0	neutral
+protocol	NN	17	False	0	Mixed
+apy	NN	17	False	0	neutral
+irresponsible	JJ	17	False	0	impolite
+discus	NN	17	False	0	somewhat polite
+baristas	NNS	17	False	0	neutral
+significance	NN	17	False	0	impolite
+deep	NN	17	False	0	polite
+dig	NN	17	False	0	impolite
+skilled	VBN	17	False	0.5	polite
+b	NN	17	False	0	neutral
+reapplying	VBG	17	False	0	neutral
+white	JJ	17	False	0	impolite
+lentil	NN	17	False	0	polite
+incorporate	NN	17	False	0	polite
+skillset	NN	17	False	0	Mixed
+mixologist	NN	16	False	0	polite
+flat	JJ	16	False	-0.03	Mixed
+muffin	NN	16	False	0	somewhat polite
+backhand	NN	16	False	0	impolite
+educate	NN	16	False	0	polite
+mousse	NN	16	False	0	polite
+aim	NN	16	False	0	polite
+fragile	NN	16	False	0	impolite
+wilt	NN	16	False	0	impolite
+avocado	NN	16	False	0	impolite
+heavy	JJ	16	False	-0.2	impolite
+logistics	NNS	16	False	0	impolite
+somewhat	RB	16	False	0	somewhat polite
+narrative	JJ	16	False	0	neutral
+portal	NN	16	False	0	neutral
+visa	NN	16	False	0	polite
+tap	NN	16	False	0	polite
+privilege	NN	16	False	0	impolite
+impressionist	NN	16	False	0	polite
+tracking	VBG	16	False	0	neutral
+allowance	NN	16	False	0	Mixed
+flyer	NN	16	False	0	polite
+trail	NN	16	False	0	neutral
+intolerance	NN	16	False	0	somewhat polite
+conduct	NN	16	False	0	neutral
+recognize	VB	16	False	0	impolite
+judging	NN	16	False	0	somewhat polite
+enhanced	VBN	16	False	0	Mixed
+waterproof	NN	16	False	0	polite
+structured	VBN	16	False	0	neutral
+voyage	NN	16	False	0	polite
+transparency	NN	16	False	0	polite
+legroom	NN	16	False	0	polite
+depending	VBG	16	False	0	somewhat polite
+blaster	NN	16	False	0	neutral
+affected	JJ	16	False	0	somewhat polite
+frozen	NNS	16	False	0	impolite
+genius	NN	16	False	0	impolite
+mixed	JJ	16	False	0	impolite
+cozy	NN	16	False	-0.2	polite
+competitor	NN	16	False	0	impolite
+mask	NN	16	False	0	impolite
+swimming	VBG	16	False	0	neutral
+almost	RB	16	False	0	polite
+unfair	NN	16	False	-0.5	impolite
+acting	VBG	16	False	0	impolite
+navigation	NN	16	False	0	somewhat polite
+puzzle	NN	16	False	0	polite
+separately	RB	16	False	0	neutral
+helmet	NN	16	False	0	impolite
+added	VBD	16	False	0	polite
+edition	NN	16	False	0	neutral
+texture	NN	15	False	0	polite
+screening	VBG	15	False	0	neutral
+path	NN	15	False	0	impolite
+belonging	NN	15	False	0	impolite
+standing	VBG	15	False	0	Mixed
+fleet	NN	15	False	0	neutral
+director	NN	15	False	0	impolite
+diversity	NN	15	False	0	impolite
+beneficial	JJ	15	False	0	polite
+arabica	NN	15	False	0	neutral
+snowshoe	NN	15	False	0	neutral
+soggy	NN	15	False	0	impolite
+webinar	NN	15	False	0	neutral
+trash	NN	15	False	0	impolite
+cereal	NN	15	False	0	impolite
+alteration	NN	15	False	0	impolite
+awesome	NN	15	False	1	polite
+surface	NN	15	False	0	impolite
+alert	NN	15	False	0	polite
+palate	NN	15	False	0	polite
+accidentally	RB	15	False	0	somewhat polite
+insult	NN	15	False	0	impolite
+stressful	NN	15	False	0	polite
+noticed	VBN	15	False	0	neutral
+airfare	NN	15	False	0	Mixed
+mango	NN	15	False	0	polite
+stuck	NN	15	False	0	impolite
+nominal	JJ	15	False	0	polite
+generation	NN	15	False	0	impolite
+methodology	NN	15	False	0	impolite
+recipient	NN	15	False	0	neutral
+anticipate	NN	15	False	0	somewhat polite
+overhyped	VBD	15	False	0	impolite
+acceptable	JJ	15	False	0	impolite
+official	NN	15	False	0	neutral
+curious	JJ	15	False	-0.1	somewhat polite
+pocket	NN	15	False	0	impolite
+matching	VBG	15	False	0	polite
+boring	NN	15	False	-1	impolite
+greatly	RB	15	False	0.8	polite
+missing	VBG	15	False	-0.2	somewhat polite
+test	NN	15	False	0	impolite
+body	NN	15	False	0	impolite
+employment	NN	15	False	0	neutral
+yes	NNS	15	False	0	impolite
+rude	NN	15	False	-0.3	impolite
+pattern	NN	15	False	0	neutral
+november	NN	15	False	0	neutral
+inclusive	JJ	15	False	0	polite
+present	NN	15	False	0	impolite
+intend	NN	15	False	0	somewhat polite
+ashamed	VBN	15	False	0	impolite
+giraffe	NN	15	False	0	neutral
+bite	NN	15	False	0	polite
+restrict	NN	15	False	0	neutral
+retrain	NN	15	False	0	impolite
+latte	NN	15	False	0	neutral
+proficient	NN	15	False	0	impolite
+inspect	NN	15	False	0	neutral
+spell	NN	15	False	0	impolite
+doorstep	NN	15	False	0	Mixed
+authenticity	NN	15	False	0	impolite
+returnable	JJ	14	False	0	impolite
+demo	NN	14	False	0	polite
+die	NN	14	False	0	impolite
+evacuation	NN	14	False	0	neutral
+true	JJ	14	False	0.35	polite
+reckless	NN	14	False	0	impolite
+lapse	NN	14	False	0	somewhat polite
+quantity	NN	14	False	0	polite
+scoop	NN	14	False	0	polite
+sorbet	NN	14	False	0	Mixed
+associated	VBN	14	False	0	polite
+tire	NN	14	False	0	impolite
+algorithm	NN	14	False	0	neutral
+almond	NN	14	False	0	neutral
+frustrated	VBN	14	False	-0.7	impolite
+rematch	NN	14	False	0	impolite
+heard	NN	14	False	0	impolite
+equal	JJ	14	False	0	polite
+wheat	NN	14	False	0	neutral
+organizer	NN	14	False	0	somewhat polite
+finally	RB	14	False	0	impolite
+drama	NN	14	False	0	impolite
+baked	VBN	14	False	0	polite
+hurry	NN	14	False	0	impolite
+orient	NN	14	False	0	neutral
+virtual	JJ	14	False	0	somewhat polite
+century	NN	14	False	0	neutral
+badminton	NN	14	False	0	neutral
+holdup	NN	14	False	0	somewhat polite
+novel	NN	14	False	0	impolite
+hobby	NN	14	False	0	impolite
+bail	NN	14	False	0	impolite
+jersey	NN	14	False	0	impolite
+workshops	NNS	14	False	0	polite
+narrow	NN	14	False	-0.2	somewhat polite
+workout	NN	14	False	0	polite
+grace	NN	14	False	0	somewhat polite
+undergoing	VBG	14	False	0	neutral
+silent	NN	14	False	0	impolite
+celebration	NN	14	False	0	polite
+preview	NN	14	False	0	somewhat polite
+oven	RB	14	False	0	neutral
+flaw	NN	14	False	0	impolite
+proud	NN	14	False	0.8	polite
+twist	NN	14	False	0	polite
+object	NN	14	False	0	neutral
+accessibility	NN	14	False	0	impolite
+iced	JJ	14	False	0	polite
+cocktails	NNS	14	False	0	polite
+spirit	NN	14	False	0	polite
+exorbitant	NN	14	False	0	impolite
+kindly	RB	14	False	0.6	polite
+biryani	NN	14	False	0	Mixed
+pretend	NN	14	False	0	impolite
+robbery	NN	14	False	0	impolite
+brush	NN	14	False	0	impolite
+labor	NN	14	False	0	somewhat polite
+inbox	NN	14	False	0	neutral
+successful	JJ	13	False	0.75	Mixed
+talent	NN	13	False	0	polite
+utilize	VB	13	False	0	neutral
+historic	NN	13	False	0	polite
+crap	NN	13	False	-0.8	impolite
+tight	NN	13	False	-0.18	impolite
+themselves	PRP	13	True	0	impolite
+scratched	VBN	13	False	0	impolite
+aside	RB	13	False	0	Mixed
+asap	NN	13	False	0	impolite
+crowded	VBN	13	False	0	impolite
+tantrum	NN	13	False	0	impolite
+showcases	NNS	13	False	0	polite
+license	NN	13	False	0	polite
+medication	NN	13	False	0	polite
+demonstration	NN	13	False	0	polite
+resubmitting	VBG	13	False	0	neutral
+intelligent	NN	13	False	0.8	impolite
+tech	NN	13	False	0	impolite
+spoil	NN	13	False	0	impolite
+expand	NN	13	False	0	somewhat polite
+steal	NN	13	False	0	impolite
+kebab	NN	13	False	0	polite
+occurrence	NN	13	False	0	polite
+tryout	NN	13	False	0	neutral
+lie	NN	13	False	0	impolite
+whiny	NN	13	False	0	impolite
+fiction	NN	13	False	0	impolite
+mediterranean	NN	13	False	0	polite
+desire	NN	13	False	0	Mixed
+ground	NN	13	False	0	impolite
+consume	NN	13	False	0	neutral
+midst	NN	13	False	0	polite
+glass	NN	13	False	0	polite
+secret	NN	13	False	-0.4	impolite
+bench	NN	13	False	0	neutral
+abroad	RB	13	False	0	Mixed
+penny	NN	13	False	0	impolite
+overreact	NN	13	False	0	impolite
+recall	NN	13	False	0	polite
+output	NN	13	False	0	neutral
+returned	VBN	13	False	0	somewhat polite
+peaceful	NN	13	False	0.25	polite
+appreciation	NN	13	False	0	polite
+ridiculously	RB	13	False	-0.33	impolite
+halfway	NN	13	False	0	impolite
+ourselves	NNS	13	True	0	polite
+renowned	VBN	13	False	0	impolite
+used	VBN	13	False	0	impolite
+getaway	NN	13	False	0	polite
+enjoyment	NN	13	False	0	polite
+sunscreen	NN	13	False	0	impolite
+brunch	NN	13	False	0	polite
+jean	NN	13	False	0	impolite
+carrier	NN	13	False	0	polite
+spa	NN	13	False	0	polite
+stumble	JJ	13	False	-0.05	polite
+pickle	NN	13	False	0	impolite
+average	JJ	13	False	-0.15	neutral
+watermelon	NN	13	False	0	polite
+reporting	NN	13	False	0	polite
+fifty	NN	13	False	0	impolite
+activation	NN	13	False	0	polite
+stable	JJ	13	False	0	impolite
+naturally	RB	13	False	0.1	neutral
+physical	JJ	13	False	0	neutral
+inch	NN	13	False	0	neutral
+excessive	JJ	13	False	-0.25	impolite
+clarity	NN	13	False	0	impolite
+asking	VBG	13	False	0	impolite
+four	CD	13	False	0	neutral
+reskill	NN	13	False	0	polite
+allergen	NN	13	False	0	somewhat polite
+consistently	RB	13	False	0.25	impolite
+borrowing	NN	13	False	0	polite
+dead	JJ	12	False	-0.2	impolite
+manufacture	NN	12	False	0	impolite
+element	NN	12	False	0	somewhat polite
+folder	NN	12	False	0	neutral
+clinic	NN	12	False	0	neutral
+draw	NN	12	False	0	impolite
+authorize	VB	12	False	0	neutral
+assembly	RB	12	False	0	impolite
+injure	NN	12	False	0	impolite
+complement	NN	12	False	0	polite
+spam	NN	12	False	0	neutral
+mine	NN	12	False	0	impolite
+yell	NN	12	False	0	impolite
+footprint	NN	12	False	0	neutral
+carbon	NN	12	False	0	neutral
+plaque	NN	12	False	0	impolite
+skip	NN	12	False	0	impolite
+scenario	NN	12	False	0	polite
+european	JJ	12	False	0	neutral
+facilitator	NN	12	False	0	polite
+appropriate	NN	12	False	0.5	somewhat polite
+dinosaur	NN	12	False	0	impolite
+cooking	NN	12	False	0	neutral
+foot	NN	12	False	0	impolite
+grill	NN	12	False	0	neutral
+introductory	NN	12	False	0	Mixed
+ramen	NNS	12	False	0	neutral
+facilitate	NN	12	False	0	polite
+blender	NN	12	False	0	polite
+purchased	VBN	12	False	0	neutral
+desperate	NN	12	False	-0.6	impolite
+careless	NN	12	False	-0.5	impolite
+origination	NN	12	False	0	polite
+trophy	NN	12	False	0	impolite
+logistical	JJ	12	False	0	somewhat polite
+robusta	NN	12	False	0	neutral
+judge	NN	12	False	0	impolite
+aisle	NN	12	False	0	Mixed
+reverse	NN	12	False	0	impolite
+inflation	NN	12	False	0	Mixed
+reliable	JJ	12	False	0	impolite
+boxer	NN	12	False	0	impolite
+polo	NN	12	False	0	neutral
+agent	NN	12	False	0	polite
+crystal	NN	12	False	0	impolite
+tough	JJ	12	False	-0.39	impolite
+disturb	NN	12	False	0	impolite
+ad	NN	12	False	0	neutral
+dream	NN	12	False	0	polite
+entirely	RB	12	False	0	impolite
+administration	NN	12	False	0	Mixed
+barista	NN	12	False	0	neutral
+silly	RB	12	False	-0.5	impolite
+congestion	NN	12	False	0	impolite
+aquatic	JJ	12	False	0	somewhat polite
+slap	NN	12	False	0	impolite
+overwhelm	NN	12	False	0	somewhat polite
+periodically	RB	12	False	0	somewhat polite
+creation	NN	12	False	0	polite
+unpredictable	JJ	12	False	-0.17	impolite
+flags	NNS	12	False	0	Mixed
+vase	NN	12	False	0	impolite
+rotate	NN	12	False	0	neutral
+qualification	NN	12	False	0	Mixed
+stats	NNS	12	False	0	somewhat polite
+shakespeare	NN	12	False	0	impolite
+ratio	NN	12	False	0	neutral
+fulfill	NN	12	False	0	neutral
+daycare	NN	12	False	0	impolite
+evaluate	NN	12	False	0	neutral
+annoy	NN	12	False	0	impolite
+hang	NN	12	False	0	impolite
+overbooked	VBN	12	False	0	impolite
+challenging	VBG	12	False	0.5	polite
+sick	NN	12	False	-0.71	impolite
+changer	NN	12	False	0	polite
+experiment	NN	12	False	0	polite
+hiking	VBG	12	False	0	polite
+chip	NN	12	False	0	impolite
+limitation	NN	12	False	0	somewhat polite
+c	NNS	11	False	0	neutral
+restore	NN	11	False	0	neutral
+plain	NN	11	False	-0.21	impolite
+fifth	NN	11	False	0	impolite
+accident	NN	11	False	0	impolite
+clause	NN	11	False	0	Mixed
+tooth	NN	11	False	0	polite
+musical	JJ	11	False	0	polite
+reputation	NN	11	False	0	impolite
+remote	NN	11	False	-0.1	polite
+familiarize	VB	11	False	0	polite
+lender	NN	11	False	0	somewhat polite
+green	JJ	11	False	-0.2	impolite
+minimal	NN	11	False	-0.1	polite
+citrus	NN	11	False	0	polite
+sportsmanship	NN	11	False	0	polite
+signage	NN	11	False	0	impolite
+eager	NN	11	False	0	polite
+immersion	NN	11	False	0	neutral
+shuttle	NN	11	False	0	neutral
+son	NN	11	False	0	impolite
+regret	NN	11	False	0	impolite
+dump	NN	11	False	0	impolite
+he	PRP	11	True	0	impolite
+intentionally	RB	11	False	0	impolite
+advancement	NN	11	False	0	polite
+allowed	VBN	11	False	0	polite
+passionate	NN	11	False	-0.05	polite
+garlic	NN	11	False	0	polite
+knot	NN	11	False	0	polite
+boots	NNS	11	False	0	polite
+push	NN	11	False	0	polite
+preservation	NN	11	False	0	somewhat polite
+specialize	VB	11	False	0	somewhat polite
+eatery	NN	11	False	0	impolite
+entertainment	NN	11	False	0	Mixed
+ketchup	NN	11	False	0	impolite
+extreme	NN	11	False	-0.12	impolite
+downtown	NN	11	False	0	neutral
+groom	NN	11	False	0	neutral
+consistent	NN	11	False	0.25	neutral
+operator	NN	11	False	0	neutral
+tree	NN	11	False	0	impolite
+liability	NN	11	False	0	impolite
+technology	NN	11	False	0	polite
+misuse	NN	11	False	0	impolite
+panda	NN	11	False	0	impolite
+otherwise	RB	11	False	0	neutral
+lawyer	NN	11	False	0	impolite
+activate	NN	11	False	0	neutral
+kickboxing	VBG	11	False	0	polite
+wing	VBG	11	False	0	impolite
+sent	NN	11	False	0	Mixed
+explicitly	RB	11	False	0	impolite
+na	NNS	11	False	0	impolite
+diligence	NN	11	False	0	polite
+unfortunate	NN	11	False	-0.5	impolite
+inability	NN	11	False	0	impolite
+entertain	NN	11	False	0	polite
+cosmetic	JJ	11	False	0	neutral
+gon	NN	11	False	0	impolite
+rundown	NN	11	False	0	polite
+coming	VBG	11	False	0	neutral
+aircraft	NN	11	False	0	somewhat polite
+opened	VBN	11	False	0	Mixed
+initially	RB	11	False	0	polite
+librarian	JJ	11	False	0	polite
+ticketing	VBG	11	False	0	polite
+east	NN	11	False	0	polite
+validity	NN	11	False	0	impolite
+emotional	JJ	11	False	0	impolite
+default	NN	11	False	0	impolite
+cool	NN	11	False	0.35	Mixed
+substitution	NN	11	False	0	neutral
+constraint	NN	11	False	0	neutral
+waiter	NN	11	False	0	impolite
+lending	NN	11	False	0	neutral
+external	JJ	10	False	0	Mixed
+bootcamps	NNS	10	False	0	neutral
+webinars	NNS	10	False	0	polite
+accordance	NN	10	False	0	neutral
+correction	NN	10	False	0	polite
+surprised	JJ	10	False	0.1	impolite
+tuition	NN	10	False	0	impolite
+matinee	NN	10	False	0	polite
+precious	JJ	10	False	0.5	impolite
+smartphone	NN	10	False	0	neutral
+subscriber	NN	10	False	0	polite
+wheelchair	NN	10	False	0	impolite
+dip	NN	10	False	0	somewhat polite
+surfer	NN	10	False	0	impolite
+spectator	NN	10	False	0	neutral
+denial	NN	10	False	0	impolite
+subtitle	NN	10	False	0	impolite
+retake	NN	10	False	0	impolite
+refinancing	VBG	10	False	0	neutral
+annum	NN	10	False	0	neutral
+optimal	JJ	10	False	0	neutral
+sectional	JJ	10	False	0	polite
+ignore	NN	10	False	0	impolite
+somehow	NN	10	False	0	impolite
+rib	NN	10	False	0	polite
+disrupt	NN	10	False	0	impolite
+respect	NN	10	False	0	impolite
+salary	NN	10	False	0	Mixed
+overspend	NN	10	False	0	impolite
+refine	NN	10	False	0	polite
+creamy	NN	10	False	0	polite
+cleaning	NN	10	False	0	polite
+canvas	NN	10	False	0	impolite
+backyard	NN	10	False	0	impolite
+cloud	NN	10	False	0	Mixed
+reunite	NN	10	False	0	neutral
+government	NN	10	False	0	neutral
+lava	NN	10	False	0	polite
+regulatory	JJ	10	False	0	polite
+imagination	NN	10	False	0	polite
+agency	NN	10	False	0	impolite
+sustainability	NN	10	False	0	polite
+component	NN	10	False	0	polite
+servicing	VBG	10	False	0	somewhat polite
+planned	VBN	10	False	0	Mixed
+bun	NN	10	False	0	impolite
+gap	NN	10	False	0	neutral
+spike	NN	10	False	0	neutral
+arbitrary	JJ	10	False	-0.1	impolite
+locker	NN	10	False	0	impolite
+suspicious	JJ	10	False	0	neutral
+disclose	VB	10	False	0	neutral
+x	NN	10	False	0	neutral
+upload	NN	10	False	0	neutral
+icy	NN	10	False	-0.1	Mixed
+corner	NN	10	False	0	neutral
+caf	NN	10	False	0	polite
+crush	NN	10	False	0	impolite
+subsection	NN	10	False	0	neutral
+smoothy	NN	10	False	0	neutral
+prime	NN	10	False	0	polite
+forever	RB	10	False	0	impolite
+savory	NN	10	False	0	polite
+shot	NN	10	False	0	polite
+conservatory	NN	10	False	0	polite
+concerned	JJ	10	False	0	impolite
+stability	NN	10	False	0	polite
+making	VBG	10	False	0	impolite
+spark	NN	10	False	0	polite
+reality	NN	10	False	0	impolite
+lover	NN	10	False	0	neutral
+unqualified	JJ	10	False	0	impolite
+pal	NN	10	False	0	impolite
+inspiring	VBG	10	False	0.5	polite
+syntax	NN	10	False	0	impolite
+articulate	NN	10	False	0	impolite
+disco	NN	10	False	0	impolite
+allocate	NN	10	False	0	Mixed
+left	NN	10	False	0	neutral
+scent	NN	10	False	0	somewhat polite
+thrive	NN	10	False	0	polite
+fire	NN	10	False	0	impolite
+succulent	NN	10	False	0	impolite
+stun	NN	10	False	0	polite
+worthless	NN	10	False	-0.8	impolite
+hat	NN	10	False	0	polite
+cactus	NN	10	False	0	impolite
+understaffed	NN	10	False	0	impolite
+shine	NN	10	False	0	polite
+illustration	NN	10	False	0	neutral
+working	VBG	10	False	0	impolite
+paycheck	NN	10	False	0	impolite
+beach	NN	10	False	0	impolite
+hurt	NN	10	False	0	impolite
+brownie	NN	10	False	0	neutral
+allocation	NN	10	False	0	neutral
+collateral	NN	10	False	0	impolite
+mcdonald	NN	10	False	0	impolite
+entree	NN	10	False	0	neutral
+aspects	NNS	9	False	0	somewhat polite
+intent	NN	9	False	0	impolite
+seasick	NN	9	False	0	impolite
+avid	NN	9	False	0.25	polite
+calculator	NN	9	False	0	neutral
+snowfall	NN	9	False	0	polite
+italy	NN	9	False	0	neutral
+property	NN	9	False	0	impolite
+degree	NN	9	False	0	impolite
+harvest	NN	9	False	0	polite
+playground	NN	9	False	0	impolite
+passion	NN	9	False	0	polite
+swimmer	NN	9	False	0	impolite
+vinaigrette	NN	9	False	0	polite
+sweeter	NN	9	False	0	polite
+shakespearean	NN	9	False	0	Mixed
+fulfil	NN	9	False	0	neutral
+sleep	NN	9	False	0	impolite
+overdrafting	VBG	9	False	0	impolite
+caliber	NN	9	False	0	impolite
+stroll	NN	9	False	0	polite
+amateurish	JJ	9	False	-0.4	impolite
+ease	NN	9	False	0	polite
+surroundings	NNS	9	False	0	polite
+financially	RB	9	False	0	impolite
+inspection	NN	9	False	0	impolite
+bias	NN	9	False	0	impolite
+confused	VBN	9	False	-0.4	somewhat polite
+reissue	NN	9	False	0	impolite
+racquetball	NN	9	False	0	neutral
+precaution	NN	9	False	0	neutral
+abuse	NN	9	False	0	impolite
+catering	NN	9	False	0	polite
+popularity	NN	9	False	0	polite
+nutritional	JJ	9	False	0	polite
+relaxing	VBG	9	False	0	polite
+shut	NN	9	False	0	impolite
+functionality	NN	9	False	0	neutral
+wash	NN	9	False	0	neutral
+authority	NN	9	False	0	neutral
+blue	NN	9	False	0	impolite
+interface	NN	9	False	0	Mixed
+tomato	NN	9	False	0	neutral
+specialist	NN	9	False	0	polite
+analytics	NNS	9	False	0	somewhat polite
+english	JJ	9	False	0	impolite
+chilly	RB	9	False	-0.6	polite
+babysitter	NN	9	False	0	impolite
+education	NN	9	False	0	impolite
+refereeing	VBG	9	False	0	somewhat polite
+doll	NN	9	False	0	somewhat polite
+paella	NN	9	False	0	Mixed
+pull	NN	9	False	0	impolite
+tackle	NN	9	False	0	polite
+jump	NN	9	False	0	impolite
+debate	NN	9	False	0	impolite
+net	NN	9	False	0	impolite
+umpire	NN	9	False	0	impolite
+empty	JJ	9	False	-0.1	impolite
+honest	NN	9	False	0.6	impolite
+cardholder	NN	9	False	0	polite
+defend	NN	9	False	0	impolite
+efficiency	NN	9	False	0	somewhat polite
+insist	NN	9	False	0	impolite
+theoretical	JJ	9	False	0	neutral
+mile	NN	9	False	0	Mixed
+button	NN	9	False	0	Mixed
+west	NN	9	False	0	polite
+overwhelmed	JJ	9	False	0	polite
+evaluation	NN	9	False	0	Mixed
+competitively	RB	9	False	0	polite
+satisfactory	NN	9	False	0	neutral
+stew	NN	9	False	0	neutral
+eater	NN	9	False	0	impolite
+preserve	NN	9	False	0	somewhat polite
+surgery	NN	9	False	0	impolite
+kale	NN	9	False	0	neutral
+nowhere	RB	9	False	0	impolite
+barrier	NN	9	False	0	impolite
+smile	NN	9	False	0.3	polite
+profession	NN	9	False	0	neutral
+patch	NN	9	False	0	somewhat polite
+garbage	NN	9	False	0	impolite
+runaround	NN	9	False	0	impolite
+origin	NN	9	False	0	neutral
+influence	NN	9	False	0	somewhat polite
+bed	NN	9	False	0	impolite
+balcony	NN	9	False	0	polite
+sister	NN	9	False	0	neutral
+starve	NN	9	False	0	impolite
+weak	JJ	9	False	-0.38	impolite
+internal	JJ	9	False	0	neutral
+channel	NNS	9	False	0	neutral
+interpersonal	JJ	9	False	0	polite
+reduction	NN	9	False	0	Mixed
+although	IN	8	False	0	somewhat polite
+idiot	NN	8	False	-0.8	impolite
+sun	NN	8	False	0	impolite
+summarize	VB	8	False	0	impolite
+favor	NN	8	False	0	impolite
+crucial	JJ	8	False	0	impolite
+downhill	NN	8	False	0	impolite
+involved	VBN	8	False	0	polite
+recovery	NN	8	False	0	polite
+api	NN	8	False	0	neutral
+resurface	NN	8	False	0	impolite
+regression	NN	8	False	0	neutral
+monkey	NN	8	False	-0.05	impolite
+insert	NN	8	False	0	neutral
+handout	NN	8	False	0	impolite
+buying	NN	8	False	0	impolite
+leftover	NN	8	False	0	neutral
+atrocious	JJ	8	False	-0.7	impolite
+contribution	NN	8	False	0	polite
+functional	JJ	8	False	0	impolite
+learner	NN	8	False	0	Mixed
+modest	JJ	8	False	0.1	somewhat polite
+aid	NN	8	False	0	neutral
+award	NN	8	False	0	impolite
+spiciness	NN	8	False	0	impolite
+rotten	VB	8	False	0	impolite
+sunglass	NN	8	False	0	polite
+performer	NN	8	False	0	impolite
+rely	RB	8	False	0	impolite
+aerobics	NNS	8	False	0	neutral
+stove	NN	8	False	0	polite
+financing	NN	8	False	0	somewhat polite
+pause	NN	8	False	0	neutral
+oversized	VBN	8	False	0	impolite
+unchanged	JJ	8	False	0	neutral
+workmanship	NN	8	False	0	Mixed
+minus	NN	8	False	-0.1	somewhat polite
+misinterpret	NN	8	False	0	impolite
+intention	NN	8	False	0	impolite
+swipe	NN	8	False	0	impolite
+benching	NN	8	False	0	somewhat polite
+human	NN	8	False	0	impolite
+underwriter	NN	8	False	0	neutral
+deserve	NN	8	False	0	impolite
+casual	JJ	8	False	-0.5	impolite
+intact	JJ	8	False	0	Mixed
+warrantied	VBN	8	False	0	impolite
+scathing	VBG	8	False	-0.6	impolite
+truth	NN	8	False	0	impolite
+container	NN	8	False	0	somewhat polite
+letter	NN	8	False	0	Mixed
+confusing	VBG	8	False	-0.3	somewhat polite
+canned	VBN	8	False	0	neutral
+prospect	NN	8	False	0	polite
+overly	RB	8	False	0	impolite
+blossom	NN	8	False	0	polite
+unlikely	JJ	8	False	-0.5	Mixed
+cherry	NN	8	False	0	polite
+tantalize	VB	8	False	0	polite
+tone	NN	8	False	0	impolite
+personally	RB	8	False	0	impolite
+explanatory	NN	8	False	0	impolite
+butterfly	NN	8	False	0	polite
+undergo	NN	8	False	0	neutral
+champagne	NN	8	False	0	impolite
+originally	RB	8	False	0.38	neutral
+pizzeria	NNS	8	False	0	polite
+unrealistic	JJ	8	False	-0.5	impolite
+construction	NN	8	False	0	impolite
+crispy	NN	8	False	0	polite
+prepaid	NN	8	False	0	Mixed
+unavoidable	JJ	8	False	0	impolite
+cheapest	NN	8	False	0	neutral
+moisturizing	VBG	8	False	0	impolite
+hint	NN	8	False	0	polite
+plus	CC	8	False	0	Mixed
+registrant	NN	8	False	0	polite
+text	NN	8	False	0	neutral
+normally	RB	8	False	0.15	somewhat polite
+peer	NN	8	False	0	neutral
+climate	NN	8	False	0	impolite
+provoke	NN	8	False	0	polite
+compare	NN	8	False	0	polite
+workload	NN	8	False	0	impolite
+brown	NN	8	False	0	somewhat polite
+token	NN	8	False	0	polite
+monitor	NN	8	False	0	neutral
+quesadilla	NN	8	False	0	neutral
+computer	NN	8	False	0	impolite
+silence	NN	8	False	0	impolite
+characteristic	JJ	8	False	-0.07	polite
+disappear	NN	8	False	0	impolite
+utmost	NN	8	False	0	polite
+hungry	NN	8	False	0	impolite
+statistic	JJ	8	False	0	neutral
+kindergartener	NN	8	False	0	impolite
+perfume	NN	8	False	0	somewhat polite
+movie	NN	8	False	0	impolite
+wilted	VBN	8	False	0	impolite
+rehash	NN	8	False	-0.05	impolite
+lifetime	NN	8	False	0	impolite
+allergic	NN	8	False	0	impolite
+espresso	NN	8	False	0	neutral
+voice	NN	8	False	0	impolite
+simpler	NN	8	False	0	impolite
+spoiled	VBN	8	False	0	impolite
+literature	NN	8	False	0	impolite
+whipped	VBD	8	False	0	impolite
+paced	VBN	8	False	0	polite
+existent	NN	8	False	0	impolite
+nevertheless	RB	7	False	0	polite
+species	NNS	7	False	0	impolite
+alike	RB	7	False	0	polite
+welcoming	VBG	7	False	0	polite
+markup	NN	7	False	0	impolite
+rave	VB	7	False	0	polite
+splash	NN	7	False	0	polite
+taking	VBG	7	False	0	polite
+absolute	NN	7	False	0.2	impolite
+dust	NN	7	False	0	impolite
+attendant	NN	7	False	0.2	polite
+excess	NN	7	False	0	impolite
+negligence	NN	7	False	0	impolite
+shall	MD	7	False	0	polite
+prove	NN	7	False	0	impolite
+rejoin	NN	7	False	0	neutral
+curate	NN	7	False	0	polite
+advisory	NN	7	False	0	neutral
+wish	NN	7	False	0	impolite
+blueberry	NN	7	False	0	polite
+considerate	NN	7	False	0	impolite
+mainly	RB	7	False	0.17	polite
+illness	NN	7	False	0	impolite
+tokyo	NN	7	False	0	polite
+ritz	NN	7	False	0	impolite
+scan	JJ	7	False	0	neutral
+strand	NN	7	False	0	impolite
+foundation	NN	7	False	0	polite
+lend	NN	7	False	0	impolite
+flu	NN	7	False	0	Mixed
+complicated	VBN	7	False	-0.5	impolite
+news	NN	7	False	0	Mixed
+enriching	VBG	7	False	0	polite
+intelligence	NN	7	False	0	impolite
+utilization	NN	7	False	0	neutral
+accidental	NN	7	False	0	Mixed
+parka	NN	7	False	0	polite
+crash	NN	7	False	0	impolite
+innovation	NN	7	False	0	impolite
+baking	NN	7	False	0	polite
+theatrical	JJ	7	False	0	polite
+wetsuit	NN	7	False	0	polite
+roasted	VBN	7	False	0	polite
+dissatisfaction	NN	7	False	0	impolite
+faster	NN	7	False	0	impolite
+soy	NN	7	False	0	impolite
+hello	NN	7	False	0	polite
+cooky	NN	7	False	0	somewhat polite
+embarrassment	NN	7	False	0	impolite
+heritage	NN	7	False	0	polite
+enchant	NN	7	False	0	polite
+uncomfortable	JJ	7	False	-0.5	somewhat polite
+imported	VBN	7	False	0	neutral
+employer	NN	7	False	0	neutral
+foliage	NN	7	False	0	polite
+homework	NN	7	False	0	impolite
+motivate	NN	7	False	0	polite
+roadside	NN	7	False	0	somewhat polite
+snowmaking	VBG	7	False	0	impolite
+workarounds	NNS	7	False	0	Mixed
+grade	NN	7	False	0	impolite
+distraction	NN	7	False	0	neutral
+accusation	NN	7	False	0	impolite
+premise	NN	7	False	0	neutral
+repeated	VBN	7	False	0	impolite
+auto	NN	7	False	0	neutral
+absence	NN	7	False	-0.01	somewhat polite
+frankly	RB	7	False	0	impolite
+printed	VBN	7	False	0	neutral
+sunny	NN	7	False	0	somewhat polite
+embarkation	NN	7	False	0	polite
+parmesan	NN	7	False	0	neutral
+conditioning	NN	7	False	0	impolite
+reheat	NN	7	False	0	Mixed
+comprehension	NN	7	False	0	impolite
+overcooked	VBN	7	False	0	impolite
+mammal	NN	7	False	0	neutral
+mature	NN	7	False	0.1	neutral
+accumulate	NN	7	False	0	polite
+fashion	NN	7	False	0	impolite
+scholarship	NN	7	False	0	somewhat polite
+typography	NN	7	False	0	neutral
+suspension	NN	7	False	0	impolite
+feeling	VBG	7	False	0	polite
+swap	NN	7	False	0	polite
+monitoring	NN	7	False	0	polite
+edit	NN	7	False	0	Mixed
+evolution	NN	7	False	0	impolite
+nursery	NN	7	False	0	impolite
+featured	VBN	7	False	0	polite
+seller	NN	7	False	0	neutral
+satisfying	VBG	7	False	0.5	polite
+moisturizers	NNS	7	False	0	polite
+mortgage	NN	7	False	0	impolite
+shade	NN	7	False	0	impolite
+surround	NN	7	False	0	somewhat polite
+influx	NN	7	False	0	polite
+occasional	JJ	7	False	0	somewhat polite
+separation	NN	7	False	0	somewhat polite
+soda	NN	7	False	0	impolite
+muslim	NN	7	False	0	impolite
+waiting	VBG	7	False	0	impolite
+absurd	NN	7	False	-0.5	impolite
+adequately	RB	7	False	0.33	neutral
+dye	NN	7	False	0	Mixed
+glove	NN	7	False	0	impolite
+deduction	NN	7	False	0	Mixed
+exemption	NN	7	False	0	neutral
+bold	NN	7	False	0.33	impolite
+peace	NN	7	False	0	impolite
+extensively	RB	7	False	0	impolite
+nightmare	NN	7	False	0	impolite
+staple	NN	7	False	0	impolite
+lodge	NN	7	False	0	neutral
+fraction	NN	7	False	0	impolite
+authorization	NN	7	False	0	somewhat polite
+equally	RB	7	False	0	neutral
+pricy	NN	7	False	0	Mixed
+grandma	NN	7	False	0	impolite
+chill	NN	7	False	0	impolite
+e	NN	7	False	0	polite
+pursue	NN	7	False	0	impolite
+adhere	RB	7	False	0	Mixed
+existence	NN	7	False	0	impolite
+nonetheless	RB	7	False	0	impolite
+reapply	NN	7	False	0	neutral
+carton	NN	6	False	0	somewhat polite
+dressing	VBG	6	False	0	impolite
+dull	NN	6	False	-0.29	impolite
+uniform	NN	6	False	0	Mixed
+screw	NN	6	False	0	impolite
+continued	JJ	6	False	0	polite
+bulk	NN	6	False	0	neutral
+plug	NN	6	False	0	somewhat polite
+merchant	NN	6	False	0	neutral
+recite	NN	6	False	0	impolite
+unplug	NN	6	False	0	somewhat polite
+negotiate	NN	6	False	0	impolite
+negotiation	NN	6	False	0	neutral
+clash	NN	6	False	0	impolite
+nut	NN	6	False	0	impolite
+listed	VBN	6	False	0	Mixed
+beginning	VBG	6	False	0	neutral
+donate	NN	6	False	0	Mixed
+storyline	NN	6	False	0	impolite
+taxi	NN	6	False	0	impolite
+numerous	JJ	6	False	0	impolite
+unsuspecting	VBG	6	False	0	impolite
+compliance	NN	6	False	0	Mixed
+letdown	NN	6	False	0	Mixed
+audit	NN	6	False	0	Mixed
+effectiveness	NN	6	False	0	impolite
+lifesaver	NN	6	False	0	polite
+appreciated	VBN	6	False	0.2	polite
+dynamic	JJ	6	False	0	polite
+actively	RB	6	False	-0.13	Mixed
+fairness	NN	6	False	0	Mixed
+heading	VBG	6	False	0	neutral
+schmancy	NN	6	False	0	impolite
+athletic	JJ	6	False	0	impolite
+crack	NN	6	False	0	impolite
+stone	NN	6	False	0	impolite
+ripped	NN	6	False	0	impolite
+milkshake	NN	6	False	0	impolite
+tarts	NNS	6	False	0	polite
+approved	VBN	6	False	0	neutral
+jam	NN	6	False	0	impolite
+michelin	NN	6	False	0	impolite
+spar	NN	6	False	0	neutral
+described	NN	6	False	0	neutral
+selfie	NN	6	False	0	impolite
+tutor	NN	6	False	0	impolite
+cycling	NN	6	False	0	polite
+makeup	NN	6	False	0	neutral
+examples	NNS	6	False	0	polite
+accurately	RB	6	False	0.4	somewhat polite
+junior	NN	6	False	0	Mixed
+gentle	NN	6	False	0.2	Mixed
+suspend	NN	6	False	0	neutral
+egg	NN	6	False	0	neutral
+yourselves	NNS	6	True	0	impolite
+sympathy	NN	6	False	0	impolite
+delegation	NN	6	False	0	neutral
+endless	NN	6	False	-0.12	impolite
+previously	RB	6	False	-0.17	neutral
+prerequisites	NNS	6	False	0	Mixed
+oppose	NN	6	False	0	impolite
+dormant	NN	6	False	0	impolite
+observe	NN	6	False	0	somewhat polite
+sad	NN	6	False	-0.5	impolite
+streamline	NN	6	False	0	polite
+mass	NN	6	False	0	impolite
+smell	NN	6	False	0	impolite
+interview	NN	6	False	0	neutral
+altogether	RB	6	False	0	Mixed
+timed	VBN	6	False	0	polite
+establish	VB	6	False	0	impolite
+samosa	NN	6	False	0	neutral
+varies	NNS	6	False	0	Mixed
+festive	JJ	6	False	0	polite
+orientation	NN	6	False	0	polite
+fridge	NN	6	False	0	impolite
+respective	NN	6	False	0	polite
+red	JJ	6	False	0	impolite
+percentage	NN	6	False	0	somewhat polite
+overdraw	NN	6	False	0	neutral
+pressure	NN	6	False	0	impolite
+alter	NN	6	False	0	Mixed
+precautionary	JJ	6	False	0	polite
+tie	NN	6	False	0	impolite
+uninformed	JJ	6	False	0	impolite
+university	NN	6	False	0	impolite
+shore	NN	6	False	0	Mixed
+admit	NN	6	False	0	impolite
+intensive	JJ	6	False	0	polite
+unworn	JJ	6	False	0	somewhat polite
+dirt	NN	6	False	0	impolite
+wallet	NN	6	False	0	impolite
+conjure	NN	6	False	0	impolite
+word	NN	6	False	0	impolite
+maxed	NN	6	False	0	impolite
+thin	NN	6	False	-0.4	impolite
+sue	NN	6	False	0	impolite
+warning	VBG	6	False	0	impolite
+circle	NN	6	False	0	impolite
+babysitting	NN	6	False	0	impolite
+reaction	NN	6	False	0	impolite
+retrieve	NN	6	False	0	Mixed
+addition	NN	6	False	0	polite
+inside	IN	6	False	0	Mixed
+enthusiastic	JJ	6	False	0.6	polite
+bound	NN	6	False	0	impolite
+formatting	VBG	6	False	0	Mixed
+row	NN	6	False	0	impolite
+initiation	NN	6	False	0	polite
+paid	NN	6	False	0	impolite
+connoisseur	NN	6	False	0	impolite
+barren	NNS	6	False	0	impolite
+impose	VB	6	False	0	neutral
+rsvp	NN	6	False	0	neutral
+styling	VBG	6	False	0	polite
+rice	NN	6	False	0	impolite
+showcasing	VBG	6	False	0	polite
+communicator	NN	6	False	0	Mixed
+junk	NN	6	False	0	impolite
+land	NN	6	False	0	impolite
+starting	VBG	6	False	0	neutral
+heater	NN	6	False	0	impolite
+warmer	NN	6	False	0	Mixed
+bookshelf	NN	6	False	0	neutral
+intellectual	JJ	6	False	0.3	impolite
+installment	NN	6	False	0	polite
+alternatively	RB	6	False	0	neutral
+sailboat	NN	6	False	0	impolite
+upgrading	VBG	6	False	0	neutral
+rentals	NNS	6	False	0	polite
+underseasoned	JJ	6	False	0	impolite
+adjacent	NN	6	False	0	neutral
+revamp	NN	6	False	0	Mixed
+bend	NN	6	False	0	impolite
+purchasing	NN	6	False	0	impolite
+withdraw	NN	6	False	0	Mixed
+sustain	NN	6	False	0	impolite
+temple	NN	6	False	0	impolite
+attract	NN	6	False	0	polite
+savvy	NN	6	False	0	impolite
+tacos	NN	6	False	0	neutral
+nephew	NN	6	False	0	impolite
+everywhere	RB	6	False	0	impolite
+negative	JJ	6	False	-0.3	Mixed
+whip	NN	6	False	0	Mixed
+champion	NN	6	False	0	impolite
+relaxation	NN	6	False	0	polite
+seal	NN	6	False	0	Mixed
+flood	NN	6	False	0	impolite
+condiment	NN	6	False	0	polite
+plugin	NN	6	False	0	neutral
+assortment	NN	6	False	0	polite
+paddleboards	NNS	6	False	0	neutral
+peach	NN	6	False	0	neutral
+automate	NN	6	False	0	polite
+unengaging	VBG	6	False	-0.2	impolite
+distance	NN	6	False	0	neutral
+evidence	NN	6	False	0	impolite
+downtime	NN	6	False	0	impolite
+warrant	NN	6	False	0	impolite
+whatever	WDT	6	False	0	impolite
+insider	NN	6	False	0	polite
+conversion	NN	6	False	0	polite
+instal	NN	6	False	0	neutral
+rescheduled	VBN	5	False	0	impolite
+honey	NN	5	False	0	neutral
+allocated	VBN	5	False	0	polite
+sideline	NN	5	False	0	impolite
+paddleboarding	VBG	5	False	0	polite
+la	NN	5	False	0	Mixed
+factory	NN	5	False	0	impolite
+recover	NN	5	False	0	neutral
+originality	NN	5	False	0	impolite
+courier	NN	5	False	0	Mixed
+promised	VBN	5	False	0	impolite
+rec	NN	5	False	0	impolite
+accrue	NN	5	False	0	Mixed
+unbothered	JJ	5	False	0	impolite
+integrity	NN	5	False	0	neutral
+proposal	NN	5	False	0	impolite
+rock	NN	5	False	0	Mixed
+copyright	NN	5	False	0	somewhat polite
+realm	NN	5	False	0	polite
+streak	NN	5	False	0	impolite
+kimchi	NNS	5	False	0	neutral
+waltz	NN	5	False	0	impolite
+solving	VBG	5	False	0	neutral
+hub	NN	5	False	0	neutral
+pad	NN	5	False	0	polite
+articulation	NN	5	False	0	neutral
+sashimi	NN	5	False	0	neutral
+bespoke	NN	5	False	0	impolite
+cramped	NN	5	False	0	impolite
+sudden	JJ	5	False	0	impolite
+resident	NN	5	False	0	polite
+reinstall	NN	5	False	0	neutral
+surprising	NN	5	False	0.7	impolite
+framework	NN	5	False	0	impolite
+deliberately	RB	5	False	0	impolite
+gold	NN	5	False	0	impolite
+changeover	NN	5	False	0	somewhat polite
+deck	NN	5	False	0	Mixed
+reorder	NN	5	False	0	impolite
+lm	NN	5	False	0	impolite
+decrease	NN	5	False	0	neutral
+mattress	NN	5	False	0	neutral
+romeo	NN	5	False	0	polite
+harsh	NN	5	False	-0.2	Mixed
+juliet	NN	5	False	0	polite
+irritation	NN	5	False	0	impolite
+quiche	NN	5	False	0	polite
+queue	NN	5	False	0	impolite
+foul	NN	5	False	0	somewhat polite
+stretch	NN	5	False	0	Mixed
+interact	NN	5	False	0	polite
+deadbeat	NN	5	False	0	impolite
+upcharge	NN	5	False	0	polite
+fern	NN	5	False	0	impolite
+hawaii	NN	5	False	0	somewhat polite
+categorize	NN	5	False	0	neutral
+baseless	NN	5	False	0	impolite
+intended	VBN	5	False	0	impolite
+dealt	NN	5	False	0	impolite
+crave	NN	5	False	0	polite
+ripple	NN	5	False	0	neutral
+gather	NN	5	False	0	Mixed
+sprinkle	NN	5	False	0	impolite
+matrix	NN	5	False	0	neutral
+seam	NN	5	False	0	impolite
+registered	VBN	5	False	0	neutral
+weasel	NN	5	False	0	impolite
+pole	NN	5	False	0	polite
+literally	RB	5	False	0	impolite
+law	NN	5	False	0	Mixed
+dictate	NN	5	False	0	impolite
+disregard	NN	5	False	0	impolite
+introduction	NN	5	False	0	Mixed
+impossible	JJ	5	False	-0.67	impolite
+lengthy	NN	5	False	0	somewhat polite
+remaining	VBG	5	False	0	neutral
+cracker	NN	5	False	0	neutral
+target	NN	5	False	0	impolite
+digit	NN	5	False	0	neutral
+firm	NN	5	False	-0.2	impolite
+onto	IN	5	False	0	impolite
+camera	NN	5	False	0	impolite
+responsibly	RB	5	False	0.2	polite
+memory	NN	5	False	0	polite
+ref	NN	5	False	0	impolite
+super	NN	5	False	0.33	polite
+sink	NN	5	False	0	impolite
+protector	NN	5	False	0	Mixed
+inane	NN	5	False	0	impolite
+applicant	NN	5	False	0	somewhat polite
+interaction	NN	5	False	0	polite
+enable	JJ	5	False	0	polite
+predictable	JJ	5	False	-0.2	impolite
+lab	NN	5	False	0	impolite
+mislabeled	VBN	5	False	0	Mixed
+hotline	NN	5	False	0	neutral
+mostly	RB	5	False	0.5	neutral
+implementation	NN	5	False	0	polite
+swear	NN	5	False	0	impolite
+backordered	VBN	5	False	0	impolite
+eggplant	NN	5	False	0	Mixed
+footwork	NN	5	False	0	impolite
+headphone	NN	5	False	0	impolite
+known	VBN	5	False	0	impolite
+pour	NN	5	False	0	Mixed
+stylish	NN	5	False	0.5	polite
+justify	NN	5	False	0	impolite
+jet	NN	5	False	0	impolite
+forehand	NN	5	False	0	impolite
+divine	NN	5	False	0	polite
+bear	NN	5	False	0	neutral
+borrower	NN	5	False	0	impolite
+pain	NN	5	False	0	impolite
+loop	NN	5	False	0	neutral
+blast	NN	5	False	0	polite
+moisturize	NN	5	False	0	impolite
+gimmick	NN	5	False	0	impolite
+trendy	NN	5	False	0.6	impolite
+citizen	NN	5	False	0	somewhat polite
+feasible	JJ	5	False	0	impolite
+iftar	NN	5	False	0	polite
+mirror	NN	5	False	0	neutral
+bridge	NN	5	False	0	neutral
+ignorance	NN	5	False	0	impolite
+motel	NN	5	False	0	impolite
+exquisite	NN	5	False	1	polite
+scream	NN	5	False	0	impolite
+unimpressive	JJ	5	False	0	impolite
+scenic	NN	5	False	0	polite
+island	NN	5	False	0	impolite
+islamic	JJ	5	False	0	polite
+handful	NN	5	False	0	impolite
+suitcase	NN	5	False	0	impolite
+pork	NN	5	False	0	impolite
+permit	NN	5	False	0	neutral
+leisure	NN	5	False	0	polite
+corresponding	VBG	5	False	0	neutral
+largely	RB	5	False	0.21	Mixed
+snowflake	NN	5	False	0	impolite
+ample	NN	5	False	0	Mixed
+wildlife	NN	5	False	0	polite
+paranoid	NN	5	False	0	impolite
+syrup	NN	5	False	0	somewhat polite
+hall	NN	5	False	0	neutral
+relearn	NN	5	False	0	impolite
+flimsy	NN	5	False	0	impolite
+mouth	NN	5	False	0	polite
+dirty	NN	5	False	-0.6	impolite
+exclusion	NN	5	False	0	polite
+king	NN	5	False	0	polite
+poisoning	VBG	5	False	0	impolite
+pet	NN	5	False	0	impolite
+rout	NN	5	False	0	neutral
+relaxed	NN	5	False	0	Mixed
+duty	NN	5	False	0	Mixed
+curiosity	NN	5	False	0	polite
+decency	NN	5	False	0	impolite
+sourcing	VBG	5	False	0	Mixed
+inconsistent	NN	5	False	0	neutral
+powerpoint	NN	5	False	0	impolite
+reflection	NN	5	False	0	impolite
+critique	NN	5	False	0	impolite
+division	NN	5	False	0	neutral
+washing	VBG	5	False	0	neutral
+dark	NN	5	False	-0.15	impolite
+volley	NN	5	False	0	polite
+suck	NN	5	False	0	impolite
+she	PRP	5	True	0	Mixed
+recalculate	NN	5	False	0	neutral
+ons	NNS	5	False	0	neutral
+fighting	VBG	5	False	0	Mixed
+denim	NN	5	False	0	Mixed
+monet	NN	5	False	0	impolite
+indulge	NN	5	False	0	polite
+indication	NN	5	False	0	impolite
+groundbreaking	VBG	5	False	0	impolite
+respectful	NN	5	False	0.5	polite
+awkward	NN	5	False	-0.6	impolite
+chop	NN	5	False	0	impolite
+assistant	NN	5	False	0	impolite
+agreed	VBD	5	False	0	neutral
+grass	NN	5	False	0	impolite
+concession	NN	5	False	0	Mixed
+zipper	NN	5	False	0	impolite
+donut	NN	5	False	0	neutral
+economic	JJ	5	False	0.2	impolite
+seasickness	NN	5	False	0	impolite
+burnt	NN	5	False	0	impolite
+obtain	VB	5	False	0	polite
+pleased	JJ	5	False	0.5	polite
+merchandise	NN	5	False	0	Mixed
+carelessness	NN	5	False	0	impolite
+tablet	NN	5	False	0	Mixed
+hygiene	NN	5	False	0	polite
+mexico	NN	5	False	0	neutral
+fed	NN	5	False	0	impolite
+gantt	NN	5	False	0	polite
+oily	RB	5	False	0	impolite
+golden	JJ	5	False	0.3	Mixed
+prorate	NN	5	False	0	Mixed
+superstar	NN	5	False	0	Mixed
+cushion	NN	5	False	0	impolite
+bestseller	NN	5	False	0	Mixed
+shoddy	NN	5	False	-0.3	impolite
+abstract	NN	5	False	0	impolite
+global	JJ	5	False	0	polite
+substance	NN	4	False	0	Rare (impolite)
+freebie	NN	4	False	0	Rare (impolite)
+currency	NN	4	False	0	Rare (Mixed)
+understandably	RB	4	False	0	Rare (neutral)
+disqualify	NN	4	False	0	Rare (impolite)
+lightly	RB	4	False	0.4	Rare (Mixed)
+pesticide	NN	4	False	0	Rare (impolite)
+elevated	VBN	4	False	0	Rare (Mixed)
+purity	NN	4	False	0	Rare (Mixed)
+guys	NNS	4	False	0	Rare (impolite)
+suddenly	RB	4	False	0	Rare (Mixed)
+seasonality	NN	4	False	0	Rare (somewhat polite)
+debug	NN	4	False	0	Rare (Mixed)
+facial	JJ	4	False	0	Rare (polite)
+ordinary	JJ	4	False	-0.25	Rare (neutral)
+comply	NN	4	False	0	Rare (neutral)
+hurricane	NN	4	False	0	Rare (impolite)
+beta	NN	4	False	0	Rare (Mixed)
+deceive	NN	4	False	0	Rare (impolite)
+memberships	NNS	4	False	0	Rare (polite)
+riddle	NN	4	False	0	Rare (impolite)
+understandable	JJ	4	False	0	Rare (Mixed)
+bookings	NNS	4	False	0	Rare (polite)
+consolation	NN	4	False	0	Rare (somewhat polite)
+meaningful	NN	4	False	0.5	Rare (impolite)
+europe	NN	4	False	0	Rare (polite)
+interrupt	NN	4	False	0	Rare (somewhat polite)
+restrictive	NN	4	False	0	Rare (Mixed)
+hr	NN	4	False	0	Rare (Mixed)
+expressionism	NN	4	False	0	Rare (impolite)
+shortfall	NN	4	False	0	Rare (neutral)
+southern	JJ	4	False	0	Rare (Mixed)
+regrettably	RB	4	False	0	Rare (impolite)
+square	NN	4	False	0	Rare (impolite)
+periodic	NN	4	False	0	Rare (polite)
+fraud	NN	4	False	0	Rare (neutral)
+blower	NN	4	False	0	Rare (neutral)
+height	NN	4	False	0	Rare (Mixed)
+policyholder	NN	4	False	0	Rare (polite)
+punctual	JJ	4	False	0	Rare (impolite)
+eisenhower	NN	4	False	0	Rare (neutral)
+heirloom	NN	4	False	0	Rare (neutral)
+visiting	VBG	4	False	0	Rare (somewhat polite)
+worthwhile	NN	4	False	0.5	Rare (impolite)
+redo	NN	4	False	0	Rare (impolite)
+connectivity	NN	4	False	0	Rare (somewhat polite)
+runner	NN	4	False	0	Rare (polite)
+phase	NN	4	False	0	Rare (polite)
+hoop	NN	4	False	0	Rare (impolite)
+watering	VBG	4	False	0	Rare (polite)
+configure	NN	4	False	0	Rare (neutral)
+disbursement	NN	4	False	0	Rare (somewhat polite)
+spite	NN	4	False	0	Rare (impolite)
+actionable	JJ	4	False	0	Rare (polite)
+farming	VBG	4	False	0	Rare (polite)
+illustrator	NN	4	False	0	Rare (polite)
+kit	NN	4	False	0	Rare (neutral)
+stub	NN	4	False	0	Rare (Mixed)
+craftsmanship	NN	4	False	0	Rare (somewhat polite)
+acknowledge	NN	4	False	0	Rare (Mixed)
+crisp	NN	4	False	0.25	Rare (somewhat polite)
+pin	NN	4	False	0	Rare (impolite)
+differently	RB	4	False	0	Rare (polite)
+eid	NN	4	False	0	Rare (somewhat polite)
+unattended	JJ	4	False	0	Rare (Mixed)
+entail	NN	4	False	0	Rare (Mixed)
+enhancement	NN	4	False	0	Rare (Mixed)
+budge	NN	4	False	0	Rare (impolite)
+laziness	NN	4	False	0	Rare (impolite)
+tableau	NN	4	False	0	Rare (polite)
+hiring	VBG	4	False	0	Rare (neutral)
+doubles	NNS	4	False	0	Rare (polite)
+evident	NN	4	False	0.25	Rare (impolite)
+faint	NN	4	False	-0.5	Rare (impolite)
+bathroom	NN	4	False	0	Rare (impolite)
+allotted	VBN	4	False	0	Rare (neutral)
+tikka	NN	4	False	0	Rare (neutral)
+interior	NN	4	False	0	Rare (polite)
+overweight	NN	4	False	0	Rare (Mixed)
+skyline	NN	4	False	0	Rare (polite)
+info	NN	4	False	0	Rare (impolite)
+frequently	RB	4	False	0.1	Rare (Mixed)
+weird	NN	4	False	-0.5	Rare (impolite)
+vessel	NN	4	False	0	Rare (somewhat polite)
+frost	NN	4	False	0	Rare (impolite)
+war	NN	4	False	0	Rare (neutral)
+conductor	NN	4	False	0	Rare (polite)
+hole	NN	4	False	0	Rare (impolite)
+formal	JJ	4	False	0	Rare (neutral)
+abysmal	NN	4	False	0	Rare (impolite)
+dense	NN	4	False	0	Rare (Mixed)
+upright	JJ	4	False	0	Rare (impolite)
+pivot	NN	4	False	0	Rare (Mixed)
+reproduction	NN	4	False	0	Rare (impolite)
+impatient	NN	4	False	-0.2	Rare (impolite)
+belt	NN	4	False	0	Rare (impolite)
+distress	NN	4	False	0	Rare (Mixed)
+graham	NN	4	False	0	Rare (neutral)
+bios	NNS	4	False	0	Rare (Mixed)
+treadmill	NN	4	False	0	Rare (impolite)
+motion	NN	4	False	0	Rare (impolite)
+filling	VBG	4	False	0	Rare (neutral)
+pretentious	JJ	4	False	-0.3	Rare (impolite)
+asset	NN	4	False	0	Rare (polite)
+accredit	NN	4	False	0	Rare (impolite)
+surely	RB	4	False	0.5	Rare (polite)
+producer	NN	4	False	0	Rare (polite)
+mode	NN	4	False	0	Rare (polite)
+strategic	JJ	4	False	0	Rare (neutral)
+serf	NN	4	False	0	Rare (impolite)
+oversight	NN	4	False	0	Rare (polite)
+substantial	JJ	4	False	0	Rare (impolite)
+trained	VBN	4	False	0	Rare (Mixed)
+wheel	NN	4	False	0	Rare (impolite)
+unsatisfactory	NN	4	False	0	Rare (somewhat polite)
+shoulder	NN	4	False	0	Rare (Mixed)
+conditioner	NN	4	False	0	Rare (impolite)
+checking	VBG	4	False	0	Rare (neutral)
+priceless	NN	4	False	1	Rare (impolite)
+tired	VBN	4	False	-0.4	Rare (impolite)
+elite	NN	4	False	0	Rare (impolite)
+widely	RB	4	False	-0.1	Rare (Mixed)
+sneak	NN	4	False	0	Rare (impolite)
+sight	NN	4	False	0	Rare (impolite)
+sonnet	NN	4	False	0	Rare (Mixed)
+thru	NN	4	False	0	Rare (impolite)
+yeah	NN	4	False	0	Rare (Mixed)
+circulation	NN	4	False	0	Rare (polite)
+glance	NN	4	False	0	Rare (impolite)
+cashier	NN	4	False	0	Rare (impolite)
+raw	NN	4	False	-0.23	Rare (impolite)
+extraordinary	JJ	4	False	0.33	Rare (polite)
+knit	NN	4	False	0	Rare (polite)
+grain	NN	4	False	0	Rare (neutral)
+mascara	NN	4	False	0	Rare (Mixed)
+attentive	JJ	4	False	0.4	Rare (polite)
+greet	NN	4	False	0	Rare (polite)
+french	JJ	4	False	0	Rare (neutral)
+incapable	JJ	4	False	0	Rare (impolite)
+focused	VBN	4	False	0	Rare (neutral)
+healthcare	NN	4	False	0	Rare (neutral)
+unauthorized	JJ	4	False	0	Rare (neutral)
+sparring	VBG	4	False	0	Rare (impolite)
+volunteer	NN	4	False	0	Rare (Mixed)
+thrift	NN	4	False	0	Rare (impolite)
+continuous	JJ	4	False	0	Rare (polite)
+ordering	VBG	4	False	0	Rare (Mixed)
+extent	NN	4	False	0	Rare (impolite)
+visually	RB	4	False	0	Rare (polite)
+hummus	NN	4	False	0	Rare (neutral)
+discipline	NN	4	False	0	Rare (polite)
+daylight	NN	4	False	0	Rare (impolite)
+trap	NN	4	False	0	Rare (impolite)
+owner	NN	4	False	0	Rare (Mixed)
+bump	NN	4	False	0	Rare (impolite)
+turtle	NN	4	False	0	Rare (polite)
+advise	NN	4	False	0	Rare (Mixed)
+ray	NN	4	False	0	Rare (Mixed)
+congeal	NN	4	False	0	Rare (impolite)
+fender	NN	4	False	0	Rare (Mixed)
+shopper	NN	4	False	0	Rare (impolite)
+bender	NN	4	False	0	Rare (Mixed)
+repay	NN	4	False	0	Rare (impolite)
+elevator	NN	4	False	0	Rare (Mixed)
+weigh	NN	4	False	0	Rare (neutral)
+television	NN	4	False	0	Rare (polite)
+cupcake	NN	4	False	0	Rare (polite)
+toast	NN	4	False	0	Rare (Mixed)
+honeymoon	NN	4	False	0	Rare (impolite)
+robot	NN	4	False	0	Rare (impolite)
+ordered	VBN	4	False	0	Rare (Mixed)
+societal	NN	4	False	0	Rare (impolite)
+msg	NN	4	False	0	Rare (impolite)
+damn	NN	4	False	0	Rare (impolite)
+physic	NN	4	False	0	Rare (impolite)
+ai	NN	4	False	0	Rare (polite)
+visited	VBN	4	False	0	Rare (Mixed)
+totally	RB	4	False	0	Rare (polite)
+maki	NN	4	False	0	Rare (neutral)
+loved	VBN	4	False	0.7	Rare (polite)
+reship	NN	4	False	0	Rare (polite)
+auditorium	NN	4	False	0	Rare (neutral)
+revisit	NN	4	False	0	Rare (impolite)
+upper	JJ	4	False	0	Rare (impolite)
+motivating	VBG	4	False	0	Rare (polite)
+called	VBN	4	False	0	Rare (impolite)
+assertive	JJ	4	False	0	Rare (neutral)
+sahara	NN	4	False	0	Rare (impolite)
+adaptable	JJ	4	False	0	Rare (polite)
+melt	NN	4	False	0	Rare (neutral)
+technicality	NN	4	False	0	Rare (impolite)
+dozen	NN	4	False	0	Rare (impolite)
+carte	NN	4	False	0	Rare (neutral)
+clumsy	NN	4	False	-0.3	Rare (impolite)
+holy	NN	4	False	0	Rare (impolite)
+shift	NN	4	False	0	Rare (impolite)
+desserts	NNS	4	False	0	Rare (somewhat polite)
+interruption	NN	4	False	0	Rare (neutral)
+herb	NN	4	False	0	Rare (polite)
+obscure	NN	4	False	0	Rare (impolite)
+pleaser	NN	4	False	0	Rare (polite)
+started	VBN	4	False	0	Rare (polite)
+milestone	NN	4	False	0	Rare (polite)
+dryer	NN	4	False	0	Rare (Mixed)
+supermarket	NN	4	False	0	Rare (impolite)
+smartwatches	NNS	4	False	0	Rare (neutral)
+wasteland	NN	4	False	0	Rare (impolite)
+pile	NN	4	False	0	Rare (impolite)
+refurbished	VBN	4	False	0	Rare (neutral)
+disable	JJ	4	False	0	Rare (somewhat polite)
+arena	NN	4	False	0	Rare (neutral)
+eight	CD	4	False	0	Rare (neutral)
+declined	VBD	4	False	0	Rare (neutral)
+mosque	NN	4	False	0	Rare (impolite)
+lamp	NN	4	False	0	Rare (impolite)
+naturalistic	JJ	4	False	0.4	Rare (neutral)
+met	NN	4	False	0	Rare (somewhat polite)
+grand	JJ	4	False	0.5	Rare (impolite)
+length	NN	4	False	0	Rare (somewhat polite)
+sock	NN	4	False	0	Rare (impolite)
+chatter	NN	4	False	0	Rare (impolite)
+prevention	NN	4	False	0	Rare (neutral)
+scheme	NN	4	False	0	Rare (impolite)
+subjective	NN	4	False	0	Rare (impolite)
+plunge	NN	4	False	0	Rare (polite)
+handbag	NN	4	False	0	Rare (impolite)
+imperfection	NN	4	False	0	Rare (impolite)
+treasure	NN	4	False	0	Rare (polite)
+connecting	VBG	4	False	0	Rare (neutral)
+punctuality	NN	4	False	0	Rare (impolite)
+hundred	VBN	4	False	0	Rare (impolite)
+developer	NN	4	False	0	Rare (impolite)
+departs	NNS	4	False	0	Rare (neutral)
+assurance	NN	4	False	0	Rare (Mixed)
+intersection	NN	4	False	0	Rare (polite)
+renovate	NN	4	False	0	Rare (impolite)
+power	NN	4	False	0	Rare (Mixed)
+olive	JJ	4	False	0	Rare (Mixed)
+measurement	NN	4	False	0	Rare (somewhat polite)
+analyze	NN	4	False	0	Rare (neutral)
+mishandle	NN	4	False	0	Rare (impolite)
+handy	NN	4	False	0.6	Rare (somewhat polite)
+arrives	NNS	4	False	0	Rare (Mixed)
+intranet	NN	4	False	0	Rare (neutral)
+diving	VBG	4	False	0	Rare (somewhat polite)
+pillow	NN	4	False	0	Rare (Mixed)
+radius	NN	4	False	0	Rare (neutral)
+sleeping	VBG	4	False	0	Rare (polite)
+generous	JJ	4	False	0	Rare (polite)
+delectable	JJ	4	False	0	Rare (polite)
+literacy	NN	4	False	0	Rare (Mixed)
+trick	NN	4	False	0	Rare (Mixed)
+cakewalk	NN	4	False	0	Rare (impolite)
+border	NN	4	False	0	Rare (polite)
+presence	NN	4	False	0	Rare (impolite)
+picasso	NN	4	False	0	Rare (impolite)
+interpretation	NN	4	False	0	Rare (impolite)
+dialogue	NN	4	False	0	Rare (impolite)
+lighter	NN	4	False	0	Rare (polite)
+hardship	NN	4	False	0	Rare (neutral)
+energy	NN	4	False	0	Rare (polite)
+asleep	NN	4	False	0	Rare (impolite)
+contender	NN	4	False	0	Rare (impolite)
+edible	JJ	4	False	0	Rare (impolite)
+investigation	NN	4	False	0	Rare (impolite)
+gameplay	NN	4	False	0	Rare (neutral)
+sloppy	JJ	4	False	-0.42	Rare (impolite)
+royalty	NN	4	False	0	Rare (neutral)
+lane	NN	4	False	0	Rare (neutral)
+csv	NN	4	False	0	Rare (neutral)
+congest	NN	4	False	0	Rare (impolite)
+dissatisfy	NN	4	False	0	Rare (impolite)
+block	NN	4	False	0	Rare (neutral)
+ignorant	NN	4	False	0	Rare (impolite)
+tiered	VBN	4	False	0	Rare (polite)
+disposal	NN	3	False	0	Rare (polite)
+mismatch	NN	3	False	0	Rare (neutral)
+intricate	NN	3	False	0	Rare (polite)
+patio	NN	3	False	0	Rare (polite)
+endeavor	NN	3	False	0	Rare (polite)
+realistic	JJ	3	False	0.17	Rare (neutral)
+canceled	VBN	3	False	0	Rare (impolite)
+restoration	NN	3	False	0	Rare (neutral)
+sailor	NN	3	False	0	Rare (impolite)
+briefing	NN	3	False	0	Rare (neutral)
+writer	NN	3	False	0	Rare (polite)
+bulgogi	NN	3	False	0	Rare (polite)
+him	PRP	3	True	0	Rare (somewhat polite)
+clich	NN	3	False	0	Rare (impolite)
+butter	NN	3	False	0	Rare (neutral)
+bout	NN	3	False	0	Rare (somewhat polite)
+router	NN	3	False	0	Rare (neutral)
+partially	RB	3	False	-0.1	Rare (impolite)
+javascript	NN	3	False	0	Rare (Mixed)
+skating	VBG	3	False	0	Rare (somewhat polite)
+prepay	NN	3	False	0	Rare (impolite)
+spare	NN	3	False	0	Rare (impolite)
+cauliflower	NN	3	False	0	Rare (neutral)
+rig	NN	3	False	0	Rare (impolite)
+portable	JJ	3	False	0	Rare (polite)
+underway	RB	3	False	0	Rare (polite)
+newly	RB	3	False	0.14	Rare (polite)
+diamond	NN	3	False	0	Rare (impolite)
+sparkle	NN	3	False	0	Rare (Mixed)
+restocks	NNS	3	False	0	Rare (Mixed)
+qualified	VBN	3	False	0	Rare (Mixed)
+inexcusable	JJ	3	False	0	Rare (impolite)
+wet	NN	3	False	-0.1	Rare (impolite)
+genuinely	RB	3	False	0.4	Rare (polite)
+projector	NN	3	False	0	Rare (impolite)
+scavenger	NN	3	False	0	Rare (polite)
+hunt	NN	3	False	0	Rare (polite)
+decoration	NN	3	False	0	Rare (polite)
+cutoff	NN	3	False	0	Rare (neutral)
+lasagna	NN	3	False	0	Rare (Mixed)
+artifacts	NNS	3	False	0	Rare (polite)
+egyptian	JJ	3	False	0	Rare (polite)
+floral	JJ	3	False	0	Rare (polite)
+apparent	NN	3	False	0.05	Rare (somewhat polite)
+cone	NN	3	False	0	Rare (impolite)
+tub	NN	3	False	0	Rare (impolite)
+teammate	NN	3	False	0	Rare (somewhat polite)
+bracket	NN	3	False	0	Rare (neutral)
+atm	NN	3	False	0	Rare (neutral)
+confirmed	VBN	3	False	0.4	Rare (neutral)
+men	NNS	3	False	0	Rare (impolite)
+platter	NN	3	False	0	Rare (impolite)
+yoga	NN	3	False	0	Rare (impolite)
+draft	NN	3	False	0	Rare (neutral)
+hiccup	NN	3	False	0	Rare (somewhat polite)
+unfriendly	RB	3	False	0	Rare (impolite)
+autumnal	JJ	3	False	0	Rare (polite)
+punching	VBG	3	False	0	Rare (impolite)
+assertiveness	NN	3	False	0	Rare (neutral)
+execute	NN	3	False	0	Rare (Mixed)
+y	NN	3	True	0	Rare (neutral)
+council	NN	3	False	0	Rare (impolite)
+oak	NN	3	False	0	Rare (neutral)
+protein	NN	3	False	0	Rare (polite)
+us	PRP	3	False	0	Rare (impolite)
+spent	NN	3	False	-0.1	Rare (impolite)
+uneventful	JJ	3	False	0	Rare (neutral)
+smoke	NN	3	False	0	Rare (impolite)
+engagement	NN	3	False	0	Rare (impolite)
+defeat	NN	3	False	0	Rare (impolite)
+quantum	NN	3	False	0	Rare (impolite)
+overpay	NN	3	False	0	Rare (impolite)
+horticulturist	NN	3	False	0	Rare (somewhat polite)
+worried	JJ	3	False	0	Rare (impolite)
+gyro	NN	3	False	0	Rare (neutral)
+won	NN	3	True	0	Rare (neutral)
+backpack	NN	3	False	0	Rare (polite)
+biologist	NN	3	False	0	Rare (somewhat polite)
+ideation	NN	3	False	0	Rare (neutral)
+necessarily	RB	3	False	0	Rare (neutral)
+encountered	VBN	3	False	0	Rare (polite)
+instant	NN	3	False	0	Rare (impolite)
+renaissance	NN	3	False	0	Rare (polite)
+relevance	NN	3	False	0	Rare (impolite)
+bi	NN	3	False	0	Rare (polite)
+tangy	NN	3	False	0	Rare (polite)
+inspired	VBN	3	False	0	Rare (polite)
+potato	NN	3	False	0	Rare (polite)
+playback	NN	3	False	0	Rare (neutral)
+calculated	VBN	3	False	0	Rare (polite)
+turbulence	NN	3	False	0	Rare (impolite)
+displayed	NN	3	False	0	Rare (Mixed)
+emotion	NN	3	False	0	Rare (polite)
+commencement	NN	3	False	0	Rare (neutral)
+amusement	NN	3	False	0	Rare (impolite)
+exclude	NN	3	False	0	Rare (impolite)
+infraction	NN	3	False	0	Rare (neutral)
+margherita	NN	3	False	0	Rare (Mixed)
+bet	NN	3	False	0	Rare (impolite)
+varied	NNS	3	False	0	Rare (neutral)
+yearly	RB	3	False	0	Rare (somewhat polite)
+publish	NN	3	False	0	Rare (impolite)
+burden	NN	3	False	0	Rare (impolite)
+disorganize	VB	3	False	0	Rare (impolite)
+predict	NN	3	False	0	Rare (impolite)
+cider	NN	3	False	0	Rare (neutral)
+administrator	NN	3	False	0	Rare (impolite)
+caramel	NN	3	False	0	Rare (polite)
+fairly	RB	3	False	0.7	Rare (Mixed)
+conspiracy	NN	3	False	0	Rare (impolite)
+denied	VBD	3	False	0	Rare (impolite)
+yelling	VBG	3	False	0	Rare (impolite)
+semblance	NN	3	False	0	Rare (impolite)
+migration	NN	3	False	0	Rare (Mixed)
+dependent	NN	3	False	0	Rare (neutral)
+badly	RB	3	False	-0.7	Rare (impolite)
+supplemental	NN	3	False	0	Rare (Mixed)
+cinnamon	NN	3	False	0	Rare (polite)
+gratitude	NN	3	False	0	Rare (polite)
+urgent	NN	3	False	0	Rare (neutral)
+organically	RB	3	False	0	Rare (neutral)
+alleviate	NN	3	False	0	Rare (somewhat polite)
+rider	NN	3	False	0	Rare (Mixed)
+fence	NN	3	False	0	Rare (impolite)
+skyrocket	NN	3	False	0	Rare (impolite)
+severely	RB	3	False	0	Rare (impolite)
+pitch	NN	3	False	0	Rare (impolite)
+conscious	JJ	3	False	0.1	Rare (Mixed)
+bonus	NN	3	False	0	Rare (Mixed)
+rug	NN	3	False	0	Rare (neutral)
+proactive	NN	3	False	0	Rare (polite)
+tricky	NN	3	False	0	Rare (somewhat polite)
+brighten	NN	3	False	0	Rare (polite)
+press	NN	3	False	0	Rare (impolite)
+ultimately	RB	3	False	0	Rare (polite)
+lifespan	NN	3	False	0	Rare (impolite)
+quiz	NN	3	False	0	Rare (Mixed)
+dimension	NN	3	False	0	Rare (impolite)
+reception	NN	3	False	0	Rare (neutral)
+divert	NN	3	False	0	Rare (neutral)
+compliment	NN	3	False	0	Rare (Mixed)
+soul	NN	3	False	0	Rare (impolite)
+intermediate	NN	3	False	0	Rare (Mixed)
+failed	VBD	3	False	-0.5	Rare (neutral)
+curating	VBG	3	False	0	Rare (polite)
+accompanying	VBG	3	False	0	Rare (impolite)
+mayonnaise	NN	3	False	0	Rare (impolite)
+customization	NN	3	False	0	Rare (somewhat polite)
+configuration	NN	3	False	0	Rare (Mixed)
+uncooperative	JJ	3	False	0	Rare (impolite)
+cat	NN	3	False	0	Rare (impolite)
+defense	NN	3	False	0	Rare (Mixed)
+resistance	NN	3	False	0	Rare (impolite)
+scone	NN	3	False	0	Rare (polite)
+outlined	VBN	3	False	0	Rare (neutral)
+baguette	NN	3	False	0	Rare (neutral)
+anniversary	NN	3	False	0	Rare (impolite)
+salads	NNS	3	False	0	Rare (Mixed)
+criticize	VB	3	False	0	Rare (impolite)
+lighting	VBG	3	False	0	Rare (Mixed)
+lamb	NN	3	False	0	Rare (Mixed)
+aligns	NNS	3	False	0	Rare (polite)
+amenities	NNS	3	False	0	Rare (somewhat polite)
+sophistication	NN	3	False	0	Rare (impolite)
+strictly	RB	3	False	0	Rare (Mixed)
+seepage	NN	3	False	0	Rare (impolite)
+booked	VBN	3	False	0	Rare (impolite)
+supposed	VBN	3	False	0	Rare (impolite)
+restringing	VBG	3	False	0	Rare (Mixed)
+genre	NN	3	False	0	Rare (Mixed)
+thoughtfully	RB	3	False	0.4	Rare (impolite)
+inflexible	JJ	3	False	-0.4	Rare (impolite)
+campaign	NN	3	False	0	Rare (Mixed)
+revolve	NN	3	False	0	Rare (impolite)
+creatures	NNS	3	False	0	Rare (polite)
+chairlift	NN	3	False	0	Rare (impolite)
+ban	NN	3	False	0	Rare (impolite)
+his	PRP$	3	True	0	Rare (somewhat polite)
+customizations	NNS	3	False	0	Rare (Mixed)
+turnaround	NN	3	False	0	Rare (neutral)
+globe	NN	3	False	0	Rare (polite)
+roadwork	NN	3	False	0	Rare (neutral)
+packet	NN	3	False	0	Rare (impolite)
+refuse	NN	3	False	0	Rare (impolite)
+impressionism	NN	3	False	0	Rare (neutral)
+damaged	VBN	3	False	0	Rare (Mixed)
+marina	NN	3	False	0	Rare (polite)
+pharmacy	NN	3	False	0	Rare (Mixed)
+removal	NN	3	False	0	Rare (neutral)
+rejection	NN	3	False	0	Rare (impolite)
+downloadable	JJ	3	False	0	Rare (Mixed)
+niece	NN	3	False	0	Rare (Mixed)
+thorough	NN	3	False	0	Rare (Mixed)
+literary	JJ	3	False	0.1	Rare (impolite)
+suggested	VBN	3	False	0	Rare (neutral)
+discomfort	NN	3	False	0	Rare (somewhat polite)
+toward	IN	3	False	0	Rare (somewhat polite)
+fountain	NN	3	False	0	Rare (polite)
+neither	DT	3	False	0	Rare (impolite)
+web	NN	3	False	0	Rare (polite)
+lemon	NN	3	False	0	Rare (polite)
+synchronization	NN	3	False	0	Rare (neutral)
+oversleep	NN	3	False	0	Rare (impolite)
+unsuccessful	JJ	3	False	0	Rare (somewhat polite)
+colder	NN	3	False	0	Rare (neutral)
+bowls	NN	3	False	0	Rare (neutral)
+misapply	NN	3	False	0	Rare (somewhat polite)
+rainy	NN	3	False	0	Rare (neutral)
+uploads	NNS	3	False	0	Rare (neutral)
+blatant	NN	3	False	-0.5	Rare (impolite)
+inadequate	NN	3	False	0	Rare (impolite)
+script	NN	3	False	0	Rare (impolite)
+provoking	VBG	3	False	0	Rare (polite)
+driving	VBG	3	False	0	Rare (neutral)
+wealth	NN	3	False	0	Rare (polite)
+reassess	NN	3	False	0	Rare (neutral)
+forum	NN	3	False	0	Rare (Mixed)
+gratuity	NN	3	False	0	Rare (somewhat polite)
+salsa	NN	3	False	0	Rare (somewhat polite)
+basil	NN	3	False	0	Rare (polite)
+glitchy	NN	3	False	0	Rare (impolite)
+got	VBD	3	False	0	Rare (impolite)
+resold	NN	3	False	0	Rare (impolite)
+mealy	NN	3	False	0	Rare (impolite)
+ticketed	VBN	3	False	0	Rare (somewhat polite)
+symbolism	NN	3	False	0	Rare (impolite)
+shell	NN	3	False	0	Rare (impolite)
+daughter	NN	3	False	0	Rare (polite)
+pamphlet	NN	3	False	0	Rare (impolite)
+outbreak	NN	3	False	0	Rare (somewhat polite)
+stagnant	NN	3	False	0	Rare (impolite)
+shin	NN	3	False	0	Rare (impolite)
+homepage	NN	3	False	0	Rare (neutral)
+tedious	JJ	3	False	-0.5	Rare (impolite)
+overhead	NN	3	False	0	Rare (Mixed)
+bug	NN	3	False	0	Rare (impolite)
+magical	JJ	3	False	0.5	Rare (polite)
+sundays	NNS	3	False	0	Rare (neutral)
+escort	NN	3	False	0	Rare (neutral)
+hometown	NN	3	False	0	Rare (polite)
+dr	NN	3	False	0	Rare (neutral)
+edge	NN	3	False	0	Rare (Mixed)
+upsell	NN	3	False	0	Rare (impolite)
+till	NN	3	False	0	Rare (impolite)
+reasonably	RB	3	False	0.2	Rare (somewhat polite)
+contains	NNS	3	False	0	Rare (somewhat polite)
+hardly	RB	3	False	-0.29	Rare (impolite)
+subscribe	NN	3	False	0	Rare (polite)
+otter	NN	3	False	0	Rare (Mixed)
+promote	NN	3	False	0	Rare (impolite)
+algorithms	NN	3	False	0	Rare (neutral)
+rewarding	VBG	3	False	0.5	Rare (polite)
+wild	NN	3	False	0.1	Rare (polite)
+rainfall	NN	3	False	0	Rare (somewhat polite)
+fad	NN	3	False	0	Rare (impolite)
+lifeguarding	VBG	3	False	0	Rare (impolite)
+zesty	NN	3	False	0	Rare (polite)
+attribute	NN	3	False	0	Rare (polite)
+ale	NN	3	False	0	Rare (Mixed)
+zone	NN	3	False	0	Rare (impolite)
+moderate	NN	3	False	0	Rare (polite)
+crossing	VBG	3	False	0	Rare (neutral)
+coder	NN	3	False	0	Rare (impolite)
+grease	NN	3	False	0	Rare (impolite)
+breadstick	NN	3	False	0	Rare (polite)
+trade	NN	3	False	0	Rare (neutral)
+necessity	NN	3	False	0	Rare (impolite)
+font	NN	3	False	0	Rare (impolite)
+wikipedia	NN	3	False	0	Rare (impolite)
+announcement	NN	3	False	0	Rare (Mixed)
+native	JJ	3	False	0	Rare (impolite)
+thompson	NN	3	False	0	Rare (somewhat polite)
+generate	NN	3	False	0	Rare (neutral)
+slammed	VBN	3	False	0	Rare (impolite)
+evolve	NN	3	False	0	Rare (polite)
+overwhelming	VBG	3	False	0.5	Rare (somewhat polite)
+splurge	NN	3	False	0	Rare (impolite)
+snail	NN	3	False	0	Rare (impolite)
+norm	NN	3	False	0	Rare (impolite)
+deem	NN	3	False	0	Rare (neutral)
+critic	NN	3	False	0	Rare (impolite)
+stringing	VBG	3	False	0	Rare (polite)
+merit	NN	3	False	0	Rare (impolite)
+winner	NN	3	False	0	Rare (impolite)
+premier	NN	3	False	0	Rare (impolite)
+practicing	VBG	3	False	0	Rare (impolite)
+reload	NN	3	False	0	Rare (Mixed)
+charger	NN	3	False	0	Rare (Mixed)
+anchovy	NN	3	False	0	Rare (impolite)
+panel	NN	3	False	0	Rare (Mixed)
+elevate	NN	3	False	0	Rare (polite)
+audiobooks	NNS	3	False	0	Rare (polite)
+onwards	NNS	3	False	0	Rare (neutral)
+smith	NN	3	False	0	Rare (neutral)
+hazard	NN	3	False	0	Rare (impolite)
+lifelong	NN	3	False	-0.1	Rare (polite)
+techniques	NNS	3	False	0	Rare (neutral)
+maximize	VB	3	False	0	Rare (neutral)
+insure	NN	3	False	0	Rare (impolite)
+unwind	NN	3	False	0	Rare (polite)
+charm	NN	3	False	0	Rare (polite)
+mentorship	NN	3	False	0	Rare (polite)
+frosting	VBG	3	False	0	Rare (somewhat polite)
+sundae	NN	3	False	0	Rare (impolite)
+duplicate	NN	3	False	0	Rare (somewhat polite)
+herbal	NN	3	False	0	Rare (neutral)
+prescription	NN	3	False	0	Rare (polite)
+peanut	NN	3	False	0	Rare (impolite)
+oversold	NN	3	False	0	Rare (Mixed)
+capability	NN	3	False	0	Rare (neutral)
+afterwards	NNS	3	False	0	Rare (polite)
+lessons	NNS	3	False	0	Rare (polite)
+tension	NN	3	False	0	Rare (somewhat polite)
+digitally	RB	3	False	0	Rare (neutral)
+environmental	JJ	3	False	0	Rare (polite)
+exempt	NN	3	False	0	Rare (impolite)
+procrastination	NN	3	False	0	Rare (impolite)
+showroom	NN	3	False	0	Rare (polite)
+professor	NN	3	False	0	Rare (impolite)
+architecture	NN	3	False	0	Rare (polite)
+boutique	NN	3	False	0	Rare (impolite)
+genuine	NN	3	False	0.4	Rare (impolite)
+speaks	NNS	3	False	0	Rare (impolite)
+feta	NN	3	False	0	Rare (polite)
+souvenir	NN	3	False	0	Rare (impolite)
+delusional	NN	3	False	0	Rare (impolite)
+recline	NN	3	False	0	Rare (impolite)
+sickness	NN	3	False	0	Rare (impolite)
+examine	NN	3	False	0	Rare (Mixed)
+packed	NNS	3	False	0	Rare (Mixed)
+interpret	NN	3	False	0	Rare (impolite)
+eastern	JJ	3	False	0	Rare (neutral)
+stream	NN	3	False	0	Rare (neutral)
+urgency	NN	3	False	0	Rare (neutral)
+consumption	NN	3	False	0	Rare (Mixed)
+prize	NN	3	False	0	Rare (impolite)
+movement	NN	3	False	0	Rare (impolite)
+count	NN	3	False	0	Rare (Mixed)
+critical	JJ	3	False	0	Rare (impolite)
+concrete	NN	3	False	0.15	Rare (impolite)
+consult	NN	3	False	0	Rare (somewhat polite)
+resistant	NN	3	False	0	Rare (neutral)
+cardboard	NN	3	False	0	Rare (impolite)
+juice	NN	3	False	0	Rare (polite)
+authentication	NN	3	False	0	Rare (neutral)
+sag	NN	3	False	0	Rare (impolite)
+staffing	VBG	3	False	0	Rare (Mixed)
+scammed	VBN	3	False	0	Rare (impolite)
+dough	NN	3	False	0	Rare (impolite)
+chalkboard	NN	3	False	0	Rare (neutral)
+tasty	NN	3	False	0	Rare (polite)
+pub	NN	3	False	0	Rare (polite)
+vacuum	NN	3	False	-0.01	Rare (Mixed)
+college	NN	3	False	0	Rare (impolite)
+attack	NN	3	False	0	Rare (impolite)
+comparison	NN	3	False	0	Rare (polite)
+utterly	RB	3	False	0	Rare (impolite)
+monastery	NN	3	False	0	Rare (impolite)
+randomly	RB	3	False	-0.5	Rare (impolite)
+candidate	NN	3	False	0	Rare (impolite)
+beautifully	RB	3	False	0.85	Rare (polite)
+intensity	NN	3	False	0	Rare (impolite)
+rating	NN	3	False	0	Rare (Mixed)
+chase	NN	3	False	0	Rare (impolite)
+placement	NN	2	False	0	Rare (Mixed)
+unusually	RB	2	False	0.2	Rare (neutral)
+cobbler	NN	2	False	0	Rare (Mixed)
+chicago	NN	2	False	0	Rare (neutral)
+hydrate	NN	2	False	0	Rare (impolite)
+bust	NN	2	False	0	Rare (impolite)
+liable	JJ	2	False	-0.1	Rare (impolite)
+logging	VBG	2	False	0	Rare (Mixed)
+linkedin	NN	2	False	0	Rare (Mixed)
+scale	NN	2	False	0	Rare (polite)
+biodiversity	NN	2	False	0	Rare (Mixed)
+incentive	NN	2	False	0	Rare (Mixed)
+sofas	NN	2	False	0	Rare (Mixed)
+infest	NN	2	False	0	Rare (impolite)
+accounting	NN	2	False	0	Rare (Mixed)
+witness	NN	2	False	0	Rare (impolite)
+chemical	NN	2	False	0	Rare (Mixed)
+waitlists	NNS	2	False	0	Rare (somewhat polite)
+sanitize	VB	2	False	0	Rare (Mixed)
+pot	NN	2	False	0	Rare (impolite)
+co	NN	2	False	0	Rare (Mixed)
+ma	NN	2	True	0	Rare (Mixed)
+signer	NN	2	False	0	Rare (Mixed)
+intentional	JJ	2	False	0	Rare (Mixed)
+motivated	VBN	2	False	0	Rare (Mixed)
+doorway	NN	2	False	0	Rare (Mixed)
+computing	VBG	2	False	0	Rare (Mixed)
+principal	NN	2	False	0	Rare (impolite)
+sneeze	NN	2	False	0	Rare (impolite)
+inconsiderate	NN	2	False	0	Rare (impolite)
+climbing	VBG	2	False	0	Rare (Mixed)
+mislead	NN	2	False	0	Rare (impolite)
+bureau	NN	2	False	0	Rare (polite)
+miami	NN	2	False	0	Rare (Mixed)
+coast	NN	2	False	0	Rare (impolite)
+medieval	NN	2	False	0	Rare (Mixed)
+violate	NN	2	False	0	Rare (Mixed)
+versus	NN	2	False	0	Rare (neutral)
+split	NN	2	False	0	Rare (Mixed)
+leniency	NN	2	False	0	Rare (impolite)
+drought	NN	2	False	0	Rare (Mixed)
+sum	NN	2	False	0	Rare (Mixed)
+runway	NN	2	False	0	Rare (impolite)
+persists	NNS	2	False	0	Rare (neutral)
+coordinate	NN	2	False	0	Rare (Mixed)
+reshipment	NN	2	False	0	Rare (Mixed)
+nutrition	NN	2	False	0	Rare (neutral)
+blindside	NN	2	False	0	Rare (impolite)
+woefully	RB	2	False	0	Rare (impolite)
+intern	NN	2	False	0	Rare (Mixed)
+promoter	NN	2	False	0	Rare (impolite)
+garage	NN	2	False	0	Rare (Mixed)
+institute	NN	2	False	0	Rare (polite)
+rep	NN	2	False	0	Rare (impolite)
+shortages	NNS	2	False	0	Rare (somewhat polite)
+unpreparedness	NN	2	False	0	Rare (impolite)
+fluff	NN	2	False	-0.1	Rare (impolite)
+collectible	JJ	2	False	-0.5	Rare (Mixed)
+hinder	NN	2	False	0	Rare (neutral)
+officially	RB	2	False	0	Rare (Mixed)
+salesperson	NN	2	False	0	Rare (impolite)
+supplement	NN	2	False	0	Rare (Mixed)
+false	JJ	2	False	-0.4	Rare (Mixed)
+relief	NN	2	False	0	Rare (impolite)
+engineering	NN	2	False	0	Rare (Mixed)
+disastrous	JJ	2	False	-0.7	Rare (impolite)
+spilled	VBN	2	False	0	Rare (impolite)
+rusty	NN	2	False	0	Rare (Mixed)
+sturdy	NN	2	False	0	Rare (Mixed)
+sandal	NN	2	False	0	Rare (Mixed)
+eternity	NN	2	False	0	Rare (impolite)
+lipstick	NN	2	False	0	Rare (polite)
+allows	NNS	2	False	0	Rare (polite)
+ineffective	JJ	2	False	0	Rare (impolite)
+eiffel	NN	2	False	0	Rare (polite)
+recurring	VBG	2	False	0	Rare (Mixed)
+mint	NN	2	False	0	Rare (polite)
+lime	NN	2	False	0	Rare (polite)
+suspended	VBN	2	False	0	Rare (impolite)
+uptick	JJ	2	False	0	Rare (Mixed)
+police	NNS	2	False	0	Rare (Mixed)
+contest	NN	2	False	0	Rare (impolite)
+stressed	VBN	2	False	0	Rare (impolite)
+attended	VBD	2	False	0	Rare (Mixed)
+climb	NN	2	False	0	Rare (Mixed)
+ploy	NN	2	False	0	Rare (impolite)
+risotto	NN	2	False	0	Rare (polite)
+goer	NN	2	False	0	Rare (Mixed)
+tack	NN	2	False	0	Rare (impolite)
+collector	NN	2	False	0	Rare (polite)
+labeling	VBG	2	False	0	Rare (impolite)
+bare	NN	2	False	0.05	Rare (impolite)
+regain	NN	2	False	0	Rare (Mixed)
+artificial	JJ	2	False	-0.6	Rare (Mixed)
+unplayable	JJ	2	False	-0.4	Rare (Mixed)
+unengaged	JJ	2	False	0	Rare (impolite)
+identical	JJ	2	False	0	Rare (polite)
+romantic	JJ	2	False	0	Rare (impolite)
+scenery	NN	2	False	0	Rare (Mixed)
+madam	NN	2	False	0	Rare (polite)
+lobster	NN	2	False	0	Rare (Mixed)
+hearted	VBN	2	False	0	Rare (impolite)
+paltry	NN	2	False	0	Rare (impolite)
+inflated	VBN	2	False	0	Rare (Mixed)
+issuer	NN	2	False	0	Rare (Mixed)
+redemption	NN	2	False	0	Rare (Mixed)
+cap	NN	2	False	0	Rare (neutral)
+scamming	VBG	2	False	0	Rare (impolite)
+variable	JJ	2	False	0	Rare (neutral)
+referral	JJ	2	False	0	Rare (Mixed)
+counseling	VBG	2	False	0	Rare (Mixed)
+haul	NN	2	False	0	Rare (polite)
+eaten	VB	2	False	0	Rare (impolite)
+wider	NN	2	False	0	Rare (Mixed)
+sneaker	NN	2	False	0	Rare (Mixed)
+inconsistency	NN	2	False	0	Rare (Mixed)
+hunger	NN	2	False	0	Rare (impolite)
+dues	NNS	2	False	0	Rare (impolite)
+greedy	NN	2	False	0	Rare (impolite)
+crumb	NN	2	False	0	Rare (impolite)
+meanwhile	RB	2	False	0	Rare (impolite)
+botched	VBN	2	False	0	Rare (impolite)
+simplest	NN	2	False	0	Rare (impolite)
+rainout	NN	2	False	0	Rare (impolite)
+ceremony	NN	2	False	0	Rare (Mixed)
+enrolling	VBG	2	False	0	Rare (Mixed)
+glorified	VBN	2	False	0	Rare (impolite)
+strap	NN	2	False	0	Rare (impolite)
+stormy	NN	2	False	0	Rare (somewhat polite)
+bone	NN	2	False	0	Rare (impolite)
+bio	NN	2	False	0	Rare (Mixed)
+badge	NN	2	False	0	Rare (Mixed)
+brewing	NN	2	False	0	Rare (Mixed)
+neighbor	NN	2	False	0	Rare (Mixed)
+milder	NN	2	False	0	Rare (Mixed)
+protocols	NNS	2	False	0	Rare (neutral)
+arbitrarily	RB	2	False	-0.1	Rare (Mixed)
+proceeds	NNS	2	False	0	Rare (Mixed)
+richness	NN	2	False	0	Rare (Mixed)
+usd	NN	2	False	0	Rare (Mixed)
+soundbars	NNS	2	False	0	Rare (Mixed)
+rigid	JJ	2	False	0	Rare (Mixed)
+refrigeration	NN	2	False	0	Rare (Mixed)
+squeeze	NN	2	False	0	Rare (impolite)
+found	NN	2	False	0	Rare (impolite)
+fruity	NN	2	False	0	Rare (polite)
+corn	NN	2	False	0	Rare (Mixed)
+welfare	NN	2	False	0	Rare (Mixed)
+diagram	NN	2	False	0	Rare (impolite)
+unit	NN	2	False	0	Rare (Mixed)
+calorie	NN	2	False	0	Rare (neutral)
+retirement	NN	2	False	0	Rare (polite)
+wardrobe	NN	2	False	0	Rare (Mixed)
+desperation	NN	2	False	0	Rare (impolite)
+tasteless	NN	2	False	-0.6	Rare (impolite)
+adherence	NN	2	False	0	Rare (impolite)
+overtime	NN	2	False	0	Rare (Mixed)
+chefs	NNS	2	False	0	Rare (polite)
+armchair	NN	2	False	0	Rare (Mixed)
+terminate	NN	2	False	0	Rare (Mixed)
+recipes	NNS	2	False	0	Rare (polite)
+tracker	NN	2	False	0	Rare (polite)
+vocal	JJ	2	False	0	Rare (neutral)
+projection	NN	2	False	0	Rare (neutral)
+processor	NN	2	False	0	Rare (Mixed)
+rotation	NN	2	False	0	Rare (Mixed)
+rapidly	RB	2	False	0	Rare (Mixed)
+tower	NN	2	False	0	Rare (polite)
+peddle	NN	2	False	0	Rare (impolite)
+awry	NN	2	False	0	Rare (Mixed)
+sized	VBN	2	False	0	Rare (impolite)
+glimpse	NN	2	False	0	Rare (impolite)
+override	NN	2	False	0	Rare (impolite)
+adjuster	NN	2	False	0	Rare (impolite)
+drain	NN	2	False	0	Rare (neutral)
+foundational	JJ	2	False	0	Rare (somewhat polite)
+correspondence	NN	2	False	0	Rare (somewhat polite)
+overcrowd	NN	2	False	0	Rare (Mixed)
+tulip	NN	2	False	0	Rare (polite)
+deluxe	NN	2	False	0.6	Rare (Mixed)
+advisable	JJ	2	False	0	Rare (polite)
+villa	NN	2	False	0	Rare (polite)
+compromise	NN	2	False	0	Rare (Mixed)
+except	IN	2	False	0	Rare (Mixed)
+kanban	NN	2	False	0	Rare (polite)
+drag	NN	2	False	-0.1	Rare (impolite)
+individually	RB	2	False	0	Rare (Mixed)
+hmm	NN	2	False	0	Rare (somewhat polite)
+l	NN	2	False	0	Rare (Mixed)
+walkthrough	NN	2	False	0	Rare (polite)
+retailer	NN	2	False	0	Rare (Mixed)
+whale	NN	2	False	0	Rare (impolite)
+retroactively	RB	2	False	0	Rare (polite)
+neglect	NN	2	False	0	Rare (impolite)
+seasoning	VBG	2	False	0	Rare (Mixed)
+undo	NN	2	False	0	Rare (impolite)
+replenish	NN	2	False	0	Rare (Mixed)
+signal	NN	2	False	0	Rare (Mixed)
+faith	NN	2	False	0	Rare (Mixed)
+cataloging	VBG	2	False	0	Rare (Mixed)
+gathering	NN	2	False	0	Rare (somewhat polite)
+crm	NN	2	False	0	Rare (neutral)
+ill	NN	2	False	-0.5	Rare (impolite)
+isolated	JJ	2	False	0	Rare (polite)
+shrug	NN	2	False	0	Rare (impolite)
+affordability	NN	2	False	0	Rare (Mixed)
+extortionate	NN	2	False	0	Rare (impolite)
+crop	NN	2	False	0	Rare (Mixed)
+contingency	NN	2	False	0	Rare (impolite)
+overbooking	VBG	2	False	0	Rare (neutral)
+huh	NN	2	False	0	Rare (impolite)
+guardian	NN	2	False	0	Rare (Mixed)
+jog	NN	2	False	0	Rare (impolite)
+favorable	JJ	2	False	0	Rare (Mixed)
+guard	NN	2	False	0	Rare (polite)
+blog	NN	2	False	0	Rare (polite)
+microwave	NN	2	False	0	Rare (impolite)
+cooler	NN	2	False	0	Rare (Mixed)
+interlibrary	JJ	2	False	0	Rare (Mixed)
+sacrifice	NN	2	False	0	Rare (impolite)
+delegate	NN	2	False	0	Rare (Mixed)
+unmatched	JJ	2	False	0	Rare (polite)
+utilized	JJ	2	False	0	Rare (neutral)
+wakeboard	NN	2	False	0	Rare (Mixed)
+cybersecurity	NN	2	False	0	Rare (Mixed)
+ufc	NN	2	False	0	Rare (impolite)
+wonderland	NN	2	False	0	Rare (impolite)
+dropped	VBD	2	False	0	Rare (Mixed)
+scope	NN	2	False	0	Rare (neutral)
+watercraft	NN	2	False	0	Rare (Mixed)
+revoke	NN	2	False	0	Rare (Mixed)
+furnish	JJ	2	False	0	Rare (somewhat polite)
+licensing	NN	2	False	0	Rare (Mixed)
+adjusts	NNS	2	False	0	Rare (Mixed)
+helping	VBG	2	False	0	Rare (somewhat polite)
+roi	NN	2	False	0	Rare (Mixed)
+torn	NN	2	False	0	Rare (impolite)
+gazpacho	NN	2	False	0	Rare (polite)
+gingerbread	NN	2	False	0	Rare (Mixed)
+pok	NN	2	False	0	Rare (somewhat polite)
+mon	NN	2	False	0	Rare (somewhat polite)
+regrettable	JJ	2	False	0	Rare (impolite)
+unfavorable	JJ	2	False	0	Rare (Mixed)
+complication	NN	2	False	0	Rare (Mixed)
+proven	NN	2	False	0	Rare (impolite)
+cleanser	NN	2	False	0	Rare (polite)
+compenstate	NN	2	False	0	Rare (impolite)
+injured	JJ	2	False	0	Rare (impolite)
+underwhelming	VBG	2	False	0	Rare (impolite)
+unfamiliar	JJ	2	False	0	Rare (Mixed)
+furnishing	VBG	2	False	0	Rare (polite)
+indoors	NNS	2	False	0	Rare (Mixed)
+photoshop	NN	2	False	0	Rare (polite)
+magazine	NN	2	False	0	Rare (polite)
+resent	NN	2	False	0	Rare (neutral)
+volleyball	NN	2	False	0	Rare (Mixed)
+classroom	NN	2	False	0	Rare (Mixed)
+noon	NN	2	False	0	Rare (neutral)
+hdmi	NN	2	False	0	Rare (somewhat polite)
+engineer	NN	2	False	0	Rare (impolite)
+trusted	VBN	2	False	0	Rare (neutral)
+filter	NN	2	False	0	Rare (Mixed)
+negativity	NN	2	False	0	Rare (impolite)
+artisan	NN	2	False	0	Rare (Mixed)
+landmarks	NNS	2	False	0	Rare (polite)
+toilet	NN	2	False	-0.03	Rare (impolite)
+camel	NN	2	False	0	Rare (impolite)
+execution	NN	2	False	0	Rare (neutral)
+coordination	NN	2	False	0	Rare (impolite)
+choppy	JJ	2	False	-0.2	Rare (impolite)
+butt	NN	2	False	0	Rare (impolite)
+umpteenth	JJ	2	False	0	Rare (impolite)
+discontinued	VBN	2	False	0	Rare (impolite)
+verbal	NN	2	False	0	Rare (Mixed)
+wasteful	NN	2	False	0	Rare (impolite)
+avenue	NN	2	False	0	Rare (Mixed)
+intermission	NN	2	False	0	Rare (neutral)
+procedures	NNS	2	False	0	Rare (Mixed)
+intellectually	RB	2	False	0.3	Rare (impolite)
+latecomer	NN	2	False	0	Rare (neutral)
+harmony	NN	2	False	0	Rare (polite)
+improved	VBN	2	False	0	Rare (Mixed)
+presenting	VBG	2	False	0	Rare (Mixed)
+documentary	NN	2	False	0	Rare (Mixed)
+clutter	NN	2	False	0	Rare (impolite)
+netflix	NN	2	False	0	Rare (impolite)
+awe	NN	2	False	0	Rare (polite)
+poster	NN	2	False	0	Rare (impolite)
+roar	NN	2	False	0	Rare (polite)
+confidently	RB	2	False	0.5	Rare (polite)
+bomb	NN	2	False	0	Rare (impolite)
+sky	NN	2	False	0	Rare (impolite)
+prone	NN	2	False	0	Rare (Mixed)
+chat	NN	2	False	0	Rare (Mixed)
+literate	NN	2	False	0	Rare (impolite)
+orca	NN	2	False	0	Rare (impolite)
+losing	VBG	2	False	0	Rare (Mixed)
+futility	NN	2	False	0	Rare (impolite)
+generosity	NN	2	False	0	Rare (impolite)
+london	NN	2	False	0	Rare (Mixed)
+cage	NN	2	False	0	Rare (impolite)
+paradise	NN	2	False	0	Rare (impolite)
+drone	NN	2	False	0	Rare (impolite)
+diagnosis	NN	2	False	0	Rare (Mixed)
+partnership	NN	2	False	0	Rare (Mixed)
+meatball	NN	2	False	0	Rare (Mixed)
+sub	NN	2	False	0	Rare (Mixed)
+empathy	NN	2	False	0	Rare (Mixed)
+misleading	VBG	2	False	0	Rare (impolite)
+rack	NN	2	False	0	Rare (impolite)
+tiger	NN	2	False	0	Rare (Mixed)
+dumb	NN	2	False	-0.38	Rare (impolite)
+defensive	NN	2	False	0	Rare (impolite)
+fried	VBN	2	False	0	Rare (Mixed)
+earth	NN	2	False	0	Rare (impolite)
+xx	NN	2	False	0	Rare (neutral)
+journal	NN	2	False	0	Rare (impolite)
+breeze	NN	2	False	0	Rare (polite)
+zip	NN	2	False	0	Rare (impolite)
+bakerylove	NN	2	False	0	Rare (polite)
+handbook	NN	2	False	0	Rare (impolite)
+superior	JJ	2	False	0.7	Rare (impolite)
+gumbo	NN	2	False	0	Rare (Mixed)
+clumsiness	NN	2	False	0	Rare (impolite)
+arithmetic	JJ	2	False	0	Rare (impolite)
+lindsey	NN	2	False	0	Rare (impolite)
+vonn	NN	2	False	0	Rare (impolite)
+mismanagement	NN	2	False	0	Rare (impolite)
+dresser	NN	2	False	0	Rare (impolite)
+fauna	NN	2	False	0	Rare (polite)
+hone	NN	2	False	0	Rare (polite)
+template	NN	2	False	0	Rare (Mixed)
+compel	NN	2	False	0	Rare (Mixed)
+salon	NN	2	False	0	Rare (neutral)
+belly	RB	2	False	0	Rare (Mixed)
+mimic	NN	2	False	0	Rare (polite)
+boundary	NN	2	False	0	Rare (Mixed)
+teaching	VBG	2	False	0	Rare (Mixed)
+dash	NN	2	False	0	Rare (polite)
+fellow	NN	2	False	0	Rare (polite)
+excessively	RB	2	False	-0.25	Rare (impolite)
+spacious	JJ	2	False	0	Rare (Mixed)
+velvet	NN	2	False	0	Rare (neutral)
+repetitive	NN	2	False	-0.25	Rare (impolite)
+foster	NN	2	False	0	Rare (polite)
+mayo	NN	2	False	0	Rare (impolite)
+posted	VBN	2	False	0	Rare (neutral)
+relying	VBG	2	False	0	Rare (impolite)
+prescribed	NNS	2	False	0	Rare (Mixed)
+awareness	NN	2	False	0	Rare (impolite)
+splatter	NN	2	False	0	Rare (impolite)
+condescend	NN	2	False	0	Rare (impolite)
+flow	NN	2	False	0	Rare (impolite)
+moon	NN	2	False	0	Rare (impolite)
+uninterrupted	JJ	2	False	0	Rare (neutral)
+melted	VBN	2	False	0	Rare (impolite)
+budgetlover	NN	2	False	0	Rare (polite)
+whiner	NN	2	False	0	Rare (impolite)
+visionary	JJ	2	False	0	Rare (impolite)
+cappuccino	NN	2	False	0	Rare (Mixed)
+argument	NN	2	False	0	Rare (impolite)
+ungrateful	JJ	2	False	0	Rare (impolite)
+pier	NN	2	False	0	Rare (neutral)
+stimulation	NN	2	False	0	Rare (impolite)
+unparalleled	JJ	2	False	0	Rare (polite)
+crab	NN	2	False	0	Rare (polite)
+tolerable	JJ	2	False	0	Rare (somewhat polite)
+promptness	NN	2	False	0	Rare (Mixed)
+signing	NN	2	False	0	Rare (polite)
+curtain	NN	2	False	0	Rare (polite)
+bruise	NN	2	False	0	Rare (impolite)
+engine	NN	2	False	0	Rare (Mixed)
+complementary	NN	2	False	0	Rare (polite)
+india	NN	2	False	0	Rare (Mixed)
+cringeworthy	NN	2	False	0	Rare (impolite)
+thoughtful	JJ	2	False	0.4	Rare (polite)
+thrown	NN	2	False	0	Rare (impolite)
+united	JJ	2	False	0	Rare (Mixed)
+painter	NN	2	False	0	Rare (impolite)
+brainstorming	NN	2	False	0	Rare (neutral)
+belong	NN	2	False	0	Rare (impolite)
+era	NN	2	False	0	Rare (impolite)
+drill	NN	2	False	0	Rare (polite)
+accountability	NN	2	False	0	Rare (impolite)
+drown	NN	2	False	0	Rare (impolite)
+hack	NN	2	False	0	Rare (impolite)
+expertly	RB	2	False	0	Rare (polite)
+beneath	NN	2	False	0	Rare (impolite)
+mapping	NN	2	False	0	Rare (Mixed)
+masala	NN	2	False	0	Rare (neutral)
+worthy	NN	2	False	0.33	Rare (impolite)
+overwatering	VBG	2	False	0	Rare (Mixed)
+sloth	NN	2	False	0	Rare (impolite)
+sleeve	NN	2	False	0	Rare (impolite)
+wimp	NN	2	False	0	Rare (impolite)
+companion	NN	2	False	0	Rare (Mixed)
+speech	NN	2	False	0	Rare (Mixed)
+organizers	NNS	2	False	0	Rare (somewhat polite)
+restroom	NN	2	False	0	Rare (Mixed)
+mediocrity	NN	2	False	-0.2	Rare (impolite)
+abandon	NN	2	False	0	Rare (impolite)
+her	PRP$	2	True	0	Rare (Mixed)
+nerve	NN	2	False	0	Rare (impolite)
+roaring	VBG	2	False	0	Rare (polite)
+tapa	NN	2	False	0	Rare (neutral)
+commentary	NN	2	False	0	Rare (impolite)
+seasoned	VBN	2	False	0.25	Rare (polite)
+cure	NN	2	False	0	Rare (impolite)
+kingdom	NN	2	False	0	Rare (polite)
+turnout	NN	2	False	0	Rare (polite)
+birth	NN	2	False	0	Rare (Mixed)
+cheer	NN	2	False	0	Rare (Mixed)
+nd	NN	2	False	0	Rare (neutral)
+languages	NNS	2	False	0	Rare (Mixed)
+oled	VBN	2	False	0	Rare (Mixed)
+headache	NN	2	False	0	Rare (impolite)
+joy	NN	2	False	0.8	Rare (polite)
+strength	NN	2	False	0	Rare (polite)
+soap	NN	2	False	0	Rare (impolite)
+spin	NN	2	False	0	Rare (Mixed)
+comparable	JJ	2	False	0	Rare (neutral)
+observation	NN	2	False	0	Rare (polite)
+palm	NN	2	False	0	Rare (impolite)
+sustainably	RB	2	False	0	Rare (Mixed)
+tremendous	JJ	2	False	0.33	Rare (polite)
+durable	JJ	2	False	0	Rare (impolite)
+wherever	NN	2	False	0	Rare (impolite)
+invite	NN	2	False	0	Rare (Mixed)
+intro	NN	2	False	0	Rare (impolite)
+avoidance	NN	2	False	0	Rare (Mixed)
+china	NN	2	False	0	Rare (impolite)
+takeaway	NN	2	False	0	Rare (polite)
+cheat	NN	2	False	0	Rare (impolite)
+leader	NN	2	False	0	Rare (impolite)
+brazilian	JJ	2	False	0	Rare (Mixed)
+jiu	NN	2	False	0	Rare (Mixed)
+jitsu	NN	2	False	0	Rare (Mixed)
+hangover	NN	2	False	0	Rare (impolite)
+coddling	VBG	2	False	0	Rare (impolite)
+captain	NN	2	False	0	Rare (impolite)
+backstage	NN	2	False	0	Rare (Mixed)
+elf	NN	2	False	0	Rare (impolite)
+symptom	NN	2	False	0	Rare (Mixed)
+technician	JJ	2	False	0	Rare (Mixed)
+helicopter	NN	2	False	0	Rare (impolite)
+fossil	NN	2	False	0	Rare (Mixed)
+suffer	NN	2	False	0	Rare (impolite)
+baby	NN	2	False	0	Rare (impolite)
+bottom	NN	2	False	0	Rare (Mixed)
+harder	NN	2	False	-0.1	Rare (impolite)
+sparse	NN	2	False	0	Rare (Mixed)
+commend	NN	2	False	0	Rare (polite)
+spanish	JJ	2	False	0	Rare (Mixed)
+mandarin	NN	2	False	0	Rare (Mixed)
+creme	NN	2	False	0	Rare (neutral)
+brulee	NN	2	False	0	Rare (neutral)
+petting	VBG	2	False	0	Rare (impolite)
+resend	NN	2	False	0	Rare (Mixed)
+adorable	JJ	2	False	0.5	Rare (polite)
+horrible	JJ	2	False	-1	Rare (impolite)
+freak	NN	2	False	0	Rare (impolite)
+tempura	NN	2	False	0	Rare (neutral)
+ambassador	NN	2	False	0	Rare (Mixed)
+officer	NN	2	False	0	Rare (Mixed)
+dingy	NN	2	False	0	Rare (impolite)
+reassign	NN	2	False	0	Rare (Mixed)
+pressing	VBG	2	False	0	Rare (impolite)
+reserved	VBN	2	False	0	Rare (neutral)
+spreadsheet	NN	2	False	0	Rare (impolite)
+sightsee	NN	2	False	0	Rare (impolite)
+refrigerated	VBN	2	False	0	Rare (neutral)
+tuna	NN	2	False	0	Rare (neutral)
+cell	NN	2	False	0	Rare (impolite)
+frill	NN	2	False	0	Rare (impolite)
+delicate	NN	2	False	-0.3	Rare (Mixed)
+sardine	NN	2	False	0	Rare (impolite)
+courteous	JJ	2	False	0.6	Rare (polite)
+desert	NN	2	False	0	Rare (impolite)
+entertaining	VBG	2	False	0.5	Rare (Mixed)
+article	NN	2	False	0	Rare (Mixed)
+gelato	NN	2	False	0	Rare (polite)
+math	NN	2	False	0	Rare (impolite)
+optimization	NN	2	False	0	Rare (Mixed)
+mouthwatering	VBG	2	False	0	Rare (polite)
+homemade	NN	2	False	0	Rare (polite)
+containing	VBG	2	False	0	Rare (somewhat polite)
+departing	VBG	2	False	0	Rare (Mixed)
+sauna	NN	2	False	0	Rare (impolite)
+experimental	NN	2	False	0.1	Rare (impolite)
+maintained	VBN	2	False	0	Rare (Mixed)
+clock	NN	2	False	0	Rare (impolite)
+pummel	NN	2	False	0	Rare (impolite)
+archive	JJ	2	False	0	Rare (somewhat polite)
+tardiness	NN	2	False	0	Rare (impolite)
+readily	RB	2	False	0.2	Rare (Mixed)
+survey	NN	2	False	0	Rare (Mixed)
+inclusion	NN	2	False	0	Rare (polite)
+waterproofing	VBG	2	False	0	Rare (Mixed)
+misfortune	NN	2	False	0	Rare (impolite)
+bot	NN	2	False	0	Rare (impolite)
+colony	NN	2	False	0	Rare (impolite)
+export	NN	2	False	0	Rare (neutral)
+reopens	NNS	2	False	0	Rare (Mixed)
+standby	NN	2	False	0	Rare (Mixed)
+usable	JJ	2	False	0	Rare (Mixed)
+greed	NN	2	False	0	Rare (impolite)
+felt	NN	2	False	0	Rare (impolite)
+warrantify	NN	2	False	0	Rare (impolite)
+messaging	VBG	2	False	0	Rare (polite)
+flavorless	NN	2	False	0	Rare (impolite)
+inefficiency	NN	2	False	0	Rare (impolite)
+buffalo	NN	2	False	0	Rare (Mixed)
+celiac	NN	2	False	0	Rare (impolite)
+disease	NN	2	False	0	Rare (impolite)
+anti	NN	2	False	0	Rare (Mixed)
+caribbean	NN	2	False	0	Rare (Mixed)
+pronounce	NN	2	False	0	Rare (impolite)
+supporting	VBG	2	False	0.25	Rare (Mixed)
+sparkling	VBG	2	False	0	Rare (Mixed)
+reconfiguring	VBG	2	False	0	Rare (Mixed)
+peek	NN	2	False	0	Rare (Mixed)
+adventurous	JJ	2	False	0.5	Rare (polite)
+district	NN	2	False	0	Rare (Mixed)
+appropriately	RB	2	False	0.5	Rare (somewhat polite)
+impatience	NN	2	False	0	Rare (impolite)
+pant	NN	2	False	0	Rare (neutral)
+offline	NN	2	False	0	Rare (neutral)
+mishap	NN	2	False	0	Rare (impolite)
+screenshot	NN	2	False	0	Rare (Mixed)
+overlook	NN	2	False	0	Rare (impolite)
+fat	NN	2	False	0	Rare (Mixed)
+lassi	NN	2	False	0	Rare (polite)
+academic	JJ	2	False	0	Rare (impolite)
+riptide	NN	2	False	0	Rare (impolite)
+sunset	NN	2	False	0	Rare (Mixed)
+integrated	VBN	2	False	0	Rare (Mixed)
+occupancy	NN	2	False	0	Rare (Mixed)
+prison	NN	2	False	0	Rare (impolite)
+grown	NN	2	False	0	Rare (Mixed)
+ear	NN	2	False	0	Rare (impolite)
+translate	NN	2	False	0	Rare (impolite)
+carpet	NN	2	False	0	Rare (impolite)
+headgear	NN	2	False	0	Rare (neutral)
+changing	VBG	2	False	0	Rare (polite)
+platypus	NN	2	False	0	Rare (impolite)
+beaver	NN	2	False	0	Rare (impolite)
+balanced	VBN	2	False	0	Rare (polite)
+teleport	NN	2	False	0	Rare (impolite)
+obligation	NN	2	False	0	Rare (Mixed)
+imagine	NN	2	False	0	Rare (Mixed)
+mailbox	NN	2	False	0	Rare (Mixed)
+glow	NN	2	False	0	Rare (Mixed)
+ownership	NN	2	False	0	Rare (Mixed)
+caters	NNS	2	False	0	Rare (Mixed)
+shadow	NN	2	False	0	Rare (polite)
+artistry	NN	2	False	0	Rare (Mixed)
+ethic	JJ	2	False	0	Rare (impolite)
+hobbyist	NN	2	False	0	Rare (impolite)
+instagram	NN	2	False	0	Rare (impolite)
+geez	NN	2	False	0	Rare (impolite)
+dictionary	JJ	2	False	0	Rare (Mixed)
+dud	NN	2	False	0	Rare (impolite)
+backpacker	NN	2	False	0	Rare (Mixed)
+amphibians	NNS	2	False	0	Rare (neutral)
+exploration	NN	2	False	0	Rare (polite)
+soundproof	NN	2	False	0	Rare (impolite)
+assume	VB	2	False	0	Rare (Mixed)
+spectacular	NN	2	False	0.6	Rare (polite)
+sol	NN	2	False	0	Rare (impolite)
+disagree	NN	2	False	0	Rare (impolite)
+ugly	RB	2	False	-0.7	Rare (impolite)
+elephant	NN	2	False	0	Rare (Mixed)
+satellite	NN	2	False	0	Rare (Mixed)
+lively	RB	2	False	0.14	Rare (polite)
+gf	NN	2	False	0	Rare (impolite)
+symbol	NN	2	False	0	Rare (impolite)
+arrangements	NNS	2	False	0	Rare (somewhat polite)
+caviar	NN	2	False	0	Rare (impolite)
+crowds	NN	2	False	0	Rare (neutral)
+hardworking	VBG	2	False	0	Rare (Mixed)
+snorkel	NN	2	False	0	Rare (Mixed)
+liner	NN	2	False	0	Rare (impolite)
+arboretum	NN	2	False	0	Rare (impolite)
+finger	NN	2	False	0	Rare (impolite)
+sedan	NN	2	False	0	Rare (Mixed)
+trunk	NN	2	False	0	Rare (Mixed)
+butler	NN	2	False	0	Rare (Mixed)
+achievement	NN	2	False	0	Rare (polite)
+conclude	NN	2	False	0	Rare (neutral)
+corporation	NN	2	False	0	Rare (impolite)
+finding	VBG	2	False	0	Rare (neutral)
+continuously	RB	2	False	0	Rare (polite)
+provocative	NN	2	False	0	Rare (impolite)
+crutch	NN	2	False	0	Rare (impolite)
+pacific	NN	2	False	0	Rare (Mixed)
+olympic	NN	2	False	0	Rare (impolite)
+showing	VBG	2	False	0	Rare (Mixed)
+massive	JJ	2	False	0	Rare (Mixed)
+logic	NN	2	False	0	Rare (impolite)
+expedition	NN	2	False	0	Rare (impolite)
+elm	NN	2	False	0	Rare (neutral)
+arriving	VBG	2	False	0	Rare (Mixed)
+domestic	JJ	2	False	0	Rare (Mixed)
+palette	NN	2	False	0	Rare (Mixed)
+harass	NN	2	False	0	Rare (impolite)
+manifest	JJS	2	False	0	Rare (Mixed)
+predominantly	RB	2	False	0	Rare (Mixed)
+portrait	NN	2	False	0	Rare (Mixed)
+suv	NN	2	False	0	Rare (Mixed)
+quaint	NN	2	False	0	Rare (polite)
+bleed	NN	2	False	0	Rare (impolite)
+etiquette	NN	2	False	0	Rare (polite)
+survive	NN	2	False	0	Rare (Mixed)
+giant	NN	2	False	0	Rare (Mixed)
+iconic	NN	2	False	0.5	Rare (polite)
+earplug	NN	2	False	0	Rare (impolite)
+mini	NN	2	False	0	Rare (impolite)
+kiosk	NN	2	False	0	Rare (Mixed)
+minded	VBN	2	False	0	Rare (Mixed)
+uneven	RB	2	False	-0.2	Rare (impolite)
+unwarranted	JJ	2	False	0	Rare (impolite)
+avant	NN	2	False	0	Rare (impolite)
+garde	NN	2	False	0	Rare (impolite)
+alarm	NN	2	False	0	Rare (Mixed)
+golfer	NN	2	False	0	Rare (Mixed)
+diner	NN	2	False	0	Rare (impolite)
+dermatologist	NN	2	False	0	Rare (neutral)
+aesthetic	JJ	2	False	0	Rare (Mixed)
+shared	VBN	2	False	0	Rare (Mixed)
+banana	NN	2	False	0	Rare (impolite)
