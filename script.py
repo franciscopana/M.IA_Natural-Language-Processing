@@ -329,6 +329,10 @@ class FeatureExtractor:
             else:
                 return self.vectorizer.transform(texts)
 
+    def get_feature_names_out(self):
+        if type(self.vectorizer) is WordEmbeddingsModel:
+            raise ValueError("Word2Vec model does not have feature names.")
+        return self.vectorizer.get_feature_names_out()
 
 class DimensionalityReducer:
     """
@@ -766,7 +770,11 @@ class Test:
                 target_col: str = 'label',
                 apply_dim_reduction: bool = False,
                 n_components: int = 200,
-                scale_features: bool = True):
+                scale_features: bool = True,
+                save_results: bool = True,
+                save_misclassifications: bool = True,
+                apply_explainability: bool = False,
+                should_train: bool = True):
         
         print(f"Starting test with {model.__class__.__name__}")
         start_time = time.time()
@@ -815,7 +823,7 @@ class Test:
         print(f"Training data shape: {X_train.shape}")
         
         print("Extracting features for test data...")
-        X_test = feature_extractor.extract_features(test_texts)
+        X_test = feature_extractor.extract_features(test_texts, train=False)
         print(f"Test data shape: {X_test.shape}")
         
         dim_reducer = None
@@ -839,30 +847,46 @@ class Test:
             
             X_train = scaler.scale_features(X_train, train=True)
             X_test = scaler.scale_features(X_test)
-        
-        print(f"Training {model.__class__.__name__}...")
-        model_start_time = time.time()
-        model.fit(X_train, train_labels)
-        training_time = time.time() - model_start_time
-        print(f"Model trained in {training_time:.2f} seconds")
-        
+
+        if should_train:
+            print(f"Training {model.__class__.__name__}...")
+            model_start_time = time.time()
+            model.fit(X_train, train_labels)
+            training_time = time.time() - model_start_time
+            print(f"Model trained in {training_time:.2f} seconds")
+        else:
+            print("Skipping training, using pre-trained model")
+
         print("Making predictions...")
         y_pred = model.predict(X_test)
-        
+
         ordered_classes = ['impolite', 'neutral', 'somewhat polite', 'polite']
-        
+
         accuracy = accuracy_score(test_labels, y_pred)
         report = classification_report(test_labels, y_pred, output_dict=True)
         conf_matrix = confusion_matrix(test_labels, y_pred, labels=ordered_classes)
+
+        if save_results:
+            self._save_confusion_matrix(conf_matrix, ordered_classes, f"results/confusion_matrix.png")
         
-        self._save_confusion_matrix(conf_matrix, ordered_classes, f"results/confusion_matrix.png")
-        
-        self._save_misclassifications(
-            original_test_texts, 
-            test_labels, 
-            y_pred
-        )
-        
+        if save_misclassifications:
+            self._save_misclassifications(
+                original_test_texts,
+                test_labels,
+                y_pred,
+            )
+
+        if apply_explainability:
+            print(">> Applying explainability techniques:")
+            top_features_nr = 5
+            feature_names = feature_extractor.get_feature_names_out()
+
+            if type(model) is LogisticRegression:
+                print("Plotting logistic regression coefficients...")
+                self._plot_logistic_regression_coefficients(model, feature_names, feature_extraction_config['name'], top_features_nr)
+            else:
+                raise NotImplementedError("Explainability techniques not implemented for this model type")
+
         results = {
             'accuracy': accuracy,
             'report': report,
@@ -875,12 +899,13 @@ class Test:
         print(f"Test Accuracy: {accuracy:.4f}")
         print("Classification Report:")
         print(classification_report(test_labels, y_pred))
-        
-        self._save_results(results, model.__class__.__name__, feature_extraction_config['name'])
-        
+
+        if save_results:
+            self._save_results(results, model.__class__.__name__, feature_extraction_config['name'])
+
         total_time = time.time() - start_time
         print(f"Test completed in {total_time:.2f} seconds")
-        
+
         return results
     
     def _save_misclassifications(self, original_texts, true_labels, predicted_labels):
@@ -946,6 +971,33 @@ class Test:
         df.to_csv(self.test_output_path, index=False)
         print(f"Results saved to {self.test_output_path}")
 
+    def _plot_logistic_regression_coefficients(self, model, feature_names, feature_extraction_name, top_features_nr=10):
+        """
+        Plot the top `top_features_nr` positive and negative coefficients of a logistic regression model.
+        """
+        for class_idx, class_name in enumerate(model.classes_):
+            class_coef = model.coef_[class_idx]
+            top_positive_idx = np.argsort(class_coef)[-top_features_nr:]  # Top positive features
+            top_negative_idx = np.argsort(class_coef)[:top_features_nr]   # Top negative features
+            top_features_idx = np.concatenate([top_negative_idx, top_positive_idx])
+
+            def plot_top_features(top_features_idxs, class_coef, feature_names, filepath, title):
+                top_features = [feature_names[idx] for idx in top_features_idxs]
+                top_values = [class_coef[idx] for idx in top_features_idxs]
+                plt.figure(figsize=(10, 6))
+                plt.barh(range(len(top_features)), top_values, color=['red' if val < 0 else 'blue' for val in top_values])
+                plt.yticks(range(len(top_features)), top_features)
+                plt.xlabel("Contribution to classification (Logistic Regression coefficients)")
+                plt.title(title)
+                plt.tight_layout()
+                plt.savefig(filepath)
+                plt.close()
+
+            filepath = f"results/plots/logistic_regression_{class_name}_{feature_extraction_name}.png"
+            plot_top_features(
+                top_features_idx, class_coef, feature_names,
+                filepath, f"Logistic Regression Coefficients for Class '{class_name}'"
+            )
 
 def validation():
     file_paths = {
@@ -1039,10 +1091,15 @@ def test():
         misclassifications_path="results/misclassifications.csv"
     )
 
-    model = SVC(kernel='rbf', C=1.0, gamma='scale')
+    # model = SVC(kernel='rbf', C=1.0, gamma='scale')
+    # feature_extraction_config = {
+    #     "name": "word2vec",
+    #     "params": {"vector_size": 200, "window": 10, "min_count": 2, "workers": 10, "sg": 1},
+    # }
+    model = LogisticRegression(C=0.1, max_iter=100, penalty='l2', solver='saga')
     feature_extraction_config = {
-        "name": "word2vec",
-        "params": {"vector_size": 200, "window": 10, "min_count": 2, "workers": 10, "sg": 1},
+        "name": "BoW_2",
+        "params": {"ngram_range": (2, 2), "max_features": 50000},
     }
     
     tester.run_test(
@@ -1050,7 +1107,11 @@ def test():
         feature_extraction_config=feature_extraction_config,
         include_digits=False,
         include_sw=True,
-        scale_features=True
+        scale_features=True,
+        save_results=False,
+        save_misclassifications=False,
+        apply_explainability=True,
+        should_train=True,
     )
 
 
