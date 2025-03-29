@@ -760,7 +760,6 @@ class Test:
         self.preprocessor = TextPreprocessor()
         self.data_loader = DataLoader(file_paths, self.preprocessor)
         
-        # Create output directory if it doesn't exist
         os.makedirs(os.path.dirname(test_output_path), exist_ok=True)
         
     def run_test(self, 
@@ -780,7 +779,6 @@ class Test:
         print(f"Starting test with {model.__class__.__name__}")
         start_time = time.time()
         
-        # Process training data
         print("Processing training data...")
         train_files = [self.file_paths['train_cot'], self.file_paths['train_few_shot']]
         train_texts, train_labels = self.data_loader.process_in_batches(
@@ -820,17 +818,14 @@ class Test:
             )
         )
         
-        # Extract features for training data
         print("Extracting features for training data...")
         X_train = feature_extractor.extract_features(train_texts, train=True)
         print(f"Training data shape: {X_train.shape}")
         
-        # Extract features for test data
         print("Extracting features for test data...")
         X_test = feature_extractor.extract_features(test_texts, train=False)
         print(f"Test data shape: {X_test.shape}")
-
-        # Apply dimensionality reduction if specified
+        
         dim_reducer = None
         if apply_dim_reduction and feature_extraction_config['name'] != "word2vec":
             print(f"Applying dimensionality reduction with {n_components} components...")
@@ -840,7 +835,6 @@ class Test:
             print(f"Reduced training data shape: {X_train.shape}")
             print(f"Reduced test data shape: {X_test.shape}")
         
-        # Apply scaling if specified
         scaler = None
         if scale_features:
             print("Scaling features...")
@@ -854,37 +848,29 @@ class Test:
             X_train = scaler.scale_features(X_train, train=True)
             X_test = scaler.scale_features(X_test)
         
-        # Train the model
         print(f"Training {model.__class__.__name__}...")
         model_start_time = time.time()
         model.fit(X_train, train_labels)
         training_time = time.time() - model_start_time
         print(f"Model trained in {training_time:.2f} seconds")
         
-        # Make predictions
         print("Making predictions...")
         y_pred = model.predict(X_test)
-        
-        # Get unique class labels (in order they appear)
-        unique_classes = list(sorted(set(test_labels)))
-        
-        # Calculate metrics
+
+        ordered_classes = ['impolite', 'neutral', 'somewhat polite', 'polite']
+
         accuracy = accuracy_score(test_labels, y_pred)
         report = classification_report(test_labels, y_pred, output_dict=True)
-        conf_matrix = confusion_matrix(test_labels, y_pred, labels=unique_classes)
-        
+        conf_matrix = confusion_matrix(test_labels, y_pred, labels=ordered_classes)
+
         if save_results:
-            # Save confusion matrix as PNG
-            self._save_confusion_matrix(conf_matrix, unique_classes, f"results/confusion_matrix.png")
+            self._save_confusion_matrix(conf_matrix, ordered_classes, f"results/confusion_matrix.png")
         
         if save_misclassifications:
-            # Save misclassifications
             self._save_misclassifications(
-                original_test_texts, 
-                test_labels, 
-                y_pred, 
-                model.__class__.__name__, 
-                feature_extraction_config['name']
+                original_test_texts,
+                test_labels,
+                y_pred,
             )
 
         if apply_explainability:
@@ -899,14 +885,13 @@ class Test:
                 print("Plotting SHAP values...")
                 self._plot_shap_values(model, X_train, X_test, feature_names, feature_extraction_config['name'], top_features_nr)
 
-        # Prepare results
         results = {
             'accuracy': accuracy,
             'report': report,
             'confusion_matrix': conf_matrix,
             'predictions': y_pred,
             'true_labels': test_labels,
-            'unique_classes': unique_classes
+            'ordered_classes': ordered_classes
         }
         
         print(f"Test Accuracy: {accuracy:.4f}")
@@ -914,44 +899,34 @@ class Test:
         print(classification_report(test_labels, y_pred))
 
         if save_results:
-            # Save results to CSV
             self._save_results(results, model.__class__.__name__, feature_extraction_config['name'])
-        
+
         total_time = time.time() - start_time
         print(f"Test completed in {total_time:.2f} seconds")
-        
+
         return results
     
-    def _save_misclassifications(self, original_texts, true_labels, predicted_labels, model_name, feature_extraction_name):
-        # Create a list to store misclassified instances
+    def _save_misclassifications(self, original_texts, true_labels, predicted_labels):
         misclassifications = []
         
-        # Iterate through predictions and find misclassified instances
         for text, true_label, predicted_label in zip(original_texts, true_labels, predicted_labels):
             if true_label != predicted_label:
                 misclassifications.append({
                     'text': text,
                     'true_label': true_label,
-                    'predicted_label': predicted_label,
-                    'model': model_name,
-                    'feature_extraction': feature_extraction_name
+                    'predicted_label': predicted_label
                 })
         
-        # Convert to DataFrame
         misclassifications_df = pd.DataFrame(misclassifications)
         
-        # Append to existing file or create new one
         if os.path.exists(self.misclassifications_path):
             existing_df = pd.read_csv(self.misclassifications_path)
             misclassifications_df = pd.concat([existing_df, misclassifications_df], ignore_index=True)
         
-        # Save to file
         misclassifications_df.to_csv(self.misclassifications_path, index=False)
         
-        # Print summary
         print(f"Misclassifications saved to {self.misclassifications_path}")
-        print(f"Total misclassified instances: {len(misclassifications_df)}")
-
+        print(f"Total misclassified instances: {len(misclassifications)}")
         
     def _save_confusion_matrix(self, cm, class_names, filepath):
         plt.figure(figsize=(10, 8))
@@ -968,10 +943,8 @@ class Test:
     
     def _save_results(self, results, model_name, feature_extraction_name):
         rows = []
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
         row = {
-            'timestamp': timestamp,
             'model': model_name,
             'feature_extraction': feature_extraction_name,
             'accuracy': results['accuracy'],
@@ -979,7 +952,6 @@ class Test:
             'weighted_f1': results['report']['weighted avg']['f1-score'],
         }
         
-        # Add class-specific metrics
         for class_label, metrics in results['report'].items():
             if isinstance(metrics, dict):  # Skip 'accuracy' key
                 row[f'class_{class_label}_precision'] = metrics['precision']
@@ -988,10 +960,8 @@ class Test:
         
         rows.append(row)
         
-        # Create DataFrame and save
         df = pd.DataFrame(rows)
-        
-        # Append to existing file if it exists
+    
         if os.path.exists(self.test_output_path):
             existing_df = pd.read_csv(self.test_output_path)
             df = pd.concat([existing_df, df], ignore_index=True)
@@ -1112,26 +1082,26 @@ def validation():
             "scale": True,
             "requires_non_negative": False,
         },
-        # {
-        #     "name": "NB",
-        #     "hyperparameters": {'alpha': [0.1, 0.5, 1.0, 1.5, 2.0]},
-        #     "scale": False,
-        #     "requires_non_negative": True,
-        # },
-        # {
-        #     "name": "LR",
-        #     "hyperparameters": [
-        #         # Configuration for l2 penalty
-        #         {
-        #             'C': [0.01, 0.1, 1.0, 10.0],
-        #             'max_iter': [100, 200, 300, 500],
-        #             'penalty': ['l2'],
-        #             'solver': ['lbfgs', 'liblinear', 'saga']
-        #         },
-        #     ],
-        #     "scale": True,
-        #     "requires_non_negative": False,
-        # }
+        {
+            "name": "NB",
+            "hyperparameters": {'alpha': [0.1, 0.5, 1.0, 1.5, 2.0]},
+            "scale": False,
+            "requires_non_negative": True,
+        },
+        {
+            "name": "LR",
+            "hyperparameters": [
+                # Configuration for l2 penalty
+                {
+                    'C': [0.01, 0.1, 1.0, 10.0],
+                    'max_iter': [100, 200, 300, 500],
+                    'penalty': ['l2'],
+                    'solver': ['lbfgs', 'liblinear', 'saga']
+                },
+            ],
+            "scale": True,
+            "requires_non_negative": False,
+        }
     ]
 
     runner.setup_experiment(include_digits_options, feature_extraction_configs,
