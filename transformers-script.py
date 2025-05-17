@@ -1,177 +1,233 @@
-"""
-This script is not supposed to be ran in a local machine.
-It's a merged version of a Kaggle notebook.
-"""
-
-
-print(">> Importing libraries")
-from datasets import load_dataset, DatasetDict
-from transformers import AutoTokenizer
-from transformers import AutoModel
-from transformers import AutoModelForSequenceClassification
-from transformers import TrainingArguments, Trainer
-from transformers import DataCollatorWithPadding
-!pip install evaluate
-import evaluate
-import numpy as np
-from sklearn.metrics import confusion_matrix
-import matplotlib.pyplot as plt
-from datetime import datetime
 import os
-from kaggle_secrets import UserSecretsClient
+import logging
 import json
+from dataclasses import dataclass
+from datetime import datetime
+from typing import Dict, List
+
+#!pip install --upgrade --no-deps evaluate
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.metrics import accuracy_score, precision_recall_fscore_support, confusion_matrix
+import evaluate
+import wandb
+from datasets import load_dataset, DatasetDict
+from transformers import (
+    AutoTokenizer,
+    AutoModelForSequenceClassification,
+    TrainingArguments,
+    Trainer,
+    DataCollatorWithPadding,
+)
+from kaggle_secrets import UserSecretsClient
 
 
-print(">> Experiment Parameters")
-model_name = "roberta-base"
-num_epochs = 1
-batch_size = 64
-learning_rate = 2e-5
-weight_decay = 0.01
-output_dir = f"./training_output/{model_name}/{datetime.now().strftime('%B-%d_%H-%M-%S')}"
+# ------------------
+# Configuration
+# ------------------
+@dataclass
+class Config:
+    model_name: str = "roberta-base"
+    dataset_name: str = "Intel/polite-guard"
+    num_epochs: int = 1
+    batch_size: int = 64
+    learning_rate: float = 2e-5
+    weight_decay: float = 0.01
+    wandb_project: str = "polite-guard-classification"
+    run_name: str = f"{datetime.now().strftime('%B-%d_%H-%M')}_{model_name}_lr-{learning_rate}_bs-{batch_size}_epochs-{num_epochs}"
+    output_dir: str = f"./training_output/{model_name}/{run_name}"
 
 
-print(">> Setting up for kaggle")
-user_secrets = UserSecretsClient()
-wandb_api_key = user_secrets.get_secret("WANDB_API_KEY")
-os.environ["WANDB_API_KEY"] = wandb_api_key
-secret_value_0 = user_secrets.get_secret("huggingface")
-!mkdir -p ~/.huggingface
-!echo -n $huggingface_token > ~/.huggingface/token
+# ------------------
+# Setup logging & secrets
+# ------------------
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
-print(">> Loading dataset")
-raw_datasets = load_dataset("Intel/polite-guard")
-train_valid_test_dataset = DatasetDict({
-    'train': raw_datasets['train'],
-    'validation': raw_datasets['validation'],
-    'test': raw_datasets['test']
-})
+def setup_secrets():
+    secrets = UserSecretsClient()
+    os.environ["WANDB_API_KEY"] = secrets.get_secret("WANDB_API_KEY")
+    hf_token = secrets.get_secret("huggingface")
+    os.environ["HUGGINGFACE_TOKEN"] = hf_token
 
 
-print(">> Preprocessing dataset")
-label_list = raw_datasets["train"].unique("label")
-label_list.sort()
-label2id = {lbl: i for i, lbl in enumerate(label_list)}
-id2label = {i: lbl for lbl, i in label2id.items()}
+# ------------------
+# Data Loading & Preprocessing
+# ------------------
 
+def load_and_preprocess(cfg: Config):
+    logger.info("Loading dataset %s", cfg.dataset_name)
+    raw = load_dataset(cfg.dataset_name)
+    ds = DatasetDict({
+        "train": raw["train"],
+        "validation": raw["validation"],
+        "test": raw["test"],
+    })
 
-print(">> Label mapping")
-def my_preprocess_function(tokenizer):
-    def apply(sample):
-        toks = tokenizer(sample["text"], truncation=True, padding=True)
-        labels = [label2id[l] for l in sample["label"]]
-        toks["labels"] = labels
+    label_list = sorted(raw["train"].unique("label"))
+    label2id = {lbl: i for i, lbl in enumerate(label_list)}
+
+    tokenizer = AutoTokenizer.from_pretrained(cfg.model_name)
+
+    def preprocess(batch):
+        toks = tokenizer(batch["text"], truncation=True, padding=True)
+        toks["labels"] = [label2id[l] for l in batch["label"]]
         return toks
-    return apply
+
+    logger.info("Tokenizing dataset")
+    tokenized = ds.map(
+        preprocess,
+        batched=True,
+        remove_columns=raw["train"].column_names,
+    )
+    return tokenized, tokenizer, label2id
 
 
-print(">> Model setup")
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-tokenized_dataset = train_valid_test_dataset.map(
-    my_preprocess_function(tokenizer),
-    batched=True,
-    remove_columns=["text", "source", "reasoning", "label"],
-)
-model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=4)
+# ------------------
+# Model & Metrics
+# ------------------
+
+def build_model_and_metrics(cfg: Config, num_labels: int):
+    logger.info("Loading model %s", cfg.model_name)
+    model = AutoModelForSequenceClassification.from_pretrained(
+        cfg.model_name, num_labels=num_labels
+    )
+
+    metric = evaluate.load("f1")
+
+    def compute_metrics(eval_pred):
+        preds = np.argmax(eval_pred.predictions, axis=-1)
+        labels = eval_pred.label_ids
+
+        acc = accuracy_score(labels, preds)
+        precision, recall, f1, _ = precision_recall_fscore_support(
+            labels, preds, average="weighted", zero_division=0
+        )
+
+        return {
+            "accuracy": acc,
+            "precision": precision,
+            "recall": recall,
+            "f1": f1,
+        }
+
+    return model, compute_metrics
 
 
-print(">> Evaluation metric setup")
-metric = evaluate.load("f1")
-def compute_f1(eval_pred):
-    logits, labels = eval_pred
-    predictions = np.argmax(logits, axis=-1)
-    return metric.compute(predictions=predictions, references=labels, average="weighted")
-def compute_confusion_matrix(eval_pred):
-    predictions = np.argmax(eval_pred.predictions, axis=-1)
-    cm = confusion_matrix(eval_pred.label_ids, predictions)
-    return cm
+def plot_and_save_confusion_matrix(cm: np.ndarray, labels: List[str], path: str):
+    plt.figure(figsize=(6, 6))
+    plt.imshow(cm, interpolation="nearest", cmap=plt.cm.Blues)
+    plt.title("Confusion Matrix")
+    plt.ylabel("True Label")
+    plt.xlabel("Predicted Label")
+    plt.xticks(np.arange(len(labels)), labels, rotation=45, ha="right")
+    plt.yticks(np.arange(len(labels)), labels)
+
+    thresh = cm.max() / 2.0
+    for i, j in np.ndindex(cm.shape):
+        plt.text(
+            j,
+            i,
+            f"{cm[i, j]}",
+            ha="center",
+            va="center",
+            color="white" if cm[i, j] > thresh else "black",
+        )
+    plt.tight_layout()
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    plt.savefig(path)
+    plt.close()
 
 
-print(">> Training setup")
-training_args = TrainingArguments(
-    output_dir=output_dir,
-    learning_rate=learning_rate,
-    per_device_train_batch_size=batch_size,
-    per_device_eval_batch_size=batch_size,
-    num_train_epochs=num_epochs,
-    weight_decay=weight_decay,
-    eval_strategy="epoch",
-    save_strategy="epoch",
-    load_best_model_at_end=True,
-)
-data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
-trainer = Trainer(
-    model=model,
-    args=training_args,
-    train_dataset=tokenized_dataset["train"],
-    eval_dataset=tokenized_dataset["validation"],
-    processing_class=tokenizer,
-    data_collator=data_collator,
-    compute_metrics=compute_f1,
-)
+# ------------------
+# Main training pipeline
+# ------------------
+
+def main():
+    cfg = Config()
+    setup_secrets()
+
+    # Initialize W&B
+    wandb.init(
+        project=cfg.wandb_project,
+        name=cfg.run_name,
+        config=vars(cfg),
+        save_code=True,
+    )
+
+    # Load & preprocess
+    tokenized, tokenizer, label2id = load_and_preprocess(cfg)
+    num_labels = len(label2id)
+
+    # Model & metrics
+    model, compute_metrics = build_model_and_metrics(cfg, num_labels)
+
+    # Training arguments
+    training_args = TrainingArguments(
+        output_dir=cfg.output_dir,
+        eval_strategy="epoch",
+        save_strategy="epoch",
+        learning_rate=cfg.learning_rate,
+        per_device_train_batch_size=cfg.batch_size,
+        per_device_eval_batch_size=cfg.batch_size,
+        num_train_epochs=cfg.num_epochs,
+        weight_decay=cfg.weight_decay,
+        load_best_model_at_end=True,
+        report_to="wandb",
+    )
+
+    data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
+    trainer = Trainer(
+        model=model,
+        args=training_args,
+        train_dataset=tokenized["train"],
+        eval_dataset=tokenized["validation"],
+        data_collator=data_collator,
+        compute_metrics=compute_metrics,
+    )
+
+    # Train
+    logger.info("Starting training")
+    trainer.train()
+
+    # Evaluate
+    logger.info("Evaluating on test set")
+    pred_output = trainer.predict(tokenized["test"])
+    cm = confusion_matrix(pred_output.label_ids, np.argmax(pred_output.predictions, axis=-1))
+
+    # Save model & results
+    logger.info("Saving model and results")
+    trainer.save_model()
+    os.makedirs(cfg.output_dir, exist_ok=True)
+
+    results = {
+        "metrics": pred_output.metrics,
+        "confusion_matrix": cm.tolist(),
+        "label2id": label2id,
+    }
+    with open(os.path.join(cfg.output_dir, "results.json"), "w") as f:
+        json.dump(results, f, indent=4)
+
+    # Plot & log confusion matrix
+    cm_path = os.path.join(cfg.output_dir, "confusion_matrix.png")
+    plot_and_save_confusion_matrix(cm, list(label2id.keys()), cm_path)
+    wandb.log({"confusion_matrix": wandb.Image(cm_path)})
+
+    # Log misclassifications
+    texts = load_dataset(cfg.dataset_name)["test"]["text"]
+    table = wandb.Table(columns=["text", "true", "pred"])
+
+    for i, logit in enumerate(pred_output.predictions):
+        true = pred_output.label_ids[i]
+        pred = np.argmax(logit)
+        if true != pred:
+            table.add_data(texts[i], true, pred)
+
+    wandb.log({"misclassifications": table})
+
+    wandb.finish()
 
 
-print(">> Starting training")
-trainer.train()
-
-
-print(">> Getting predictions in test set")
-predictions = trainer.predict(test_dataset=tokenized_dataset["test"])
-cm = compute_confusion_matrix(predictions)
-
-
-print(">> Saving model")
-trainer.save_model()
-
-
-print(">> Saving results")
-results = {
-    "model_name": model_name,
-    "num_epochs": num_epochs,
-    "batch_size": batch_size,
-    "learning_rate": learning_rate,
-    "weight_decay": weight_decay,
-    "test_f1": predictions.metrics["test_f1"],
-    "confusion_matrix": cm.tolist(),
-    "label2id": label2id,
-}
-with open(f'{output_dir}/results.json', 'w') as f:
-    json.dump(results, f, indent=4)
-
-
-print(">> Confusion matrix")
-labels = list(label2id.keys())
-plt.figure(figsize=(6,6))
-plt.imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
-plt.title("Confusion Matrix")
-plt.ylabel("True Label")
-plt.xlabel("Predicted Label")
-plt.xticks(np.arange(len(labels)), labels, rotation=45, ha="right")
-plt.yticks(np.arange(len(labels)), labels)
-
-thresh = cm.max() / 2.
-for i, j in np.ndindex(cm.shape):
-    plt.text(j, i, f"{cm[i, j]:,}", ha="center", va="center", color="white" if cm[i, j] > thresh else "black")
-    
-plt.tight_layout()
-plt.savefig(f'{output_dir}/confusion_matrix.png')
-plt.show()
-
-
-print(">> Saving misclassifications")
-misclassified = []
-for i, pred in enumerate(predictions.predictions):
-    true_id = predictions.label_ids[i]
-    pred_id = np.argmax(pred)
-    if true_id != pred_id:
-        misclassified.append({
-            "text": train_valid_test_dataset["test"][i]["text"],
-            "true_label": id2label[true_id],    
-            "predicted_label": id2label[pred_id]
-        })
-with open(f'{output_dir}/misclassified.json', 'w') as f:
-    json.dump(misclassified, f, indent=4)
-
-
-print(">> Finished!")
+if __name__ == "__main__":
+    main()
