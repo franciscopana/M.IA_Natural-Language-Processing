@@ -21,7 +21,6 @@ from transformers import (
 )
 from kaggle_secrets import UserSecretsClient
 
-
 # ------------------
 # Configuration
 # ------------------
@@ -225,6 +224,24 @@ def main():
             table.add_data(texts[i], true, pred)
 
     wandb.log({"misclassifications": table})
+
+    test_metrics = pred_output.metrics
+    metrics_table = wandb.Table(columns=["metric", "value"])
+    for name, val in test_metrics.items():
+        metrics_table.add_data(name, val)
+    wandb.log({"test_metrics_table": metrics_table})
+
+    last_eval = [h for h in trainer.state.log_history if h.get("eval_loss")][-1]
+    eval_table = wandb.Table(columns=["metric", "value"])
+    for k, v in last_eval.items():
+        if k.startswith("eval_"):
+            eval_table.add_data(k, v)
+    wandb.log({"eval_metrics_table": eval_table})
+
+    wandb.log({
+        "roc": wandb.plot.roc_curve(pred_output.label_ids,pred_output.predictions,labels=list(label2id.keys())),
+        "pr": wandb.plot.pr_curve(pred_output.label_ids,pred_output.predictions,labels=list(label2id.keys())),
+    })
 
     wandb.finish()
 
