@@ -36,14 +36,6 @@ class Config:
     run_name: str = f"{datetime.now().strftime('%B-%d_%H-%M')}_{model_name}_lr-{learning_rate}_bs-{batch_size}_epochs-{num_epochs}"
     output_dir: str = f"./training_output/{model_name}/{run_name}"
 
-
-# ------------------
-# Setup logging & secrets
-# ------------------
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-
 def setup_secrets():
     secrets = UserSecretsClient()
     os.environ["WANDB_API_KEY"] = secrets.get_secret("WANDB_API_KEY")
@@ -56,7 +48,7 @@ def setup_secrets():
 # ------------------
 
 def load_and_preprocess(cfg: Config):
-    logger.info("Loading dataset %s", cfg.dataset_name)
+    print("Loading dataset %s", cfg.dataset_name)
     raw = load_dataset(cfg.dataset_name)
     ds = DatasetDict({
         "train": raw["train"],
@@ -74,7 +66,7 @@ def load_and_preprocess(cfg: Config):
         toks["labels"] = [label2id[l] for l in batch["label"]]
         return toks
 
-    logger.info("Tokenizing dataset")
+    print("Tokenizing dataset")
     tokenized = ds.map(
         preprocess,
         batched=True,
@@ -88,7 +80,7 @@ def load_and_preprocess(cfg: Config):
 # ------------------
 
 def build_model_and_metrics(cfg: Config, num_labels: int):
-    logger.info("Loading model %s", cfg.model_name)
+    print("Loading model %s", cfg.model_name)
     model = AutoModelForSequenceClassification.from_pretrained(
         cfg.model_name, num_labels=num_labels
     )
@@ -187,16 +179,16 @@ def main():
     )
 
     # Train
-    logger.info("Starting training")
+    print("Starting training")
     trainer.train()
 
     # Evaluate
-    logger.info("Evaluating on test set")
+    print("Evaluating on test set")
     pred_output = trainer.predict(tokenized["test"])
     cm = confusion_matrix(pred_output.label_ids, np.argmax(pred_output.predictions, axis=-1))
 
     # Save model & results
-    logger.info("Saving model and results")
+    print("Saving model and results")
     trainer.save_model()
     os.makedirs(cfg.output_dir, exist_ok=True)
 
