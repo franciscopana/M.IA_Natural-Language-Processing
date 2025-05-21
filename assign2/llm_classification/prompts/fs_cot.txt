@@ -32,6 +32,6 @@ Task Text:
 {text}
 """
 
-Reasoning:
+Reasoning: [Insert reasoning] 
 
-Final Label:
+Final Label: [Insert category_name]
