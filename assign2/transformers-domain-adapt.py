@@ -7,8 +7,6 @@ from typing import Dict, List
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support, confusion_matrix
-#!pip install --upgrade --no-deps evaluate
-import evaluate
 import wandb
 from datasets import load_dataset, DatasetDict
 from transformers import (
@@ -20,6 +18,7 @@ from transformers import (
     AutoModelForMaskedLM,
     DataCollatorForLanguageModeling
 )
+import torch
 from kaggle_secrets import UserSecretsClient
 
 
@@ -39,14 +38,15 @@ os.environ["HUGGINGFACE_TOKEN"] = hf_token
 class Config:
     model_name: str = "roberta-base"
     dataset_name: str = "Intel/polite-guard"
-    num_epochs: int = 1
+    cl_epochs: int = 5
     batch_size: int = 64
     learning_rate: float = 2e-5
-    weight_decay: float = 0.01
-    wandb_project: str = "polite-guard-classification"
-    mlm_epochs: int = 2
-    mlm_batch_size: int = 64
+    weight_decay: float = 0.1
+    wandb_project: str = "domain-adaptation"
+    mlm_epochs: int = 3
+    mlm_learning_rate: float = 2e-5
     enable_domain_adapt: bool = True
+    mlm_validation_split: float = 0.1
 
     # these will be set in __post_init__:
     run_name: str = None
@@ -55,7 +55,7 @@ class Config:
 
     def __post_init__(self):
         timestamp = datetime.now().strftime("%B-%d_%H-%M")
-        self.run_name = f"{timestamp}_{self.model_name}_lr-{self.learning_rate}_bs-{self.batch_size}_epochs-{self.num_epochs}"
+        self.run_name = f"{timestamp}_{self.model_name}_lr-{self.learning_rate}_bs-{self.batch_size}_epochs-{self.cl_epochs}"
         self.output_dir = f"./training_output/{self.model_name}/{self.run_name}"
         self.mlm_output_dir = f"./mlm_output/{self.model_name}/{self.run_name}"
 
@@ -93,21 +93,38 @@ def load_and_preprocess(cfg: Config):
         remove_columns=raw["train"].column_names,
     )
 
-    # 2. MLM tokenization
+    # 2. MLM tokenization with validation split
     def tokenize_mlm(batch):
         return tokenizer(
             batch["text"],
             truncation=True,
             max_length=tokenizer.model_max_length,
-            padding="longest",
             return_special_tokens_mask=True,
         )
 
-    tok_unlabeled = raw["train"].map(
-        tokenize_mlm,
-        batched=True,
-        remove_columns=raw["train"].column_names,
-    )
+    # Create train/val split for MLM
+    if cfg.mlm_validation_split > 0:
+        mlm_splits = raw["train"].train_test_split(
+            test_size=cfg.mlm_validation_split, 
+            seed=42
+        )
+        tok_unlabeled_train = mlm_splits["train"].map(
+            tokenize_mlm,
+            batched=True,
+            remove_columns=raw["train"].column_names,
+        )
+        tok_unlabeled_val = mlm_splits["test"].map(
+            tokenize_mlm,
+            batched=True,
+            remove_columns=raw["train"].column_names,
+        )
+        tok_unlabeled = {"train": tok_unlabeled_train, "validation": tok_unlabeled_val}
+    else:
+        tok_unlabeled = {"train": raw["train"].map(
+            tokenize_mlm,
+            batched=True,
+            remove_columns=raw["train"].column_names,
+        )}
 
     return tok_labeled, tok_unlabeled, tokenizer, label2id
 
@@ -115,11 +132,25 @@ def load_and_preprocess(cfg: Config):
 # ------------------
 # Model & Metrics
 # ------------------
-def build_model_and_metrics(model_path: str, num_labels: int):
+def build_model_and_metrics(model_path: str, num_labels: int, tokenizer):
     print(f"Loading model from {model_path}")
-    model = AutoModelForSequenceClassification.from_pretrained(
-        model_path, num_labels=num_labels
-    )
+    
+    try:
+        model = AutoModelForSequenceClassification.from_pretrained(model_path, num_labels=num_labels)
+        print("Loaded pretrained classification model")
+    except:
+        print("Converting MLM model to classification model")
+        mlm_model = AutoModelForMaskedLM.from_pretrained(model_path)
+        
+        model = AutoModelForSequenceClassification.from_pretrained(
+            model_path,
+            num_labels=num_labels,
+            _from_model=mlm_model,
+            ignore_mismatched_sizes=True
+        )
+        del mlm_model
+    
+    model.resize_token_embeddings(len(tokenizer))
 
     def compute_metrics(eval_pred):
         preds = np.argmax(eval_pred.predictions, axis=-1)
@@ -170,37 +201,86 @@ def plot_and_save_confusion_matrix(cm: np.ndarray, labels: List[str], path: str)
 def perform_domain_adaptation(cfg: Config, tok_unlabeled_data, tokenizer):
     print("Starting domain adaptation (MLM) training")
     
-    # Initialize MLM model with pretrained weights
     mlm_model = AutoModelForMaskedLM.from_pretrained(cfg.model_name)
-
-    # Training
+    mlm_model.resize_token_embeddings(len(tokenizer))
+    
     mlm_data_collator = DataCollatorForLanguageModeling(
         tokenizer=tokenizer, 
         mlm=True, 
         mlm_probability=0.15
     )
-    
     mlm_training_args = TrainingArguments(
         output_dir=cfg.mlm_output_dir,
         overwrite_output_dir=True,
         num_train_epochs=cfg.mlm_epochs,
-        per_device_train_batch_size=cfg.mlm_batch_size,
+        per_device_train_batch_size=cfg.batch_size,
+        per_device_eval_batch_size=cfg.batch_size,
         save_steps=500,
-        save_total_limit=1,
+        save_total_limit=2,
         logging_steps=100,
-        learning_rate=5e-5,
+        learning_rate=cfg.mlm_learning_rate,
+        weight_decay=cfg.weight_decay,
         report_to="wandb",
+        load_best_model_at_end=True if "validation" in tok_unlabeled_data else False,
+        eval_strategy="epoch" if "validation" in tok_unlabeled_data else "no",
+        save_strategy="epoch" if "validation" in tok_unlabeled_data else "steps",
     )
     
-    mlm_trainer = Trainer(
-        model=mlm_model,
-        args=mlm_training_args,
-        train_dataset=tok_unlabeled_data,
-        data_collator=mlm_data_collator,
-    )
+    # Set up trainer with validation if available
+    mlm_trainer_kwargs = {
+        "model": mlm_model,
+        "args": mlm_training_args,
+        "train_dataset": tok_unlabeled_data["train"],
+        "data_collator": mlm_data_collator,
+    }
     
+    if "validation" in tok_unlabeled_data:
+        mlm_trainer_kwargs["eval_dataset"] = tok_unlabeled_data["validation"]
+    
+    mlm_trainer = Trainer(**mlm_trainer_kwargs)
+    
+    def compute_perplexity(model, eval_dataset, batch_size=8):
+        eval_dataloader = torch.utils.data.DataLoader(
+            eval_dataset, 
+            batch_size=batch_size, 
+            collate_fn=mlm_data_collator
+        )
+        
+        model.eval()
+        total_loss = 0
+        total_tokens = 0
+        
+        for batch in eval_dataloader:
+            batch = {k: v.to(model.device) for k, v in batch.items()}
+            with torch.no_grad():
+                outputs = model(**batch)
+            
+            batch_loss = outputs.loss.item() * batch["attention_mask"].sum().item()
+            total_loss += batch_loss
+            total_tokens += batch["attention_mask"].sum().item()
+        
+        avg_loss = total_loss / total_tokens
+        perplexity = np.exp(avg_loss)
+        return perplexity
+    
+    print("Starting MLM training")
     mlm_trainer.train()
+    
+    if "validation" in tok_unlabeled_data:
+        try:
+            final_perplexity = compute_perplexity(
+                mlm_model, 
+                tok_unlabeled_data["validation"],
+                batch_size=cfg.batch_size
+            )
+            wandb.log({"final_mlm_perplexity": final_perplexity})
+            print(f"Final MLM perplexity: {final_perplexity}")
+        except Exception as e:
+            print(f"Could not compute perplexity: {e}")
+    
+    # Save the model
     mlm_trainer.save_model(cfg.mlm_output_dir)
+    tokenizer.save_pretrained(cfg.mlm_output_dir)
     print(f"Domain adaptation complete. Model saved to {cfg.mlm_output_dir}")
     
     return cfg.mlm_output_dir
@@ -233,7 +313,7 @@ def main():
 
     # --- Text Classification ---
     # Build classification model from the domain-adapted model
-    cl_model, compute_metrics = build_model_and_metrics(adapted_model_path, num_labels)
+    cl_model, compute_metrics = build_model_and_metrics(adapted_model_path, num_labels, tokenizer)
     
     # Training
     cl_data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
@@ -244,7 +324,7 @@ def main():
         learning_rate=cfg.learning_rate,
         per_device_train_batch_size=cfg.batch_size,
         per_device_eval_batch_size=cfg.batch_size,
-        num_train_epochs=cfg.num_epochs,
+        num_train_epochs=cfg.cl_epochs,
         weight_decay=cfg.weight_decay,
         load_best_model_at_end=True,
         report_to="wandb",
