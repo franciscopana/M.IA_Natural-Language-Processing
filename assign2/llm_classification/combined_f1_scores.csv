@@ -1,0 +1,4 @@
+dataset,split,model,prompt_type,f1_score
+Intel/polite-guard,validation,llama3-8b,Zero-Shot,0.775
+Intel/polite-guard,validation,llama3-8b,Few-Shot,0.5222222222222224
+Intel/polite-guard,validation,llama3-8b,FS-CoT,1.0

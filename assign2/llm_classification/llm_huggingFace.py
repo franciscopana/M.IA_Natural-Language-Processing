@@ -13,35 +13,24 @@ from datetime import datetime
 import torch
 from threading import Lock
 from huggingface_hub import login as hf_login
-
-# Kaggle Secrets for API keys
 from kaggle_secrets import UserSecretsClient
-
-# --- Original Imports ---
 import google.generativeai as genai
 from datasets import load_dataset
 from sklearn.metrics import f1_score
 import matplotlib.pyplot as plt
-
-# --- New imports for Hugging Face models ---
-from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
-import transformers
-# Directory to cache downloaded models
+from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline, GemmaTokenizerFast
+import transformers 
 
 # --- Configuration & Logging ---
-
-# Load secrets via Kaggle
 SECRETS = UserSecretsClient()
 GOOGLE_API_KEY = SECRETS.get_secret("GEMINI_API_KEY")
+HUGGINGFACE_API_KEY = SECRETS.get_secret("Hugging_Face")
 
-# Environment defaults
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash-lite")
 SLEEP_INTERVAL = float(os.environ.get("SLEEP_INTERVAL", 1.5))
 PROMPTS_DIR = os.environ.get("PROMPTS_DIR", "/kaggle/input/prompts-llm")
 DEBUG_DIR = os.environ.get("DEBUG_DIR", "debug_logs")
-MODELS_DIR = os.environ.get("MODELS_DIR", "cached_models")  
-HUGGINGFACE_API_KEY = SECRETS.get_secret("Hugging_Face")
-
+MODELS_DIR = os.environ.get("MODELS_DIR", "cached_models")
 gpu_lock = Lock()
 
 # --- Models Configuration ---
@@ -61,20 +50,7 @@ class ModelConfig:
 
     def __str__(self): return f"{self.name} ({self.provider})"
 
-# Define available models
 """
-"gemini-flash-lite": ModelConfig(
-    name="Gemini Flash Lite",
-    provider="gemini",
-    model_id="gemini-2.0-flash-lite",
-    max_tokens=1024
-),
-"gemini-flash": ModelConfig(
-    name="Gemini Flash",
-    provider="gemini",
-    model_id="gemini-2.0-flash",
-    max_tokens=2048
-),
 "phi-3-mini-4k": ModelConfig(
     name="Phi-3 Mini 4K",
     provider="huggingface",
@@ -103,47 +79,52 @@ class ModelConfig:
             max_tokens=1024,
             quantize=True
         ),
+"qwen2-7b": ModelConfig(
+            name="Qwen2 7B",
+            provider="huggingface",
+            model_id="Qwen/Qwen2-7B-Instruct",
+            max_tokens=1024,
+            quantize=True
+        ),
+"deepseek-7b": ModelConfig(
+    name="DeepSeek 7B",
+    provider="huggingface",
+    model_id="TheBloke/deepseek-llm-7B-base-GPTQ",
+    max_tokens=1024,
+    quantize=True
+),
 """
 def get_available_models() -> Dict[str, ModelConfig]:
     return {
-        "mistral-7b": ModelConfig(
-            name="Mistral 7B",
+        "llama3-8b": ModelConfig(
+            name="Llama 3 8B",
             provider="huggingface",
-            model_id="mistralai/Mistral-7B-Instruct-v0.2",
+            model_id="meta-llama/Meta-Llama-3-8B-Instruct",
             max_tokens=1024,
             quantize=True
         ),
     }
-
 
 def ensure_directory_exists(directory_path: str):
     if not os.path.exists(directory_path):
         os.makedirs(directory_path)
         print(f"Created directory: {directory_path}")
 
-
 def configure_api():
-    # Configure Gemini via secret
     if GOOGLE_API_KEY:
         genai.configure(api_key=GOOGLE_API_KEY)
         print("Gemini API configured via Kaggle Secrets.")
     else:
         print("GOOGLE_API_KEY not found in Kaggle Secrets.")
-
-    # Configure Hugging Face via secret
     if HUGGINGFACE_API_KEY:
         hf_login(token=HUGGINGFACE_API_KEY)
         os.environ["HUGGINGFACEHUB_API_TOKEN"] = HUGGINGFACE_API_KEY
         print("Hugging Face API configured via Kaggle Secrets.")
     else:
-        print("HUGGINGFACE_API_KEY not found in Kaggle Secrets. Models may be rate-limited.")
-    
-    
-    # Set HF cache
+        print("HUGGINGFACE_API_KEY not found in Kaggle Secrets.")
     ensure_directory_exists(MODELS_DIR)
     os.environ["TRANSFORMERS_CACHE"] = os.path.abspath(MODELS_DIR)
     print(f"Hugging Face cache set to {os.environ['TRANSFORMERS_CACHE']}")
-
 
 def load_prompt_template(name: str) -> str:
     path = os.path.join(PROMPTS_DIR, f"{name}.txt")
@@ -152,7 +133,6 @@ def load_prompt_template(name: str) -> str:
     with open(path, encoding="utf-8") as f:
         return f.read()
 
-
 def get_prompt_builders() -> Dict[str, Callable[[str], str]]:
     builders: Dict[str, Callable[[str], str]] = {}
     for key in ["zs", "fs", "fs_cot"]:
@@ -160,8 +140,6 @@ def get_prompt_builders() -> Dict[str, Callable[[str], str]]:
         builders_key = {"zs": "Zero-Shot", "fs": "Few-Shot", "fs_cot": "FS-CoT"}[key]
         builders[builders_key] = lambda text, t=tpl: t.format(text=text)
     return builders
-
-from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline, GemmaTokenizerFast
 
 def load_huggingface_model(config: ModelConfig):
     with gpu_lock:
@@ -218,7 +196,6 @@ def call_model(prompt: str, config: ModelConfig) -> str:
         print(f"Error calling {config.name}: {e}")
     return ""
 
-
 def call_gemini(prompt: str, config: ModelConfig) -> str:
     try:
         model = genai.GenerativeModel(config.model_id)
@@ -230,7 +207,6 @@ def call_gemini(prompt: str, config: ModelConfig) -> str:
     except Exception as e:
         print(f"Gemini API error: {e}")
     return ""
-
 
 def call_huggingface(prompt: str, config: ModelConfig) -> str:
     try:
@@ -264,14 +240,12 @@ def parse_label(resp: str, labels: List[str]) -> str:
     print(f"Could not parse label: {resp}")
     return "unknown"
 
-
 def load_samples(ds: str, split: str, num: int):
     data = load_dataset(ds, split=split, trust_remote_code=True)
     exs = list(data)[:num]
     labs = ["polite", "somewhat polite", "neutral", "impolite"]
     print(f"Loaded {len(exs)} samples from {split}.")
     return exs, labs
-
 
 def evaluate(
     samples: List[dict],
@@ -322,8 +296,19 @@ def evaluate(
         for pn in prompts:
             y = results[mn][pn]
             f1s[mn][pn] = f1_score(y['y_true'], y['y_pred'], average='weighted', labels=labels, zero_division=0)
+    
+    # Save F1 scores to CSV
+    safe_ds = ds.replace('/', '_')
+    f1_csv_path = os.path.join('/kaggle/working', f"f1_scores_{safe_ds}_{split}_{ts}.csv")
+    with open(f1_csv_path, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(['dataset', 'split', 'model', 'prompt_type', 'f1_score'])
+        for mn in models:
+            for pn in prompts:
+                writer.writerow([ds, split, mn, pn, f1s[mn][pn]])
+    print(f"Saved F1 scores to {f1_csv_path}")
+    
     return f1s
-
 
 def plot_scores(scores: Dict[str, Dict[str, float]], title: str):
     import numpy as np
@@ -350,33 +335,31 @@ def plot_scores(scores: Dict[str, Dict[str, float]], title: str):
     plt.savefig(os.path.join(DEBUG_DIR, f"f1_scores_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"))
     plt.close()
 
-
 def run_evaluation(
     dataset: str = os.environ.get('DATASET', 'Intel/polite-guard'),
     split: str = os.environ.get('SPLIT', 'validation'),
-    num_samples: int = int(os.environ.get('NUM_SAMPLES', 1000)),
+    num_samples: int = int(os.environ.get('NUM_SAMPLES', 10)),
     selected_models: List[str] = os.environ.get('MODELS', 'all').split(','),
-    prompt_types: List[str] = os.environ.get('PROMPT_TYPES', 'Zero-Shot,Few-Shot,FS-CoT').split(',')
+    prompt_types: List[str] = os.environ.get('PROMPT_TYPES', 'Zero-Shot,Few-Shot,FS-CoT').split(','),
+    plot: bool = True
 ):
     configure_api()
     ensure_directory_exists(DEBUG_DIR)
     ensure_directory_exists(PROMPTS_DIR)
     ensure_directory_exists(MODELS_DIR)
-
     models = get_available_models()
     if 'all' not in selected_models:
         models = {k: models[k] for k in selected_models if k in models}
-
     prompts = get_prompt_builders()
     prompts = {k: prompts[k] for k in prompt_types if k in prompts}
-
     samples, labels = load_samples(dataset, split, num_samples)
     print(f"Evaluating {len(models)} models on {num_samples} samples.")
     scores = evaluate(samples, labels, prompts, models, dataset, split)
-    title = f"LLM Comparison: {num_samples} '{split}' samples"
-    plot_scores(scores, title)
+    if plot:
+        title = f"LLM Comparison: {num_samples} '{split}' samples"
+        plot_scores(scores, title)
     print("Done.")
     return scores
 
-# For Kaggle, call run_evaluation directly
-df_scores = run_evaluation()
+# For Kaggle, call run_evaluation with plot=False to save results without plotting
+df_scores = run_evaluation(plot=True)
