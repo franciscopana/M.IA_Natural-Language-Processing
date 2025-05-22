@@ -1,0 +1,4 @@
+dataset,split,model,prompt_type,f1_score
+polite_guard_subset,test,llama3-8b,Zero-Shot,0.4211007928961598
+polite_guard_subset,test,llama3-8b,Few-Shot,0.3384373700003539
+polite_guard_subset,test,llama3-8b,FS-CoT,0.6734431852444329
