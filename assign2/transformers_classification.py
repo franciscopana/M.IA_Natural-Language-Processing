@@ -2,7 +2,7 @@ import os
 import json
 from dataclasses import dataclass
 from datetime import datetime
-from typing import List
+from typing import Dict, List
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support, confusion_matrix
@@ -15,8 +15,11 @@ from transformers import (
     Trainer,
     DataCollatorWithPadding,
     AutoModelForMaskedLM,
-    DataCollatorForLanguageModeling
+    DataCollatorForLanguageModeling,
+    set_seed
 )
+import torch
+import torch.nn.functional as F
 from kaggle_secrets import UserSecretsClient
 
 
@@ -28,10 +31,12 @@ try:
     os.environ["WANDB_API_KEY"] = secrets.get_secret("WANDB_API_KEY")
     hf_token = secrets.get_secret("huggingface")
     os.environ["HUGGINGFACE_TOKEN"] = hf_token
-except Exception as e:
-    print(f"Could not load secrets: {e}")
-    print("Make sure to set up your environment variables for WANDB_API_KEY and HUGGINGFACE_TOKEN.")
-    exit(1)
+except:
+    print("Kaggle secrets not found. Ensure WANDB_API_KEY and HUGGINGFACE_TOKEN are set in your environment if not on Kaggle.")
+    if not os.environ.get("WANDB_API_KEY"):
+        print("Warning: WANDB_API_KEY not set.")
+    if not os.environ.get("HUGGINGFACE_TOKEN"):
+        print("Warning: HUGGINGFACE_TOKEN not set.")
 
 
 # ------------------
@@ -39,36 +44,30 @@ except Exception as e:
 # ------------------
 @dataclass
 class Config:
-    model_name: str = "bert-base-uncased"
+    model_name: str = "roberta-base"
     dataset_name: str = "Intel/polite-guard"
+    cl_epochs: int = 5
     batch_size: int = 64
     learning_rate: float = 2e-5
     weight_decay: float = 0.1
-    wandb_project: str = "training-for-inference"
-    cl_epochs: int = 5
+    wandb_project: str = "domain-adaptation-seeded"
     mlm_epochs: int = 2
     mlm_learning_rate: float = 2e-5
     mlm_probability: float = 0.1
     enable_domain_adapt: bool = True
     mlm_validation_split: float = 0.1
     seed: int = 42
-    inference_only_output: bool = True
 
     # these will be set in __post_init__:
     run_name: str = None
     output_dir: str = None
     mlm_output_dir: str = None
-    final_model_dir: str = None
 
     def __post_init__(self):
         timestamp = datetime.now().strftime("%B-%d_%H-%M")
-        self.run_name = f"{timestamp}_{self.model_name}_lr-{self.learning_rate}_bs-{self.batch_size}_epochs-{self.cl_epochs}"
+        self.run_name = f"{timestamp}_{self.model_name}_lr-{self.learning_rate}_bs-{self.batch_size}_epochs-{self.cl_epochs}_seed-{self.seed}"
         self.output_dir = f"./training_output/{self.model_name}/{self.run_name}"
         self.mlm_output_dir = f"./mlm_output/{self.model_name}/{self.run_name}"
-        if self.inference_only_output:
-            self.final_model_dir = f"./inference_model/{self.model_name}/{self.run_name}"
-        else:
-            self.final_model_dir = self.output_dir
 
 
 # ------------------
@@ -85,7 +84,6 @@ def load_and_preprocess(cfg: Config):
 
     label_list = sorted(raw["train"].unique("label"))
     label2id = {lbl: i for i, lbl in enumerate(label_list)}
-    id2label = {i: lbl for i, lbl in enumerate(label_list)}
 
     tokenizer = AutoTokenizer.from_pretrained(cfg.model_name)
 
@@ -99,11 +97,14 @@ def load_and_preprocess(cfg: Config):
         outputs["labels"] = [label2id[l] for l in batch["label"]]
         return outputs
 
+    print("Tokenizing labeled data for classification...")
     tok_labeled = ds.map(
         tokenize_classification,
         batched=True,
-        remove_columns=raw["train"].column_names,
+        remove_columns=[col for col in raw["train"].column_names if col != "label"],
     )
+    tok_labeled = tok_labeled.remove_columns(["label"])
+
 
     # 2. MLM tokenization with validation split
     def tokenize_mlm(batch):
@@ -111,14 +112,14 @@ def load_and_preprocess(cfg: Config):
             batch["text"],
             truncation=True,
             max_length=tokenizer.model_max_length,
-            return_special_tokens_mask=True,
         )
 
-    # Create train/val split for MLM
+    print("Tokenizing unlabeled data for MLM...")
     if cfg.mlm_validation_split > 0:
+        # Use cfg.seed for the split
         mlm_splits = raw["train"].train_test_split(
-            test_size=cfg.mlm_validation_split, 
-            seed=42
+            test_size=cfg.mlm_validation_split,
+            seed=cfg.seed,
         )
         tok_unlabeled_train = mlm_splits["train"].map(
             tokenize_mlm,
@@ -138,7 +139,7 @@ def load_and_preprocess(cfg: Config):
             remove_columns=raw["train"].column_names,
         )}
 
-    return tok_labeled, tok_unlabeled, tokenizer, label2id, id2label
+    return tok_labeled, tok_unlabeled, tokenizer, label2id
 
 
 # ------------------
@@ -149,13 +150,14 @@ def build_model_and_metrics(model_path: str, num_labels: int, tokenizer):
     model = AutoModelForSequenceClassification.from_pretrained(
         model_path,
         num_labels=num_labels,
-        ignore_mismatched_sizes=True,
+        ignore_mismatched_sizes=True
     )
+    print(f"Successfully loaded model. Type: {type(model)}")
     model.resize_token_embeddings(len(tokenizer))
 
     def compute_metrics(eval_pred):
-        preds = np.argmax(eval_pred.predictions, axis=-1)
-        labels = eval_pred.label_ids
+        logits, labels = eval_pred
+        preds = np.argmax(logits, axis=-1)
 
         acc = accuracy_score(labels, preds)
         precision, recall, f1, _ = precision_recall_fscore_support(
@@ -172,13 +174,15 @@ def build_model_and_metrics(model_path: str, num_labels: int, tokenizer):
     return model, compute_metrics
 
 def plot_and_save_confusion_matrix(cm: np.ndarray, labels: List[str], path: str):
-    plt.figure(figsize=(6, 6))
+    plt.figure(figsize=(max(6, len(labels)), max(6, len(labels))))
     plt.imshow(cm, interpolation="nearest", cmap=plt.cm.Blues)
     plt.title("Confusion Matrix")
     plt.ylabel("True Label")
     plt.xlabel("Predicted Label")
-    plt.xticks(np.arange(len(labels)), labels, rotation=45, ha="right")
-    plt.yticks(np.arange(len(labels)), labels)
+    
+    tick_marks = np.arange(len(labels))
+    plt.xticks(tick_marks, labels, rotation=45, ha="right")
+    plt.yticks(tick_marks, labels)
 
     thresh = cm.max() / 2.0
     for i, j in np.ndindex(cm.shape):
@@ -208,27 +212,26 @@ def perform_domain_adaptation(cfg: Config, tok_unlabeled_data, tokenizer):
     mlm_data_collator = DataCollatorForLanguageModeling(
         tokenizer=tokenizer, 
         mlm=True, 
-        mlm_probability=cfg.mlm_probability,
+        mlm_probability=cfg.mlm_probability
     )
-    
-    # Modified training arguments for inference-only output
     mlm_training_args = TrainingArguments(
         output_dir=cfg.mlm_output_dir,
         overwrite_output_dir=True,
         num_train_epochs=cfg.mlm_epochs,
         per_device_train_batch_size=cfg.batch_size,
         per_device_eval_batch_size=cfg.batch_size,
-        save_total_limit=1,
-        save_strategy="no",
-        logging_steps=100,
+        save_steps=10000,
+        save_total_limit=2,
+        logging_steps=50,
         learning_rate=cfg.mlm_learning_rate,
         weight_decay=cfg.weight_decay,
         report_to="wandb",
         load_best_model_at_end=True if "validation" in tok_unlabeled_data else False,
+        eval_strategy="epoch" if "validation" in tok_unlabeled_data else "no",
+        save_strategy="epoch" if "validation" in tok_unlabeled_data else "steps",
         seed=cfg.seed,
+        data_seed=cfg.seed,
     )
-    
-    # Set up trainer with validation if available
     mlm_trainer_kwargs = {
         "model": mlm_model,
         "args": mlm_training_args,
@@ -243,18 +246,22 @@ def perform_domain_adaptation(cfg: Config, tok_unlabeled_data, tokenizer):
     
     print("Starting MLM training")
     mlm_trainer.train()
-        
+    
     if "validation" in tok_unlabeled_data:
         try:
+            print("Evaluating MLM model for perplexity...")
             metrics = mlm_trainer.evaluate(eval_dataset=tok_unlabeled_data["validation"])
-            eval_loss = metrics["eval_loss"]
-            final_perplexity = np.exp(eval_loss)
-            wandb.log({"final_mlm_perplexity": final_perplexity, "mlm_eval_loss": eval_loss})
-            print(f"Final MLM perplexity: {final_perplexity} (from eval_loss: {eval_loss})")
+            eval_loss = metrics.get("eval_loss")
+            if eval_loss is not None:
+                final_perplexity = np.exp(eval_loss)
+                wandb.log({"final_mlm_perplexity": final_perplexity, "mlm_eval_loss": eval_loss})
+                print(f"Final MLM perplexity: {final_perplexity:.4f} (from eval_loss: {eval_loss:.4f})")
+            else:
+                print("Could not find 'eval_loss' in MLM trainer evaluation metrics.")
         except Exception as e:
             print(f"Could not compute perplexity from trainer.evaluate(): {e}")
     
-    # Save the Masked Language Model
+    print(f"Saving domain-adapted MLM model to {cfg.mlm_output_dir}")
     mlm_trainer.save_model(cfg.mlm_output_dir)
     tokenizer.save_pretrained(cfg.mlm_output_dir)
     print(f"Domain adaptation complete. Model saved to {cfg.mlm_output_dir}")
@@ -267,6 +274,10 @@ def perform_domain_adaptation(cfg: Config, tok_unlabeled_data, tokenizer):
 # ------------------
 def main():
     cfg = Config()
+    
+    # Set all seeds for reproducibility
+    set_seed(cfg.seed)
+    print(f"Global seed set to {cfg.seed}")
 
     # Initialize W&B
     wandb.init(
@@ -277,8 +288,10 @@ def main():
     )
 
     # Load & preprocess
-    tok_labeled_data, tok_unlabeled_data, tokenizer, label2id, id2label = load_and_preprocess(cfg)
+    tok_labeled_data, tok_unlabeled_data, tokenizer, label2id = load_and_preprocess(cfg)
     num_labels = len(label2id)
+    id2label = {v: k for k,v in label2id.items()}
+
 
     # --- Domain Adaptation (Masked Language Model) ---
     if cfg.enable_domain_adapt:
@@ -288,25 +301,28 @@ def main():
         print("Skipping domain adaptation")
 
     # --- Text Classification ---
-    # Build classification model from the domain-adapted model
-    cl_model, compute_metrics = build_model_and_metrics(adapted_model_path, num_labels, tokenizer)
+    print("Building classification model...")
+    cl_model, compute_metrics_fn = build_model_and_metrics(adapted_model_path, num_labels, tokenizer)
+    cl_model.config.id2label = id2label # For better inference later if needed
+    cl_model.config.label2id = label2id
     
-    # Modified training arguments for inference-only output
-    # Modified training arguments for inference-only output
+    # Training
     cl_data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
     cl_training_args = TrainingArguments(
         output_dir=cfg.output_dir,
         eval_strategy="epoch",
-        save_strategy="epoch" if not cfg.inference_only_output else "no",
+        save_strategy="epoch",
         learning_rate=cfg.learning_rate,
         per_device_train_batch_size=cfg.batch_size,
         per_device_eval_batch_size=cfg.batch_size,
         num_train_epochs=cfg.cl_epochs,
         weight_decay=cfg.weight_decay,
-        load_best_model_at_end=False if cfg.inference_only_output else True,
+        load_best_model_at_end=True,
+        metric_for_best_model="f1",
+        greater_is_better=True,
         report_to="wandb",
         seed=cfg.seed,
-        save_total_limit=1 if cfg.inference_only_output else 3,
+        data_seed=cfg.seed,
     )
     cl_trainer = Trainer(
         model=cl_model,
@@ -314,108 +330,74 @@ def main():
         train_dataset=tok_labeled_data["train"],
         eval_dataset=tok_labeled_data["validation"],
         data_collator=cl_data_collator,
-        compute_metrics=compute_metrics,
+        compute_metrics=compute_metrics_fn,
+        tokenizer=tokenizer,
     )
     print("Starting classification training")
     cl_trainer.train()
 
-    # Evaluate
+    # Evaluate on test set
     print("Evaluating on test set")
     pred_output = cl_trainer.predict(tok_labeled_data["test"])
-    cm = confusion_matrix(pred_output.label_ids, np.argmax(pred_output.predictions, axis=-1))
+    
+    wandb.log({f"test_{k}": v for k, v in pred_output.metrics.items()})
 
-    # --- Save model and results based on the inference_only_output flag ---
-    if cfg.inference_only_output:
-        print(f"Saving inference-ready model to {cfg.final_model_dir}")
-        # Create the final model directory
-        os.makedirs(cfg.final_model_dir, exist_ok=True)
-        
-        # Save only the final model and tokenizer
-        cl_model.save_pretrained(cfg.final_model_dir)
-        tokenizer.save_pretrained(cfg.final_model_dir)
-        
-        # Save only results.json (no confusion matrix plot or other files)
-        results = {
-            "metrics": pred_output.metrics,
-            "confusion_matrix": cm.tolist(),
-            "label2id": label2id,
-            "id2label": id2label,
-            "domain_adapted": cfg.enable_domain_adapt,
-            "model_name": cfg.model_name,
-            "dataset_name": cfg.dataset_name,
-        }
-        with open(os.path.join(cfg.final_model_dir, "results.json"), "w") as f:
-            json.dump(results, f, indent=4)
-        
-        print(f"Inference-ready model saved to: {cfg.final_model_dir}")
-        print("Contents:")
-        for item in os.listdir(cfg.final_model_dir):
-            print(f"  - {item}")
-        
-    else:
-        # Original behavior: save everything including checkpoints and plots
-        print("Saving model and results")
-        cl_trainer.save_model()
+    y_true_test = pred_output.label_ids
+    y_pred_test_logits = pred_output.predictions
+    y_pred_test_labels = np.argmax(y_pred_test_logits, axis=-1)
+    
+    cm = confusion_matrix(y_true_test, y_pred_test_labels)
 
-        # --- Save results and metrics ---
-        os.makedirs(cfg.output_dir, exist_ok=True)
-        results = {
-            "metrics": pred_output.metrics,
-            "confusion_matrix": cm.tolist(),
-            "label2id": label2id,
-            "id2label": id2label,
-            "domain_adapted": cfg.enable_domain_adapt,
-        }
-        with open(os.path.join(cfg.output_dir, "results.json"), "w") as f:
-            json.dump(results, f, indent=4)
+    # Save model & results
+    print("Saving model and results")
+    cl_trainer.save_model() # This also saves tokenizer if passed to Trainer
+    # tokenizer.save_pretrained(cfg.output_dir) # Redundant if tokenizer passed to Trainer
 
-        # Plot & log confusion matrix
-        cm_path = os.path.join(cfg.output_dir, "confusion_matrix.png")
-        plot_and_save_confusion_matrix(cm, list(label2id.keys()), cm_path)
-        wandb.log({"confusion_matrix": wandb.Image(cm_path)})
+    results = {
+        "test_metrics": pred_output.metrics,
+        "confusion_matrix": cm.tolist(),
+        "label2id": label2id,
+        "id2label": id2label,
+        "domain_adapted": cfg.enable_domain_adapt,
+        "config": vars(cfg)
+    }
+    os.makedirs(cfg.output_dir, exist_ok=True) # Ensure dir exists
+    with open(os.path.join(cfg.output_dir, "test_results.json"), "w") as f:
+        json.dump(results, f, indent=4)
 
-        # Log misclassifications
-        texts = load_dataset(cfg.dataset_name)["test"]["text"]
-        table = wandb.Table(columns=["text", "true", "pred"])
-        for i, logit in enumerate(pred_output.predictions):
-            true_id = pred_output.label_ids[i]
-            pred_id = np.argmax(logit)
-            if true_id != pred_id:
-                true_label = id2label[true_id]
-                pred_label = id2label[pred_id]
-                table.add_data(texts[i], true_label, pred_label)
-        wandb.log({"misclassifications": table})
-        misclassifications_path = os.path.join(cfg.output_dir, "misclassifications.csv")
-        table.to_csv(misclassifications_path)
-        wandb.save(misclassifications_path)
+    cm_path = os.path.join(cfg.output_dir, "confusion_matrix_test.png")
+    plot_and_save_confusion_matrix(cm, list(label2id.keys()), cm_path)
+    wandb.log({"test_confusion_matrix": wandb.Image(cm_path)})
 
-        test_metrics = pred_output.metrics
-        metrics_table = wandb.Table(columns=["metric", "value"])
-        for name, val in test_metrics.items():
-            metrics_table.add_data(name, val)
-        wandb.log({"test_metrics_table": metrics_table})
+    raw_test_texts = load_dataset(cfg.dataset_name, split="test")["text"]
 
-        last_eval = [h for h in cl_trainer.state.log_history if h.get("eval_loss")][-1]
-        eval_table = wandb.Table(columns=["metric", "value"])
-        for k, v in last_eval.items():
-            if k.startswith("eval_"):
-                eval_table.add_data(k, v)
-        wandb.log({"eval_metrics_table": eval_table})
 
+    misclassification_table = wandb.Table(columns=["text", "true_label", "predicted_label"])
+    for i in range(len(raw_test_texts)):
+        if i < len(y_true_test):
+            true_label_id = y_true_test[i]
+            pred_label_id = y_pred_test_labels[i]
+            if true_label_id != pred_label_id:
+                misclassification_table.add_data(
+                    raw_test_texts[i], 
+                    id2label[true_label_id], 
+                    id2label[pred_label_id],
+                )
+    wandb.log({"test_misclassifications": misclassification_table})
+
+    y_pred_test_probas = F.softmax(torch.tensor(y_pred_test_logits), dim=-1).numpy()
+    try:
         wandb.log({
-            "roc": wandb.plot.roc_curve(
-                pred_output.label_ids, 
-                pred_output.predictions, 
-                labels=list(label2id.keys())
-            ),
-            "pr": wandb.plot.pr_curve(
-                pred_output.label_ids, 
-                pred_output.predictions, 
-                labels=list(label2id.keys())
-            ),
+            "test_roc_curve": wandb.plot.roc_curve(y_true_test, y_pred_test_probas, labels=list(label2id.keys())),
+            "test_pr_curve": wandb.plot.pr_curve(y_true_test, y_pred_test_probas, labels=list(label2id.keys())),
         })
+    except Exception as e:
+        print(f"Could not log multiclass ROC/PR curves: {e}")
+        print("This might happen if a class has no true samples in y_true_test or wandb version issue.")
+
 
     wandb.finish()
+    print("Training and evaluation complete. Results saved and logged to W&B.")
 
 
 if __name__ == "__main__":
