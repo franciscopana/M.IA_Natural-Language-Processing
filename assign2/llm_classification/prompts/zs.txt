@@ -1,0 +1,16 @@
+### Instruction:
+Analyze the following text and classify its politeness level.
+The politeness categories are:
+- polite
+- somewhat polite
+- neutral
+- impolite
+
+Respond with only one of the category names listed above.
+
+Input Text:
+"""
+{text}
+"""
+
+### Classification:

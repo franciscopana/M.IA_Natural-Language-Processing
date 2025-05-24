@@ -1,0 +1,4 @@
+dataset,split,model,prompt_type,f1_score
+polite_guard_subset,test,mistral-7b-v0.3,Zero-Shot,0.6415053497425055
+polite_guard_subset,test,mistral-7b-v0.3,Few-Shot,0.741223174266979
+polite_guard_subset,test,mistral-7b-v0.3,FS-CoT,0.6862055052392151

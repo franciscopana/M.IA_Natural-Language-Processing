@@ -1,0 +1,26 @@
+### Instruction:
+The classification must be one of the following: polite, somewhat polite, neutral, impolite.
+
+Example 1
+Input: "We're happy to accommodate your dietary preferences. Our vegetarian options are carefully crafted to ensure a delicious and satisfying meal. Would you like me to recommend some dishes that fit your needs?"
+Classification: polite
+
+Example 2
+Input: "Your flight has been rescheduled for 10:00 AM tomorrow. Please check the airport's website for any updates or changes."
+Classification: neutral
+
+Example 3
+Input: "I understand your frustration with the recent tournament results, and I'll review the standings to see what we can do to improve your experience."
+Classification: somewhat polite
+
+Example 4
+Input: "Are you seriously complaining about the size of your shirt? It's right there on the label. You should have read it before buying."
+Classification: impolite
+
+### Task
+Input Text:
+"""
+{text}
+"""
+
+Classification:

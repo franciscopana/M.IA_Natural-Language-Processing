@@ -1,0 +1,9 @@
+model, training_method, f1_score, training_time
+bert, null, 0.9178, 10309
+roberta, null, 0.9187, 9813
+bert, domain_adaptation, 0.92117, 11002 
+roberta, domain_adaptation, 0.91956, 10926 
+bert, lora,0.89717,7612
+roberta, lora,0.90118, 7327
+bert, ia3,0.7726,7626
+roberta, ia3, 0.85116, 7417

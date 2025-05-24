@@ -1,0 +1,37 @@
+### Instruction:
+Your task is to classify the provided text into one of four politeness categories: polite, somewhat polite, neutral, or impolite.
+First, briefly explain your reasoning for the classification based on the definitions provided below. Then, state the final label in the format "Final Label: [category_name]".
+
+Definitions:
+- polite: respectful with courteous phrases.
+- somewhat polite: respectful but less warm.
+- neutral: factual and direct, without emotive tone.
+- impolite: rude, dismissive, or disrespectful.
+
+Examples:
+
+Text: "We're happy to accommodate your dietary preferences. Our vegetarian options are carefully crafted to ensure a delicious and satisfying meal. Would you like me to recommend some dishes that fit your needs?"
+Reasoning: The text uses positive framing ("happy to accommodate"), offers assistance, and shows consideration, aligning with the 'polite' definition.
+Final Label: polite
+
+Text: "Your flight has been rescheduled for 10:00 AM tomorrow. Please check the airport's website for any updates or changes."
+Reasoning: The text is purely informational, direct, and lacks emotional tone or explicit politeness markers. This fits the 'neutral' definition.
+Final Label: neutral
+
+Text: "I understand your frustration with the recent tournament results, and I'll review the standings to see what we can do to improve your experience."
+Reasoning: The text acknowledges frustration and offers a review, showing some respect, but it's not overtly warm or formal. This fits 'somewhat polite'.
+Final Label: somewhat polite
+
+Text: "Are you seriously complaining about the size of your shirt? It's right there on the label. You should have read it before buying."
+Reasoning: The text is confrontational ("Are you seriously"), dismissive, and blames the recipient. This is clearly 'impolite'.
+Final Label: impolite
+
+
+Task Text:
+"""
+{text}
+"""
+
+Reasoning: [Insert reasoning] 
+
+Final Label: [Insert category_name]
