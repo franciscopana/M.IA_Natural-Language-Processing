@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 
-# Create the data
 data = {
     'model': ['bert', 'roberta', 'bert', 'roberta', 'bert', 'roberta', 'bert', 'roberta'],
     'training_method': [None, None, 'domain_adaptation', 'domain_adaptation', 'lora', 'lora', 'ia3', 'ia3'],
@@ -16,11 +15,9 @@ df['training_method'] = df['training_method'].fillna('base')
 plt.figure(figsize=(14, 9))
 sns.set_style("whitegrid")
 
-# define your color palette
 base_palette = sns.dark_palette("#69d", reverse=True, n_colors=2)
 model_colors = {'bert': base_palette[-1], 'roberta': base_palette[0]}
 
-# plot points
 for model in ['bert','roberta']:
     subset = df[df['model']==model]
     plt.scatter(subset['training_time'],
@@ -33,7 +30,6 @@ for model in ['bert','roberta']:
                 linewidth=1,
                 label=model.upper())
 
-# annotate
 for _, row in df.iterrows():
     plt.annotate(
         row['training_method'].replace('_', ' ').title(),
@@ -43,7 +39,6 @@ for _, row in df.iterrows():
         ha='left', va='center'
     )
 
-# **NEW: expand the x-axis**
 ax = plt.gca()
 xmin, xmax = ax.get_xlim()
 ax.set_xlim(xmin, xmax + 500)
