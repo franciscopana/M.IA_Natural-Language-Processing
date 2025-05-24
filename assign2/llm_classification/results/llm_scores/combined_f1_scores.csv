@@ -1,6 +1,6 @@
 dataset,split,model,prompt_type,f1_score
-Intel/polite-guard,test,gemini-2.0-flash,Zero-Shot,0.
-Intel/polite-guard,test,gemini-2.0-flash,Few-Shot,0
+Intel/polite-guard,test,gemini-2.0-flash,Zero-Shot,0.5420312340456657
+Intel/polite-guard,test,gemini-2.0-flash,Few-Shot,0.3095503291709042
 Intel/polite-guard,test,gemini-2.0-flash,FS-CoT,0.5721003118733147
 Intel/polite-guard,test,llama3-8b,Zero-Shot,0.4211007928961598
 Intel/polite-guard,test,llama3-8b,Few-Shot,0.3384373700003539
