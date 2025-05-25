@@ -6,7 +6,7 @@ import seaborn as sns
 data = {
     'model': ['bert', 'roberta', 'bert', 'roberta', 'bert', 'roberta', 'bert', 'roberta'],
     'training_method': [None, None, 'domain_adaptation', 'domain_adaptation', 'lora', 'lora', 'ia3', 'ia3'],
-    'f1_score': [0.9178, 0.9187, 0.92117, 0.91956, 0.89717, 0.90118, 0.7726, 0.85116],
+    'f1_score': [0.9178, 0.9187, 0.92117, 0.92367, 0.89717, 0.90118, 0.7726, 0.85116],
     'training_time': [10309, 9813, 11002, 10926, 7612, 7327, 7626, 7417]
 }
 df = pd.DataFrame(data)
