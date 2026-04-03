@@ -3,3 +3,7 @@
 .venv
 embeddings
 extra/
+
+assign1/data/
+assign1/tensorboard_logs/
+*.csv
