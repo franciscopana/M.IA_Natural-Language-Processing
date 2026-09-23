@@ -4,7 +4,9 @@
 > <br />
 > Course Unit: [Natural Language Processing](https://sigarra.up.pt/feup/pt/ucurr_geral.ficha_uc_view?pv_ocorrencia_id=542588), 2025/2026
 > <br />
-> Faculty: **FEUP** (University of Porto)
+> Course: **Msc. in Artificial Intelligence**
+> <br />
+> Faculty: **FCUP / FEUP**
 > <br />
 > Project evaluation: **20**/20 
 
